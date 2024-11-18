@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "534479160807",
+    "project_id": "template-623f7",
+    "storage_bucket": "template-623f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534479160807:android:694cdd590b30ff23a5e942",
+        "android_client_info": {
+          "package_name": "software.ditech.template"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7FNFXQ6BLgEB3-RKlTrySfi_2Z5-41Sg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
