@@ -1,10 +1,7 @@
 class AppLogo {
   // App Logo
-  static const verticalAppLogo = 'assets/images/app_logo/crm_logo.png';
-  static const horizontalAppLogo = 'assets/images/app_logo/horizontal_logo.jpg';
-  static const horizontalLogoNoBg =
-      'assets/images/app_logo/horizontal-logo-no-bg.png';
-  static const verticalLogo = 'assets/images/app_logo/vertical_ditech.png';
+  static const verticalAppLogo = 'assets/images/app_logo/logo1.png';
+  static const horizontalAppLogo = 'assets/images/app_logo/logo1.png';
 }
 
 class AppImage {

@@ -1,28 +1,37 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../constrants/app_logo.dart';
 import '../../constrants/app_color.dart';
-import '../../constrants/app_logo.dart';
+import 'custom_loading.dart';
 
 class CustomAvatar extends StatelessWidget {
-  final double? height;
+  final String? image;
   final double? width;
+  final double? height;
   final double? borderRadius;
-  final Color? boderColor;
+  final bool? noneborderRadius;
+  final bool? boxContain;
+  final bool? noneborder;
+  final Color? colorBorder;
+  final double borderWidth;
+  final bool defaultProfile;
   final GestureTapCallback? ontap;
 
-  final String? imageUrl;
-  final bool isEdit;
   const CustomAvatar({
-    Key? key,
-    this.height,
+    super.key,
+    this.image,
+    this.noneborder = false,
+    this.boxContain = false,
     this.width,
-    this.boderColor,
+    this.borderWidth = 0.5,
+    this.height,
+    this.colorBorder,
     this.borderRadius,
+    this.defaultProfile = false,
+    this.noneborderRadius,
     this.ontap,
-    this.isEdit = false,
-    this.imageUrl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,64 +39,62 @@ class CustomAvatar extends StatelessWidget {
       onTap: ontap,
       child: Container(
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: borderRadius != null
-              ? null
+          borderRadius: noneborderRadius == true
+              ? BorderRadius.circular(0)
+              : BorderRadius.circular(borderRadius ?? 10),
+          border: noneborder != false
+              ? Border.all(
+                  width: borderWidth,
+                  color: Colors.transparent,
+                )
               : Border.all(
-                  width: 1,
-                  color: boderColor ?? AppColor.primaryColor,
+                  width: borderWidth,
+                  color: colorBorder ?? AppColor.primaryColor,
                 ),
         ),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(borderRadius ?? 10000),
-              child: imageUrl == null || imageUrl == ''
-                  ? Image.asset(
-                      AppImage.defaultProfile,
-                      fit: BoxFit.cover,
-                      height: height,
-                      width: width,
-                    )
-                  : CachedNetworkImage(
-                      imageUrl: imageUrl!,
-                      fadeInCurve: Curves.easeIn,
-                      height: height,
-                      width: width,
-                      fit: BoxFit.cover,
-                      errorWidget: (context, url, error) => Image.asset(
-                        AppImage.defaultProfile,
-                        fit: BoxFit.cover,
-                        height: height,
-                        width: width,
-                      ),
-                      progressIndicatorBuilder:
-                          (context, url, downloadProgress) => Center(
-                        child: CircularProgressIndicator(
-                            value: downloadProgress.progress),
-                      ),
-                    ),
-            ),
-            if (isEdit)
-              Positioned(
-                right: 5,
-                bottom: 0,
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.primaryColor,
-                  ),
-                  child: const Icon(
-                    Icons.edit,
-                    size: 20,
-                    color: Colors.white,
-                  ),
+        height: height ?? 100,
+        width: width ?? 100,
+        child: image != null &&
+                image != "" &&
+                image!.contains("/private/") == false
+            ? ClipRRect(
+                borderRadius: noneborderRadius == true
+                    ? BorderRadius.circular(0)
+                    : BorderRadius.circular(borderRadius ?? 10),
+                child: CachedNetworkImage(
+                    imageUrl: image!,
+                    fit: boxContain == false ? BoxFit.cover : BoxFit.contain,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) =>
+                            const CustomLoading(),
+                    errorListener: (error) {
+                      // print("=> $error");
+                    },
+                    errorWidget: (context, url, error) {
+                      return ClipRRect(
+                        borderRadius: noneborderRadius == true
+                            ? BorderRadius.circular(0)
+                            : BorderRadius.circular(borderRadius ?? 10),
+                        child: Image.asset(
+                          defaultProfile
+                              ? AppImage.defaultProfile
+                              : AppImage.defaultImage,
+                          fit: BoxFit.cover,
+                        ),
+                      );
+                    }),
+              )
+            : ClipRRect(
+                borderRadius: noneborderRadius == true
+                    ? BorderRadius.circular(0)
+                    : BorderRadius.circular(borderRadius ?? 10),
+                child: Image.asset(
+                  defaultProfile
+                      ? AppImage.defaultProfile
+                      : AppImage.defaultImage,
+                  fit: BoxFit.cover,
                 ),
               ),
-          ],
-        ),
       ),
     );
   }

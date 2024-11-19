@@ -3,7 +3,6 @@ import 'package:ditech_crm/utils/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../constrants/app_logo.dart';
 import '../../../constrants/injection.dart';
@@ -35,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          AppLogo.verticalLogo,
+                          AppLogo.verticalAppLogo,
                           width: 200,
                           height: 200,
                         ),
@@ -82,32 +81,32 @@ class _LoginScreenState extends State<LoginScreen> {
                             title: "Log IN",
                             onPressed: () {
                               FocusScope.of(context).unfocus();
-                              //validate phone
-                              // if (Injection.authController.userName.value !=
-                              //     '') {
-                              //   Injection.authController.isUserNameNull(false);
-                              // } else {
-                              //   Injection.authController.isUserNameNull(true);
-                              // }
-                              // //validate PW
-                              // if (Injection.authController.password.value ==
-                              //     '') {
-                              //   Injection.authController.validatePassword
-                              //       .value = true;
-                              // } else {
-                              //   Injection.authController.validatePassword
-                              //       .value = false;
-                              // }
-                              // //LOG IN
-                              // if (!Injection
-                              //         .authController.validatePassword.value &&
-                              //     !Injection
-                              //         .authController.isUserNameNull.value) {
-                              //   Injection.authController
-                              //       .onLogIn(context)
-                              //       .then((value) => controller.clear());
-                              // }
-                              context.go('/home');
+                              // validate phone
+                              if (Injection.authController.userName.value !=
+                                  '') {
+                                Injection.authController.isUserNameNull(false);
+                              } else {
+                                Injection.authController.isUserNameNull(true);
+                              }
+                              //validate PW
+                              if (Injection.authController.password.value ==
+                                  '') {
+                                Injection.authController.validatePassword
+                                    .value = true;
+                              } else {
+                                Injection.authController.validatePassword
+                                    .value = false;
+                              }
+                              //LOG IN
+                              if (!Injection
+                                      .authController.validatePassword.value &&
+                                  !Injection
+                                      .authController.isUserNameNull.value) {
+                                Injection.authController
+                                    .onLogIn(context)
+                                    .then((value) => controller.clear());
+                              }
+                              // context.go('/home');
                             },
                           ),
                         ),

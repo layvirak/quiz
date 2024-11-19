@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/helper/format_convert.dart';
 
-class CustomUserInfo extends StatelessWidget {
-  const CustomUserInfo({
+class CustomProfileInfoCard extends StatelessWidget {
+  const CustomProfileInfoCard({
     super.key,
     this.label,
     this.value,
@@ -65,23 +65,19 @@ class CustomUserInfo extends StatelessWidget {
                     flex: 2,
                     child: Text(
                       FormatConvert.nullCheck(value: label),
-                      style:
-                          Theme.of(context).textTheme.displayMedium!.copyWith(
-                                fontSize: 14,
-                                color: Colors.black.withOpacity(0.6),
-                              ),
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 14,
+                          ),
                     ),
                   ),
                   Expanded(
                     flex: 3,
                     child: Text(
                       FormatConvert.nullCheck(value: value),
-                      style:
-                          Theme.of(context).textTheme.displayMedium!.copyWith(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black.withOpacity(0.6),
-                              ),
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                   ),
                 ],

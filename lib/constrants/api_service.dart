@@ -11,9 +11,9 @@ class ApiService {
   //##########--UAT--##########Name: Rak
   //****************************************************************************
   static const baseUrl = 'https://uat-ditech.ditech.software';
-  static const version = 'UAT-V1.3.0';
-  static const midResource = '/api/resource/';
-  static const midMethod = '/api/method/';
+  static const method = "/api/method/";
+  static const resource = "/api/resource/";
+  static const version = 'UAT-1.0.0';
   static const target = 'uat';
 
   //****************************************************************************

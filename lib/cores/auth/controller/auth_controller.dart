@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../config/go_route/routes.dart';
 import '../../../constrants/api_service.dart';
-import '../../../module/user/model/user_model/user_model.dart';
+import '../../../module/profile/model/user_model/user_model.dart';
 import '../../../utils/helper/local_storage.dart';
 
 class AuthController extends GetxController {
@@ -32,7 +32,7 @@ class AuthController extends GetxController {
     isLoadingLogIn(true);
     try {
       await apiBaseHelper.onNetworkRequesting(
-        url: '${ApiService.midMethod}ditech_api.auth.login',
+        url: '${ApiService.method}ditech_api.auth.login',
         methode: METHODE.post,
         isAuthorize: true,
         body: {
@@ -47,14 +47,14 @@ class AuthController extends GetxController {
         }
         LocalStorage.storeData(
             key: 'access_token', value: response['message']['auth']);
-        await Injection.userController.onGetUser(context).then((value) {
+        await Injection.profileController.onGetUser(context).then((value) {
           if (value != UserModel()) {
             context.go('/home');
           }
         });
       }).onError((ErrorModel error, stackTrace) {
         isLoadingLogIn(false);
-        CustomAlertReponse.showAlertMessage(context: context, error: error);
+        CustomAlertResponse.showAlertMessage(context: context, error: error);
         if (ApiService.target != 'Release') {
           debugPrint(
               'onError log in: ------------------->>> ${error.statusCode}');

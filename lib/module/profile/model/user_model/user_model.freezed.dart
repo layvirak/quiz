@@ -60,7 +60,6 @@ mixin _$UserModel {
   String? get customerId => throw _privateConstructorUsedError;
   @JsonKey(name: 'mobile_no')
   String? get mobileNo => throw _privateConstructorUsedError;
-  @JsonKey(name: 'company')
   List<String>? get company => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -95,7 +94,7 @@ abstract class $UserModelCopyWith<$Res> {
       @JsonKey(name: 'employee_id') String? employeeId,
       @JsonKey(name: 'customer_id') String? customerId,
       @JsonKey(name: 'mobile_no') String? mobileNo,
-      @JsonKey(name: 'company') List<String>? company});
+      List<String>? company});
 }
 
 /// @nodoc
@@ -251,7 +250,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       @JsonKey(name: 'employee_id') String? employeeId,
       @JsonKey(name: 'customer_id') String? customerId,
       @JsonKey(name: 'mobile_no') String? mobileNo,
-      @JsonKey(name: 'company') List<String>? company});
+      List<String>? company});
 }
 
 /// @nodoc
@@ -400,7 +399,7 @@ class _$UserModelImpl implements _UserModel {
       @JsonKey(name: 'employee_id') this.employeeId,
       @JsonKey(name: 'customer_id') this.customerId,
       @JsonKey(name: 'mobile_no') this.mobileNo,
-      @JsonKey(name: 'company') final List<String>? company})
+      final List<String>? company})
       : _blockModules = blockModules,
         _roles = roles,
         _userEmails = userEmails,
@@ -495,7 +494,6 @@ class _$UserModelImpl implements _UserModel {
   final String? mobileNo;
   final List<String>? _company;
   @override
-  @JsonKey(name: 'company')
   List<String>? get company {
     final value = _company;
     if (value == null) return null;
@@ -614,7 +612,7 @@ abstract class _UserModel implements UserModel {
       @JsonKey(name: 'employee_id') final String? employeeId,
       @JsonKey(name: 'customer_id') final String? customerId,
       @JsonKey(name: 'mobile_no') final String? mobileNo,
-      @JsonKey(name: 'company') final List<String>? company}) = _$UserModelImpl;
+      final List<String>? company}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -680,7 +678,6 @@ abstract class _UserModel implements UserModel {
   @JsonKey(name: 'mobile_no')
   String? get mobileNo;
   @override
-  @JsonKey(name: 'company')
   List<String>? get company;
   @override
   @JsonKey(ignore: true)

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../constrants/app_color.dart';
 import '../helper/api_base_helper.dart';
 
-class CustomAlertReponse {
+class CustomAlertResponse {
   static showSuccess(
       {String? title, String? message, required BuildContext context}) {
     return ScaffoldMessenger.of(context)
@@ -77,7 +77,10 @@ class CustomAlertReponse {
                     Text(
                       message,
                       // 'Your account has been created',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(color: Colors.white),
                     ),
                 ],
               ),
@@ -134,7 +137,7 @@ class CustomAlertReponse {
       ));
   }
 
-   //****************************************************************************
+  //****************************************************************************
   //Description : This function is used to check error message
   //Required Field : context, error
   //
@@ -159,9 +162,9 @@ class CustomAlertReponse {
     }
 
     if (error!.statusCode! < 500) {
-      CustomAlertReponse.showWarning(context: context!, message: message);
+      CustomAlertResponse.showWarning(context: context!, message: message);
     } else {
-      CustomAlertReponse.showDanger(context: context!, message: message);
+      CustomAlertResponse.showDanger(context: context!, message: message);
     }
   }
 }

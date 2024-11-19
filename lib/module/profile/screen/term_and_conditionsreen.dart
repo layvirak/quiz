@@ -55,6 +55,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             appBar: AppBar(
               title: const Text('Privacy Policy'),
             ),
+            backgroundColor: Colors.grey,
             body: Injection.homeController.isLoading.value
                 ? Container()
                 : SafeArea(

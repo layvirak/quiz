@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 
 import '../../../../constrants/app_color.dart';
-import '../../module/user/screen/view_profile_screen.dart';
+import '../../module/profile/screen/view_profile_screen.dart';
 
 Future<void> customImagePicker(BuildContext context, String? image,
     {bool isChooseLibrary = true, Function? onChange}) async {

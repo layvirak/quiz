@@ -45,6 +45,7 @@ class ApiBaseHelper extends GetConnect {
     required METHODE? methode,
     required bool isAuthorize,
     String baseUrl = '',
+    bool isRouteToLoginWhen401or403 = true,
   }) async {
     if (baseUrl != '') baseurl = baseUrl;
     final token = await LocalStorage.getStringValue(key: 'access_token');
@@ -58,23 +59,23 @@ class ApiBaseHelper extends GetConnect {
       switch (methode) {
         case METHODE.get:
           final response = await get(fullUrl, headers: header ?? headerDefault);
-          return _returnResponse(response);
+          return _returnResponse(response, isRouteToLoginWhen401or403);
         case METHODE.post:
           if (body != null) {
             final response =
                 await post(fullUrl, json.encode(body), headers: headerDefault);
-            return _returnResponse(response);
+            return _returnResponse(response, isRouteToLoginWhen401or403);
           }
           return Future.error(
               const ErrorModel(bodyString: 'Body must be included'));
         case METHODE.delete:
           final response = await delete(fullUrl, headers: headerDefault);
-          return _returnResponse(response);
+          return _returnResponse(response, isRouteToLoginWhen401or403);
         case METHODE.update:
           if (body != null) {
             final response =
                 await put(fullUrl, json.encode(body), headers: headerDefault);
-            return _returnResponse(response);
+            return _returnResponse(response, isRouteToLoginWhen401or403);
           }
           return Future.error(
               const ErrorModel(bodyString: 'Body must be included'));
@@ -86,12 +87,12 @@ class ApiBaseHelper extends GetConnect {
     }
   }
 
-  dynamic _returnResponse(Response response) {
+  dynamic _returnResponse(Response response, bool isRouteToLoginWhen401or403) {
     if (response.statusCode! <= 300) {
       var responseJson = json.decode(response.bodyString!);
       return responseJson;
     } else if (response.statusCode! == 401) {
-      Injection.authController.signOut();
+      if (isRouteToLoginWhen401or403) Injection.authController.signOut();
       return Future.error(ErrorModel(
           statusCode: response.statusCode,
           bodyString: json.decode(response.bodyString!)));

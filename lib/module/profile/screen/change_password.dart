@@ -17,7 +17,7 @@ class ChangePasswordScreen extends StatefulWidget {
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   void initState() {
-    Injection.userController.onclearDataChangePassword();
+    Injection.profileController.onclearDataChangePassword();
 
     super.initState();
   }
@@ -40,31 +40,33 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
-                        hintText: "Enter old password",
-                        validateText: "Please input your lod password",
-                        isValidate: Injection.userController.isOldPWNill.value,
+                        hintText: "Old Password",
+                        validateText: "Please input your old password",
+                        isValidate:
+                            Injection.profileController.isOldPWNill.value,
                         onChange: (value) {
-                          Injection.userController.oldPassword.value = value;
-                          Injection.userController.isOldPWNill.value = false;
+                          Injection.profileController.oldPassword.value = value;
+                          Injection.profileController.isOldPWNill.value = false;
                         },
-                        labelText: "Old Passowrd",
+                        labelText: "Old Password",
                         isObscureText: true,
                         isRequired: true,
+                        // hintText: "Enter NewPassword",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       CustomTextField(
-                        hintText: "Enter new password",
-                        validateText: "Please input at least 4 character",
+                        hintText: "New Password",
+                        validateText: "Please input at least 4 Character",
                         isValidate:
-                            Injection.userController.validatePassword.value,
+                            Injection.profileController.validatePassword.value,
                         onChange: (value) {
-                          Injection.userController.newPassword.value = value;
-                          Injection.userController.validatePassword.value =
+                          Injection.profileController.newPassword.value = value;
+                          Injection.profileController.validatePassword.value =
                               false;
                         },
-                        labelText: "New Passowrd",
+                        labelText: "New Password",
                         isObscureText: true,
                         isRequired: true,
                       ),
@@ -73,20 +75,21 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       ),
                       CustomTextField(
                         isReadOnly:
-                            Injection.userController.newPassword.value != ""
+                            Injection.profileController.newPassword.value != ""
                                 ? false
                                 : true,
-                        hintText: "Enter confirm new password",
-                        labelText: "Confirm New Passowrd",
+                        hintText: "Confirm Password",
+                        labelText: "Confirm Password",
                         isObscureText: true,
                         isRequired: true,
+                        // hintText: "Enter Confirm Password",
                         isValidate:
-                            Injection.userController.isPasswordMatch.value,
-                        validateText: "Password is not match",
+                            Injection.profileController.isPasswordMatch.value,
+                        validateText: "Password Is Not Match",
                         onChange: (value) {
-                          Injection.userController.conformPassword.value =
+                          Injection.profileController.conformPassword.value =
                               value;
-                          Injection.userController.isPasswordMatch.value =
+                          Injection.profileController.isPasswordMatch.value =
                               false;
                         },
                       ),
@@ -97,28 +100,35 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         height: 45,
                         child: CustomButton(
                           onPressed: () {
-                            if (Injection.userController.oldPassword.value ==
+                            if (Injection.profileController.oldPassword.value ==
                                 '') {
-                              Injection.userController.isOldPWNill.value = true;
+                              Injection.profileController.isOldPWNill.value =
+                                  true;
                             } else if (Injection
-                                        .userController.newPassword.value ==
+                                        .profileController.newPassword.value ==
                                     '' ||
-                                Injection.userController.newPassword.value
+                                Injection.profileController.newPassword.value
                                         .length <
                                     4) {
-                              Injection.userController.validatePassword.value =
-                                  true;
+                              Injection.profileController.validatePassword
+                                  .value = true;
                             } else if (Injection
-                                    .userController.newPassword.value !=
+                                    .profileController.newPassword.value !=
                                 Injection
-                                    .userController.conformPassword.value) {
-                              Injection.userController.validatePassword.value =
-                                  false;
-                              Injection.userController.isPasswordMatch.value =
-                                  true;
+                                    .profileController.conformPassword.value) {
+                              Injection.profileController.validatePassword
+                                  .value = false;
+                              Injection.profileController.isPasswordMatch
+                                  .value = true;
                             } else {
-                              Injection.userController
+                              Injection.profileController
                                   .onChangePassword(context);
+                              // print('submit');
+                              // Injection.profileController.validatePassword.value =
+                              //     false;
+                              // Injection.profileController.isPasswordMatch.value =
+                              //     false;
+                              // Navigator.pop(context);
                             }
                           },
                           title: "Submit",
@@ -130,7 +140,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               ),
             ),
           ),
-          if (Injection.userController.isLoadingisLoadingChangePW.value)
+          if (Injection.profileController.isLoadingisLoadingChangePW.value)
             const CustomLoading(),
         ],
       ),

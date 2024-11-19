@@ -1,3 +1,4 @@
+import 'package:ditech_crm/constrants/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         leadingWidth: 100,
         leading: Image.asset(
-          AppLogo.horizontalLogoNoBg,
+          AppLogo.verticalAppLogo,
         ),
         actions: [
           if (ApiService.target != "release")
@@ -30,11 +31,13 @@ class HomeScreen extends StatelessWidget {
               right: 15,
             ),
             child: CustomAvatar(
+              image: Injection.profileController.userModel.value.userImage,
               ontap: () {
                 context.push('/profile');
               },
-              width: 40,
-              height: 40,
+              borderRadius: 1000,
+              width: 45,
+              height: 45,
             ),
           ),
         ],

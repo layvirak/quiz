@@ -9,7 +9,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../constrants/api_service.dart';
 import '../../../constrants/injection.dart';
-import '../../../module/user/model/user_model/user_model.dart';
+import '../../../module/profile/model/user_model/user_model.dart';
 import '../../../utils/helper/local_storage.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     } else {
       Timer(const Duration(seconds: 3), () {
-        Injection.userController.onGetUser(context).then((value) {
+        Injection.profileController.onGetUser(context).then((value) {
           if (value != UserModel()) {
             context.go('/home');
           }
@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    AppLogo.verticalLogo,
+                    AppLogo.verticalAppLogo,
                     width: 222,
                     height: 222,
                   ),
