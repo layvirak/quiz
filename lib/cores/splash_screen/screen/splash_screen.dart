@@ -27,8 +27,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   onRouter() async {
-    // LocalStorage.storeData(
-    //     key: 'access_token', value: "token 6bd945c782ddd9d:c9abe1ba8804c6c");
     Injection.authController.token.value =
         await LocalStorage.getStringValue(key: 'access_token');
     if (ApiService.target != 'realease') {
@@ -77,15 +75,6 @@ class _SplashScreenState extends State<SplashScreen> {
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.normal,
-                ),
-          ),
-          const Gap(5),
-          Text(
-            'Powered by DiTech',
-            style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black.withOpacity(0.6),
                 ),
           ),
           const Gap(25),

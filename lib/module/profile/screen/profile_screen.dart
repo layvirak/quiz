@@ -172,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               context.push("/change-password");
                             },
                             title: "Change Password",
-                            icon: Icons.person_outline,
+                            icon: Icons.password,
                           ),
                           const SizedBox(height: 15),
                           //***************************************************************
@@ -182,7 +182,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             CustomerProfileCard(
                               onTap: () {
                                 context.push('/term-condition');
-                                // context.push('/term-condition-eic');
                               },
                               title: "Term And Condition",
                               icon: Icons.article_outlined,

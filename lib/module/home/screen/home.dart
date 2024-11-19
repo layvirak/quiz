@@ -13,9 +13,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 100,
-        leading: Image.asset(
-          AppLogo.verticalAppLogo,
+        leadingWidth: 50,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            AppLogo.verticalAppLogo,
+          ),
         ),
         actions: [
           if (ApiService.target != "release")
