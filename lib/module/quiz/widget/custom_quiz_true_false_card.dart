@@ -2,12 +2,12 @@ import 'package:ditech_crm/utils/widget/custom_check_box.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class CustomQuizCard extends StatelessWidget {
+class CustomQuizTrueFalseCard extends StatelessWidget {
   final String? question;
   final Function()? onTap;
   final bool? isSelect;
   final bool? isMultipleSelect;
-  const CustomQuizCard(
+  const CustomQuizTrueFalseCard(
       {super.key,
       this.onTap,
       this.question,
@@ -47,26 +47,16 @@ class CustomQuizCard extends StatelessWidget {
               children: [
                 Gap(10),
                 CustomCheckBox(
-                  isSelect: false,
-                  text: '11',
-                ),
-                Gap(10),
-                CustomCheckBox(
-                  isSelect: false,
-                  text: '12',
-                ),
-                Gap(10),
-                CustomCheckBox(
                   isSelect: true,
-                  text: '13',
+                  text: 'True',
                 ),
                 Gap(10),
                 CustomCheckBox(
                   isSelect: false,
-                  text: '14',
+                  text: 'False',
                 ),
               ],
-            ),
+            )
           ],
         ),
       ),

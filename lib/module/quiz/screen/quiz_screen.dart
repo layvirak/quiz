@@ -1,4 +1,5 @@
 import 'package:ditech_crm/module/quiz/widget/custom_quiz_card.dart';
+import 'package:ditech_crm/module/quiz/widget/custom_quiz_true_false_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -27,7 +28,7 @@ class QuizScreen extends StatelessWidget {
             CustomQuizCard(
               question: "Fish breathe underwater using their lungs.",
             ),
-            CustomQuizCard(
+            CustomQuizTrueFalseCard(
               question: "Bananas grow on trees.",
             ),
             CustomQuizCard(
