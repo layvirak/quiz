@@ -1,7 +1,9 @@
 class AppLogo {
   // App Logo
-  static const verticalAppLogo = 'assets/images/app_logo/logo1.png';
-  static const horizontalAppLogo = 'assets/images/app_logo/logo1.png';
+  static const verticalAppLogo = 'assets/images/app_logo/lomhat_logo.jpg';
+  static const horizontalAppLogo = 'assets/images/app_logo/lomhat_logo.jpg';
+  static const horizontalAppLogoNoBackGround =
+      "assets/images/app_logo/lomhat_logo_no_background.png";
 }
 
 class AppImage {

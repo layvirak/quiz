@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:ditech_crm/constrants/app_color.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +24,7 @@ class CustomIconBack extends StatelessWidget {
                 ? Icons.arrow_back
                 : Icons.arrow_back_ios,
             size: 25,
-            color: AppColor.primaryColor,
+            color: Colors.white,
           ),
         ),
       ),

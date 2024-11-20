@@ -1,3 +1,4 @@
+import 'package:ditech_crm/constrants/app_color.dart';
 import 'package:ditech_crm/utils/widget/custom_button.dart';
 import 'package:ditech_crm/utils/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          AppLogo.verticalAppLogo,
+                          AppLogo.horizontalAppLogoNoBackGround,
+                          color: AppColor.primaryColor,
                           width: 200,
                           height: 200,
                         ),

@@ -13,12 +13,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 50,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            AppLogo.verticalAppLogo,
-          ),
+        leadingWidth: 100,
+        leading: Image.asset(
+          AppLogo.horizontalAppLogoNoBackGround,
+          fit: BoxFit.cover,
         ),
         actions: [
           if (ApiService.target != "release")
@@ -39,8 +37,8 @@ class HomeScreen extends StatelessWidget {
                 context.push('/profile');
               },
               borderRadius: 1000,
-              width: 45,
-              height: 45,
+              width: 40,
+              height: 40,
             ),
           ),
         ],

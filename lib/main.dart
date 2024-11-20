@@ -62,3 +62,160 @@ void unFocus(BuildContext context) {
     FocusManager.instance.primaryFocus!.unfocus();
   }
 }
+
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_draggable_gridview/flutter_draggable_gridview.dart';
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: "test",
+//       theme: ThemeData(primarySwatch: Colors.red),
+//       home: const MyHomePage(title: "appTitle"),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatelessWidget {
+//   const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+//   final String title;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: const Color(0xFFEFEEEE),
+//       appBar: AppBar(
+//         centerTitle: true,
+//         title: Text(title),
+//       ),
+//       body: Row(
+//         children: [
+//           Expanded(
+//             child: DraggableGridViewBuilder(
+//               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                 crossAxisCount: 1,
+//                 childAspectRatio: MediaQuery.of(context).size.width /
+//                     (MediaQuery.of(context).size.height / 3),
+//               ),
+//               children: [
+//                 DraggableGridItem(
+//                   isDraggable: true,
+//                   child: Container(
+//                     color: Colors.blue,
+//                     width: 200,
+//                     height: 150,
+//                     child: const Text('Item 1'),
+//                   ),
+//                 ),
+//                 DraggableGridItem(
+//                   isDraggable: true,
+//                   child: Container(
+//                     color: Colors.green,
+//                     width: 200,
+//                     height: 100,
+//                     child: const Text('Item 2'),
+//                   ),
+//                 ),
+//                 DraggableGridItem(
+//                   isDraggable: true,
+//                   child: Container(
+//                     color: Colors.yellow,
+//                     width: 200,
+//                     height: 150,
+//                     child: const Text('Item 3'),
+//                   ),
+//                 ),
+//               ],
+//               isOnlyLongPress: false,
+//               dragCompletion: (List<DraggableGridItem> list, int beforeIndex,
+//                   int afterIndex) {
+//                 print('onDragAccept: $beforeIndex -> $afterIndex');
+//               },
+//               dragFeedback: (List<DraggableGridItem> list, int index) {
+//                 return SizedBox(
+//                   width: 200,
+//                   height: 150,
+//                   child: list[index].child,
+//                 );
+//               },
+//               dragPlaceHolder: (List<DraggableGridItem> list, int index) {
+//                 return PlaceHolderWidget(
+//                   child: Container(
+//                     color: Colors.black,
+//                   ),
+//                 );
+//               },
+//             ),
+//           ),
+//           Expanded(
+//             child: DraggableGridViewBuilder(
+//               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                 crossAxisCount: 1,
+//                 childAspectRatio: MediaQuery.of(context).size.width /
+//                     (MediaQuery.of(context).size.height / 3),
+//               ),
+//               children: [
+//                 DraggableGridItem(
+//                   isDraggable: true,
+//                   child: Container(
+//                     color: Colors.red,
+//                     width: 200,
+//                     height: 150,
+//                     child: const Text('Item 1'),
+//                   ),
+//                 ),
+//                 DraggableGridItem(
+//                   isDraggable: true,
+//                   child: Container(
+//                     color: Colors.grey,
+//                     width: 200,
+//                     height: 100,
+//                     child: const Text('Item 2'),
+//                   ),
+//                 ),
+//                 DraggableGridItem(
+//                   isDraggable: true,
+//                   child: Container(
+//                     color: Colors.orange,
+//                     width: 200,
+//                     height: 150,
+//                     child: const Text('Item 3'),
+//                   ),
+//                 ),
+//               ],
+//               isOnlyLongPress: false,
+//               dragCompletion: (List<DraggableGridItem> list, int beforeIndex,
+//                   int afterIndex) {
+//                 print('onDragAccept: $beforeIndex -> $afterIndex');
+//               },
+//               dragFeedback: (List<DraggableGridItem> list, int index) {
+//                 return SizedBox(
+//                   width: 200,
+//                   height: 150,
+//                   child: list[index].child,
+//                 );
+//               },
+//               dragPlaceHolder: (List<DraggableGridItem> list, int index) {
+//                 return PlaceHolderWidget(
+//                   child: Container(
+//                     color: Colors.black,
+//                   ),
+//                 );
+//               },
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

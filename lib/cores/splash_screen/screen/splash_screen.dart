@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Column(
         children: [
           Expanded(
@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    AppLogo.verticalAppLogo,
+                    AppLogo.horizontalAppLogoNoBackGround,
                     width: 222,
                     height: 222,
                   ),
@@ -73,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Text(
             'Version ${ApiService.version}',
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: Colors.black.withOpacity(0.6),
+                  color: Colors.white.withOpacity(0.6),
                   fontWeight: FontWeight.normal,
                 ),
           ),

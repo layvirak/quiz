@@ -20,7 +20,7 @@ ThemeData lightTheme() {
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-      backgroundColor: AppColor.primaryColor.withOpacity(0.3),
+      backgroundColor: AppColor.primaryColor,
       iconTheme: const IconThemeData(color: Colors.black),
       elevation: 1.5,
       shadowColor: Colors.black12,
