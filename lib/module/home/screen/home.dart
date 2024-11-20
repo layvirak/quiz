@@ -19,14 +19,14 @@ class HomeScreen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         actions: [
-          if (ApiService.target != "release")
-            IconButton(
-              onPressed: () {
-                context.push('/notification');
-              },
-              icon: const Icon(Icons.notifications_active),
-              iconSize: 27,
-            ),
+          // if (ApiService.target != "release")
+          //   IconButton(
+          //     onPressed: () {
+          //       context.push('/notification');
+          //     },
+          //     icon: const Icon(Icons.notifications_active),
+          //     iconSize: 27,
+          //   ),
           Padding(
             padding: const EdgeInsets.only(
               right: 15,
