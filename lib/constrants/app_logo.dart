@@ -23,6 +23,7 @@ class AppImage {
   static const item = 'assets/images/image_assets/products.png';
   static const report = 'assets/images/image_assets/report.png';
   static const filters = 'assets/images/image_assets/sorting.png';
+  static const quiz = 'assets/images/image_assets/ideas.png';
 
   static const announcement = 'assets/images/image_assets/announcement.png';
 }
