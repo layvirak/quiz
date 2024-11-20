@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -8,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../../constrants/app_color.dart';
 import '../../../../../constrants/injection.dart';
 import '../../../../../utils/helper/format_convert.dart';
-import '../../../../../utils/helper/local_storage.dart';
 import '../../../../../utils/widget/cusotm_alert_dialog.dart';
 import '../../../../../utils/widget/custom_button.dart';
 import '../../../../../utils/widget/custom_icon_back.dart';
@@ -231,10 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               true;
                           Navigator.pop(context);
 
-                          Timer(const Duration(milliseconds: 2000), () {
-                            LocalStorage.removeKey(key: "access_token");
-                            context.go('/log-in');
-                          });
+                          Injection.authController.signOut();
                         },
                       );
                     },

@@ -54,6 +54,7 @@ class AuthController extends GetxController {
         });
       }).onError((ErrorModel error, stackTrace) {
         isLoadingLogIn(false);
+        password.value = '';
         CustomAlertResponse.showAlertMessage(context: context, error: error);
         if (ApiService.target != 'Release') {
           debugPrint(
@@ -61,6 +62,7 @@ class AuthController extends GetxController {
         }
       });
     } catch (e) {
+      password.value = '';
       isLoadingLogIn(false);
       if (ApiService.target != 'Release') {
         debugPrint('catch log in:------------------------->>> $e');
