@@ -98,7 +98,8 @@ class CustomSliderState extends State<CustomSlider> {
                       );
                     }).toList(),
                   ],
-                )),
+                ),
+              ),
       ],
     );
   }
