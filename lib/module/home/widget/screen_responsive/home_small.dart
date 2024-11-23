@@ -1,4 +1,5 @@
 import 'package:ditech_crm/constrants/app_color.dart';
+import 'package:ditech_crm/module/quiz/screen/create_quiz/create_quiz_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -143,7 +144,18 @@ class HomeSmall extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const QuizScreen()));
                 },
-              )
+              ),
+              CustomItemCard(
+                image: AppImage.quiz,
+                title: "Create Quiz",
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CreateQuizScreen(),
+                      ));
+                },
+              ),
             ],
           )),
     );

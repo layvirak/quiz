@@ -43,25 +43,26 @@ class CustomQuizCard extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
             ),
-            const Column(
+            Column(
               children: [
-                Gap(10),
-                CustomCheckBox(
+                const Gap(10),
+                const CustomCheckBox(
                   isSelect: false,
                   text: '11',
                 ),
-                Gap(10),
+                const Gap(10),
                 CustomCheckBox(
+                  onTap: () {},
                   isSelect: false,
                   text: '12',
                 ),
-                Gap(10),
-                CustomCheckBox(
+                const Gap(10),
+                const CustomCheckBox(
                   isSelect: true,
                   text: '13',
                 ),
-                Gap(10),
-                CustomCheckBox(
+                const Gap(10),
+                const CustomCheckBox(
                   isSelect: false,
                   text: '14',
                 ),

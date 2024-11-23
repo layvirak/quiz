@@ -9,6 +9,7 @@ class CustomItemCard extends StatelessWidget {
   final GestureTapCallback? onPressed;
   final int? numberCount;
   final bool? isCount;
+
   const CustomItemCard({
     super.key,
     this.image,

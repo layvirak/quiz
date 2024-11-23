@@ -8,13 +8,13 @@ part of 'meta_model.dart';
 
 _$MetaModelImpl _$$MetaModelImplFromJson(Map<String, dynamic> json) =>
     _$MetaModelImpl(
-      currentPage: json['current_page'] as int?,
-      from: json['from'] as int?,
-      lastPage: json['last_page'] as int?,
+      currentPage: (json['current_page'] as num?)?.toInt(),
+      from: (json['from'] as num?)?.toInt(),
+      lastPage: (json['last_page'] as num?)?.toInt(),
       path: json['path'] as String?,
-      perPage: json['per_page'] as int?,
-      to: json['to'] as int?,
-      total: json['total'] as int?,
+      perPage: (json['per_page'] as num?)?.toInt(),
+      to: (json['to'] as num?)?.toInt(),
+      total: (json['total'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$MetaModelImplToJson(_$MetaModelImpl instance) =>

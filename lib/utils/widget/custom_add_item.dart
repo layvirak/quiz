@@ -8,13 +8,14 @@ class CustomAddItem extends StatelessWidget {
   final double? width;
   final GestureTapCallback? onPress;
   final EdgeInsets? margin;
-  const CustomAddItem({
-    super.key,
-    @required this.title,
-    this.width,
-    this.margin,
-    @required this.onPress,
-  });
+  final bool isDisabled;
+  const CustomAddItem(
+      {super.key,
+      @required this.title,
+      this.width,
+      this.margin,
+      @required this.onPress,
+      this.isDisabled = false});
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +32,18 @@ class CustomAddItem extends StatelessWidget {
           children: [
             Icon(
               Icons.add_circle_rounded,
-              color: AppColor.primaryColor,
-              size: 20,
+              color: isDisabled
+                  ? Theme.of(context).disabledColor
+                  : AppColor.primaryColor,
+              size: 15,
             ),
             const Gap(5),
-            Text(title!, style: Theme.of(context).textTheme.labelMedium)
+            Text(title!,
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: isDisabled
+                          ? Theme.of(context).disabledColor
+                          : AppColor.primaryColor,
+                    ))
           ],
         ),
       ),

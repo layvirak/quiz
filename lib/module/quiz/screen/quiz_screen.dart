@@ -1,6 +1,9 @@
 import 'package:ditech_crm/module/quiz/widget/custom_four_draggable.dart';
 import 'package:flutter/material.dart';
 
+import '../widget/custom_quiz_card.dart';
+import '../widget/custom_quiz_true_false_card.dart';
+
 class QuizScreen extends StatelessWidget {
   const QuizScreen({super.key});
 
@@ -10,34 +13,24 @@ class QuizScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Quiz"),
       ),
-      body: const CustomTwoDraggable(),
-      // const CustomFourDraggable(),
-      // const SingleChildScrollView(
-      //   child: Column(
-      //     children: [
-      //       CustomQuizCard(
-      //         question: "Phnom Penh is in Cambodia",
-      //       ),
-      //       CustomQuizCard(
-      //         question: "The sun is a star.",
-      //       ),
-      //       CustomQuizCard(
-      //         question: "Penguins can fly.",
-      //         isMultipleSelect: true,
-      //       ),
-      //       CustomQuizCard(
-      //         question: "Fish breathe underwater using their lungs.",
-      //       ),
-      //       CustomQuizTrueFalseCard(
-      //         question: "Bananas grow on trees.",
-      //       ),
-      //       CustomQuizCard(
-      //         question: "Elephants are the largest land animals on Earth.",
-      //       ),
-      //       Gap(20),
-      //     ],
-      //   ),
-      // ),
+      body:
+          // const CustomFourDraggable(),
+          const SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomQuizCard(
+              question: "Phnom Penh is in Cambodia",
+            ),
+            CustomQuizTrueFalseCard(
+              question: "Penguins can fly.",
+            ),
+            CustomQuizCard(
+              question: "Elephants are the largest land animals on Earth.",
+            ),
+            SizedBox(height: 500, child: CustomTwoDraggable()),
+          ],
+        ),
+      ),
     );
   }
 }

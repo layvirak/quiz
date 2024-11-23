@@ -12,7 +12,7 @@ part of 'social_logins_item_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SocialLoginsItemModel _$SocialLoginsItemModelFromJson(
     Map<String, dynamic> json) {
@@ -35,8 +35,12 @@ mixin _$SocialLoginsItemModel {
   String? get parenttype => throw _privateConstructorUsedError;
   String? get doctype => throw _privateConstructorUsedError;
 
+  /// Serializes this SocialLoginsItemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SocialLoginsItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SocialLoginsItemModelCopyWith<SocialLoginsItemModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -73,6 +77,8 @@ class _$SocialLoginsItemModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SocialLoginsItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,6 +181,8 @@ class __$$SocialLoginsItemModelImplCopyWithImpl<$Res>
       $Res Function(_$SocialLoginsItemModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SocialLoginsItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -296,7 +304,7 @@ class _$SocialLoginsItemModelImpl implements _SocialLoginsItemModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocialLoginsItemModelImpl &&
@@ -320,7 +328,7 @@ class _$SocialLoginsItemModelImpl implements _SocialLoginsItemModel {
             (identical(other.doctype, doctype) || other.doctype == doctype));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -337,7 +345,9 @@ class _$SocialLoginsItemModelImpl implements _SocialLoginsItemModel {
       parenttype,
       doctype);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SocialLoginsItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SocialLoginsItemModelImplCopyWith<_$SocialLoginsItemModelImpl>
@@ -395,8 +405,11 @@ abstract class _SocialLoginsItemModel implements SocialLoginsItemModel {
   String? get parenttype;
   @override
   String? get doctype;
+
+  /// Create a copy of SocialLoginsItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SocialLoginsItemModelImplCopyWith<_$SocialLoginsItemModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

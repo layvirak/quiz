@@ -1,9 +1,11 @@
 import 'package:ditech_crm/constrants/app_color.dart';
 import 'package:ditech_crm/utils/widget/custom_button.dart';
 import 'package:ditech_crm/utils/widget/custom_textfield.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../constrants/app_logo.dart';
 import '../../../constrants/injection.dart';
@@ -91,31 +93,36 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: CustomButton(
                             title: "Log IN",
                             onPressed: () {
-                              FocusScope.of(context).unfocus();
-                              // validate phone
-                              if (Injection.authController.userName.value !=
-                                  '') {
-                                Injection.authController.isUserNameNull(false);
+                              if (kIsWeb) {
+                                context.go('/home');
                               } else {
-                                Injection.authController.isUserNameNull(true);
-                              }
-                              //validate PW
-                              if (Injection.authController.password.value ==
-                                  '') {
-                                Injection.authController.validatePassword
-                                    .value = true;
-                              } else {
-                                Injection.authController.validatePassword
-                                    .value = false;
-                              }
-                              //LOG IN
-                              if (!Injection
-                                      .authController.validatePassword.value &&
-                                  !Injection
-                                      .authController.isUserNameNull.value) {
-                                Injection.authController
-                                    .onLogIn(context)
-                                    .then((value) => controller.clear());
+                                FocusScope.of(context).unfocus();
+                                // validate phone
+                                if (Injection.authController.userName.value !=
+                                    '') {
+                                  Injection.authController
+                                      .isUserNameNull(false);
+                                } else {
+                                  Injection.authController.isUserNameNull(true);
+                                }
+                                //validate PW
+                                if (Injection.authController.password.value ==
+                                    '') {
+                                  Injection.authController.validatePassword
+                                      .value = true;
+                                } else {
+                                  Injection.authController.validatePassword
+                                      .value = false;
+                                }
+                                //LOG IN
+                                if (!Injection.authController.validatePassword
+                                        .value &&
+                                    !Injection
+                                        .authController.isUserNameNull.value) {
+                                  Injection.authController
+                                      .onLogIn(context)
+                                      .then((value) => controller.clear());
+                                }
                               }
                             },
                           ),
@@ -216,34 +223,40 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: CustomButton(
                                 title: "Log IN",
                                 onPressed: () {
-                                  FocusScope.of(context).unfocus();
-                                  // validate phone
-                                  if (Injection.authController.userName.value !=
-                                      '') {
-                                    Injection.authController
-                                        .isUserNameNull(false);
+                                  if (kIsWeb) {
+                                    context.go('/home');
                                   } else {
-                                    Injection.authController
-                                        .isUserNameNull(true);
-                                  }
+                                    FocusScope.of(context).unfocus();
+                                    // validate phone
+                                    if (Injection
+                                            .authController.userName.value !=
+                                        '') {
+                                      Injection.authController
+                                          .isUserNameNull(false);
+                                    } else {
+                                      Injection.authController
+                                          .isUserNameNull(true);
+                                    }
 
-                                  //validate PW
-                                  if (Injection.authController.password.value ==
-                                      '') {
-                                    Injection.authController.validatePassword
-                                        .value = true;
-                                  } else {
-                                    Injection.authController.validatePassword
-                                        .value = false;
-                                  }
-                                  //LOG IN
-                                  if (!Injection.authController.validatePassword
-                                          .value &&
-                                      !Injection.authController.isUserNameNull
-                                          .value) {
-                                    Injection.authController
-                                        .onLogIn(context)
-                                        .then((value) => controller.clear());
+                                    //validate PW
+                                    if (Injection
+                                            .authController.password.value ==
+                                        '') {
+                                      Injection.authController.validatePassword
+                                          .value = true;
+                                    } else {
+                                      Injection.authController.validatePassword
+                                          .value = false;
+                                    }
+                                    //LOG IN
+                                    if (!Injection.authController
+                                            .validatePassword.value &&
+                                        !Injection.authController.isUserNameNull
+                                            .value) {
+                                      Injection.authController
+                                          .onLogIn(context)
+                                          .then((value) => controller.clear());
+                                    }
                                   }
                                 },
                               ),
