@@ -9,6 +9,8 @@ class QuizController extends GetxController {
     "True/False",
     "Match Answers",
   ];
-  var isReload = false.obs;
-  var quiz = QuizModel().obs;
+  var isLoading = false.obs;
+  var isReloadMain = false.obs;
+  var isReloadSub = false.obs;
+  var quiz = QuizModel(items: []).obs;
 }

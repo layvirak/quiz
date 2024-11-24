@@ -23,6 +23,8 @@ mixin _$QuizItemModel {
   String? get question => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   List<QuizOptionModel>? get options => throw _privateConstructorUsedError;
+  bool? get isquestion => throw _privateConstructorUsedError;
+  bool? get istype => throw _privateConstructorUsedError;
 
   /// Serializes this QuizItemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +42,12 @@ abstract class $QuizItemModelCopyWith<$Res> {
           QuizItemModel value, $Res Function(QuizItemModel) then) =
       _$QuizItemModelCopyWithImpl<$Res, QuizItemModel>;
   @useResult
-  $Res call({String? question, String? type, List<QuizOptionModel>? options});
+  $Res call(
+      {String? question,
+      String? type,
+      List<QuizOptionModel>? options,
+      bool? isquestion,
+      bool? istype});
 }
 
 /// @nodoc
@@ -61,6 +68,8 @@ class _$QuizItemModelCopyWithImpl<$Res, $Val extends QuizItemModel>
     Object? question = freezed,
     Object? type = freezed,
     Object? options = freezed,
+    Object? isquestion = freezed,
+    Object? istype = freezed,
   }) {
     return _then(_value.copyWith(
       question: freezed == question
@@ -75,6 +84,14 @@ class _$QuizItemModelCopyWithImpl<$Res, $Val extends QuizItemModel>
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as List<QuizOptionModel>?,
+      isquestion: freezed == isquestion
+          ? _value.isquestion
+          : isquestion // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      istype: freezed == istype
+          ? _value.istype
+          : istype // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -87,7 +104,12 @@ abstract class _$$QuizItemModelImplCopyWith<$Res>
       __$$QuizItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? question, String? type, List<QuizOptionModel>? options});
+  $Res call(
+      {String? question,
+      String? type,
+      List<QuizOptionModel>? options,
+      bool? isquestion,
+      bool? istype});
 }
 
 /// @nodoc
@@ -106,6 +128,8 @@ class __$$QuizItemModelImplCopyWithImpl<$Res>
     Object? question = freezed,
     Object? type = freezed,
     Object? options = freezed,
+    Object? isquestion = freezed,
+    Object? istype = freezed,
   }) {
     return _then(_$QuizItemModelImpl(
       question: freezed == question
@@ -120,6 +144,14 @@ class __$$QuizItemModelImplCopyWithImpl<$Res>
           ? _value._options
           : options // ignore: cast_nullable_to_non_nullable
               as List<QuizOptionModel>?,
+      isquestion: freezed == isquestion
+          ? _value.isquestion
+          : isquestion // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      istype: freezed == istype
+          ? _value.istype
+          : istype // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -128,15 +160,21 @@ class __$$QuizItemModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuizItemModelImpl implements _QuizItemModel {
   _$QuizItemModelImpl(
-      {this.question, this.type, final List<QuizOptionModel>? options})
+      {this.question = '',
+      this.type = '',
+      final List<QuizOptionModel>? options,
+      this.isquestion = false,
+      this.istype = false})
       : _options = options;
 
   factory _$QuizItemModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizItemModelImplFromJson(json);
 
   @override
+  @JsonKey()
   final String? question;
   @override
+  @JsonKey()
   final String? type;
   final List<QuizOptionModel>? _options;
   @override
@@ -149,8 +187,15 @@ class _$QuizItemModelImpl implements _QuizItemModel {
   }
 
   @override
+  @JsonKey()
+  final bool? isquestion;
+  @override
+  @JsonKey()
+  final bool? istype;
+
+  @override
   String toString() {
-    return 'QuizItemModel(question: $question, type: $type, options: $options)';
+    return 'QuizItemModel(question: $question, type: $type, options: $options, isquestion: $isquestion, istype: $istype)';
   }
 
   @override
@@ -161,13 +206,16 @@ class _$QuizItemModelImpl implements _QuizItemModel {
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._options, _options));
+            const DeepCollectionEquality().equals(other._options, _options) &&
+            (identical(other.isquestion, isquestion) ||
+                other.isquestion == isquestion) &&
+            (identical(other.istype, istype) || other.istype == istype));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, question, type,
-      const DeepCollectionEquality().hash(_options));
+      const DeepCollectionEquality().hash(_options), isquestion, istype);
 
   /// Create a copy of QuizItemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -189,7 +237,9 @@ abstract class _QuizItemModel implements QuizItemModel {
   factory _QuizItemModel(
       {final String? question,
       final String? type,
-      final List<QuizOptionModel>? options}) = _$QuizItemModelImpl;
+      final List<QuizOptionModel>? options,
+      final bool? isquestion,
+      final bool? istype}) = _$QuizItemModelImpl;
 
   factory _QuizItemModel.fromJson(Map<String, dynamic> json) =
       _$QuizItemModelImpl.fromJson;
@@ -200,6 +250,10 @@ abstract class _QuizItemModel implements QuizItemModel {
   String? get type;
   @override
   List<QuizOptionModel>? get options;
+  @override
+  bool? get isquestion;
+  @override
+  bool? get istype;
 
   /// Create a copy of QuizItemModel
   /// with the given fields replaced by the non-null parameter values.

@@ -21,6 +21,7 @@ QuizOptionModel _$QuizOptionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$QuizOptionModel {
   String? get answer => throw _privateConstructorUsedError;
+  String? get answerMatch => throw _privateConstructorUsedError;
   int? get isCorrect => throw _privateConstructorUsedError;
   int? get isSelect => throw _privateConstructorUsedError;
   int? get score => throw _privateConstructorUsedError;
@@ -41,7 +42,12 @@ abstract class $QuizOptionModelCopyWith<$Res> {
           QuizOptionModel value, $Res Function(QuizOptionModel) then) =
       _$QuizOptionModelCopyWithImpl<$Res, QuizOptionModel>;
   @useResult
-  $Res call({String? answer, int? isCorrect, int? isSelect, int? score});
+  $Res call(
+      {String? answer,
+      String? answerMatch,
+      int? isCorrect,
+      int? isSelect,
+      int? score});
 }
 
 /// @nodoc
@@ -60,6 +66,7 @@ class _$QuizOptionModelCopyWithImpl<$Res, $Val extends QuizOptionModel>
   @override
   $Res call({
     Object? answer = freezed,
+    Object? answerMatch = freezed,
     Object? isCorrect = freezed,
     Object? isSelect = freezed,
     Object? score = freezed,
@@ -68,6 +75,10 @@ class _$QuizOptionModelCopyWithImpl<$Res, $Val extends QuizOptionModel>
       answer: freezed == answer
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
+              as String?,
+      answerMatch: freezed == answerMatch
+          ? _value.answerMatch
+          : answerMatch // ignore: cast_nullable_to_non_nullable
               as String?,
       isCorrect: freezed == isCorrect
           ? _value.isCorrect
@@ -93,7 +104,12 @@ abstract class _$$QuizOptionModelImplCopyWith<$Res>
       __$$QuizOptionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? answer, int? isCorrect, int? isSelect, int? score});
+  $Res call(
+      {String? answer,
+      String? answerMatch,
+      int? isCorrect,
+      int? isSelect,
+      int? score});
 }
 
 /// @nodoc
@@ -110,6 +126,7 @@ class __$$QuizOptionModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? answer = freezed,
+    Object? answerMatch = freezed,
     Object? isCorrect = freezed,
     Object? isSelect = freezed,
     Object? score = freezed,
@@ -118,6 +135,10 @@ class __$$QuizOptionModelImplCopyWithImpl<$Res>
       answer: freezed == answer
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
+              as String?,
+      answerMatch: freezed == answerMatch
+          ? _value.answerMatch
+          : answerMatch // ignore: cast_nullable_to_non_nullable
               as String?,
       isCorrect: freezed == isCorrect
           ? _value.isCorrect
@@ -139,13 +160,21 @@ class __$$QuizOptionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuizOptionModelImpl implements _QuizOptionModel {
   _$QuizOptionModelImpl(
-      {this.answer, this.isCorrect = 0, this.isSelect = 0, this.score = 0});
+      {this.answer = '',
+      this.answerMatch = '',
+      this.isCorrect = 0,
+      this.isSelect = 0,
+      this.score = 0});
 
   factory _$QuizOptionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizOptionModelImplFromJson(json);
 
   @override
+  @JsonKey()
   final String? answer;
+  @override
+  @JsonKey()
+  final String? answerMatch;
   @override
   @JsonKey()
   final int? isCorrect;
@@ -158,7 +187,7 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
 
   @override
   String toString() {
-    return 'QuizOptionModel(answer: $answer, isCorrect: $isCorrect, isSelect: $isSelect, score: $score)';
+    return 'QuizOptionModel(answer: $answer, answerMatch: $answerMatch, isCorrect: $isCorrect, isSelect: $isSelect, score: $score)';
   }
 
   @override
@@ -167,6 +196,8 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
         (other.runtimeType == runtimeType &&
             other is _$QuizOptionModelImpl &&
             (identical(other.answer, answer) || other.answer == answer) &&
+            (identical(other.answerMatch, answerMatch) ||
+                other.answerMatch == answerMatch) &&
             (identical(other.isCorrect, isCorrect) ||
                 other.isCorrect == isCorrect) &&
             (identical(other.isSelect, isSelect) ||
@@ -177,7 +208,7 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, answer, isCorrect, isSelect, score);
+      Object.hash(runtimeType, answer, answerMatch, isCorrect, isSelect, score);
 
   /// Create a copy of QuizOptionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -199,6 +230,7 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
 abstract class _QuizOptionModel implements QuizOptionModel {
   factory _QuizOptionModel(
       {final String? answer,
+      final String? answerMatch,
       final int? isCorrect,
       final int? isSelect,
       final int? score}) = _$QuizOptionModelImpl;
@@ -208,6 +240,8 @@ abstract class _QuizOptionModel implements QuizOptionModel {
 
   @override
   String? get answer;
+  @override
+  String? get answerMatch;
   @override
   int? get isCorrect;
   @override

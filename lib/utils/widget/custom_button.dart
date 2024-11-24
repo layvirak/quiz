@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -15,19 +16,22 @@ class CustomButton extends StatelessWidget {
   final Color? color;
   final Color? borderColor;
   final bool? isdotBorder;
+  final Color? outlinedBGColor;
 
   // ignore: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
-  CustomButton(
-      {this.title,
-      this.isHaveColor = false,
-      this.onPressed,
-      this.isDisable = false,
-      this.isOutline = false,
-      this.iconUrl,
-      this.color,
-      this.textStyle,
-      this.borderColor,
-      this.isdotBorder = false});
+  CustomButton({
+    this.title,
+    this.isHaveColor = false,
+    this.onPressed,
+    this.isDisable = false,
+    this.isOutline = false,
+    this.iconUrl,
+    this.color,
+    this.textStyle,
+    this.borderColor,
+    this.isdotBorder = false,
+    this.outlinedBGColor,
+  });
   @override
   Widget build(BuildContext context) {
     return !isDisable! && !isOutline!
@@ -48,7 +52,10 @@ class CustomButton extends StatelessWidget {
                 padding:
                     EdgeInsets.symmetric(vertical: isdotBorder! ? 15 : 12.5),
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: AppColor.primaryColor),
+                  border: Border.all(
+                    width: 1,
+                    color: color ?? AppColor.primaryColor,
+                  ),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 width: double.infinity,
@@ -101,7 +108,6 @@ class CustomButton extends StatelessWidget {
           )
         : isOutline! && !isDisable!
             ? Material(
-                color: Colors.white,
                 borderRadius: BorderRadius.circular(6),
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: SizedBox(
@@ -115,6 +121,7 @@ class CustomButton extends StatelessWidget {
                       width: double.infinity,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                        color: outlinedBGColor ?? Theme.of(context).cardColor,
                         border: Border.all(
                           width: 1.5,
                           color: borderColor ?? AppColor.primaryColor,
@@ -154,19 +161,23 @@ class CustomButton extends StatelessWidget {
                   ),
                 ),
               )
-            : Container(
-                height: 53,
-                alignment: Alignment.center,
+            : SizedBox(
+                height: 50,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                    color: AppColor.disableColor,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Text(
-                  title!,
-                  style: textStyle ??
-                      Theme.of(context).textTheme.displayMedium!.copyWith(
-                          color: const Color(0xffC2C2C2),
-                          fontWeight: FontWeight.bold),
+                child: CupertinoButton(
+                  padding: const EdgeInsets.only(
+                      left: 5.0, right: 5.0, top: 10.0, bottom: 10.0),
+                  color: AppColor.primaryColor,
+                  disabledColor: Theme.of(context).disabledColor,
+                  onPressed: null,
+                  child: Text(
+                    title!,
+                    textAlign: TextAlign.center,
+                    style: textStyle ??
+                        Theme.of(context).textTheme.displayMedium!.copyWith(
+                            color: Theme.of(context).colorScheme.surface,
+                            fontWeight: FontWeight.w600),
+                  ),
                 ),
               );
   }

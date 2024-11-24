@@ -8,9 +8,11 @@ part 'quiz_item_model.g.dart';
 @freezed
 class QuizItemModel with _$QuizItemModel {
   factory QuizItemModel({
-    final String? question,
-    final String? type,
+    @Default('') final String? question,
+    @Default('') final String? type,
     final List<QuizOptionModel>? options,
+    @Default(false) final bool? isquestion,
+    @Default(false) final bool? istype,
   }) = _QuizItemModel;
 
   factory QuizItemModel.fromJson(Map<String, dynamic> json) =>
