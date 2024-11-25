@@ -176,38 +176,36 @@ class HomeMedium extends StatelessWidget {
                 ],
               ),
               Expanded(
-                child: Container(
-                  child: GridView.count(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.all(10),
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
-                    crossAxisCount: 3,
-                    children: [
-                      CustomItemCard(
-                        image: AppImage.quiz,
-                        title: "Quiz",
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const QuizScreen()));
-                        },
-                      ),
-                      CustomItemCard(
-                        image: AppImage.quiz,
-                        title: "Create Quiz",
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const CreateQuizScreen(),
-                              ));
-                        },
-                      )
-                    ],
-                  ),
+                child: GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(10),
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                  crossAxisCount: 3,
+                  children: [
+                    CustomItemCard(
+                      image: AppImage.quiz,
+                      title: "Quiz",
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const QuizScreen()));
+                      },
+                    ),
+                    CustomItemCard(
+                      image: AppImage.quiz,
+                      title: "Create Quiz",
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CreateQuizScreen(),
+                            ));
+                      },
+                    )
+                  ],
                 ),
               ),
             ],

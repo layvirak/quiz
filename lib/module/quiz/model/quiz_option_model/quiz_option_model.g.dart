@@ -9,6 +9,7 @@ part of 'quiz_option_model.dart';
 _$QuizOptionModelImpl _$$QuizOptionModelImplFromJson(
         Map<String, dynamic> json) =>
     _$QuizOptionModelImpl(
+      image: const FileConverter().fromJson(json['image'] as String?),
       answer: json['answer'] as String? ?? '',
       answerMatch: json['answerMatch'] as String? ?? '',
       isCorrect: (json['isCorrect'] as num?)?.toInt() ?? 0,
@@ -19,6 +20,7 @@ _$QuizOptionModelImpl _$$QuizOptionModelImplFromJson(
 Map<String, dynamic> _$$QuizOptionModelImplToJson(
         _$QuizOptionModelImpl instance) =>
     <String, dynamic>{
+      'image': const FileConverter().toJson(instance.image),
       'answer': instance.answer,
       'answerMatch': instance.answerMatch,
       'isCorrect': instance.isCorrect,

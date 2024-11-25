@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +18,7 @@ class CustomAvatar extends StatelessWidget {
   final Color? colorBorder;
   final double borderWidth;
   final bool defaultProfile;
+  final File? imageFile;
   final GestureTapCallback? ontap;
 
   const CustomAvatar({
@@ -31,6 +34,7 @@ class CustomAvatar extends StatelessWidget {
     this.defaultProfile = false,
     this.noneborderRadius,
     this.ontap,
+    this.imageFile,
   });
 
   @override
@@ -54,47 +58,58 @@ class CustomAvatar extends StatelessWidget {
         ),
         height: height ?? 100,
         width: width ?? 100,
-        child: image != null &&
-                image != "" &&
-                image!.contains("/private/") == false
+        child: imageFile != null && imageFile!.path != ''
             ? ClipRRect(
                 borderRadius: noneborderRadius == true
                     ? BorderRadius.circular(0)
                     : BorderRadius.circular(borderRadius ?? 10),
-                child: CachedNetworkImage(
-                    imageUrl: image!,
-                    fit: boxContain == false ? BoxFit.cover : BoxFit.contain,
-                    progressIndicatorBuilder:
-                        (context, url, downloadProgress) =>
-                            const CustomLoading(),
-                    errorListener: (error) {
-                      // print("=> $error");
-                    },
-                    errorWidget: (context, url, error) {
-                      return ClipRRect(
-                        borderRadius: noneborderRadius == true
-                            ? BorderRadius.circular(0)
-                            : BorderRadius.circular(borderRadius ?? 10),
-                        child: Image.asset(
-                          defaultProfile
-                              ? AppImage.defaultProfile
-                              : AppImage.defaultImage,
-                          fit: BoxFit.cover,
-                        ),
-                      );
-                    }),
-              )
-            : ClipRRect(
-                borderRadius: noneborderRadius == true
-                    ? BorderRadius.circular(0)
-                    : BorderRadius.circular(borderRadius ?? 10),
-                child: Image.asset(
-                  defaultProfile
-                      ? AppImage.defaultProfile
-                      : AppImage.defaultImage,
-                  fit: BoxFit.cover,
+                child: Image.file(
+                  imageFile!,
+                  fit: boxContain == false ? BoxFit.cover : BoxFit.contain,
                 ),
-              ),
+              )
+            : image != null &&
+                    image != "" &&
+                    image!.contains("/private/") == false
+                ? ClipRRect(
+                    borderRadius: noneborderRadius == true
+                        ? BorderRadius.circular(0)
+                        : BorderRadius.circular(borderRadius ?? 10),
+                    child: CachedNetworkImage(
+                        imageUrl: image!,
+                        fit:
+                            boxContain == false ? BoxFit.cover : BoxFit.contain,
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) =>
+                                const CustomLoading(),
+                        errorListener: (error) {
+                          // print("=> $error");
+                        },
+                        errorWidget: (context, url, error) {
+                          return ClipRRect(
+                            borderRadius: noneborderRadius == true
+                                ? BorderRadius.circular(0)
+                                : BorderRadius.circular(borderRadius ?? 10),
+                            child: Image.asset(
+                              defaultProfile
+                                  ? AppImage.defaultProfile
+                                  : AppImage.defaultImage,
+                              fit: BoxFit.cover,
+                            ),
+                          );
+                        }),
+                  )
+                : ClipRRect(
+                    borderRadius: noneborderRadius == true
+                        ? BorderRadius.circular(0)
+                        : BorderRadius.circular(borderRadius ?? 10),
+                    child: Image.asset(
+                      defaultProfile
+                          ? AppImage.defaultProfile
+                          : AppImage.defaultImage,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
       ),
     );
   }
