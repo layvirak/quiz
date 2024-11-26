@@ -69,7 +69,7 @@ class CustomQuizMultipleChoiceCard extends StatelessWidget {
                             index == value.key
                                 ? updatedOptionToSelect
                                 : Injection.quizController.quizList[mainIndex]
-                                    .items![subIndex].options![value.key]
+                                    .items![subIndex].options![index]
                                     .copyWith(
                                     isSelect: 0,
                                   ),
