@@ -32,6 +32,7 @@ class CustomCheckBox extends StatelessWidget {
           Expanded(
             child: Text(
               text,
+              maxLines: 2,
               style: Theme.of(context).textTheme.displayMedium!.copyWith(
                     fontSize: 12,
                     color: isSelect ? AppColor.primaryColor : null,

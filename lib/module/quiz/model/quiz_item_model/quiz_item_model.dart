@@ -11,6 +11,7 @@ part 'quiz_item_model.g.dart';
 @freezed
 class QuizItemModel with _$QuizItemModel {
   factory QuizItemModel({
+    @Default('') final String? name,
     @FileConverter() File? image,
     @Default('') final String? question,
     @Default('') final String? type,

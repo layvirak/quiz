@@ -125,7 +125,7 @@ class FormatConvert {
   }
 
   // convert string to color(#ffffff)
-  Color fromHex(String hexString) {
+  static fromHex(String hexString) {
     final buffer = StringBuffer();
     if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
     buffer.write(hexString.replaceFirst('#', ''));

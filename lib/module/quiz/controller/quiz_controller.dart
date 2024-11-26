@@ -13,4 +13,5 @@ class QuizController extends GetxController {
   var isReloadMain = false.obs;
   var isReloadSub = false.obs;
   var quiz = QuizModel(items: []).obs;
+  var quizList = <QuizModel>[].obs;
 }

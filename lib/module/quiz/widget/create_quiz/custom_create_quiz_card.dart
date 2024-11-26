@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:ditech_crm/module/quiz/model/quiz_option_model/quiz_option_model.dart';
-import 'package:ditech_crm/utils/widget/custom_avatar.dart';
+// import 'package:ditech_crm/utils/widget/custom_avatar.dart';
 import 'package:ditech_crm/utils/widget/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +10,7 @@ import '../../../../constrants/app_color.dart';
 import '../../../../constrants/injection.dart';
 import '../../../../utils/widget/custom_add_item.dart';
 import '../../../../utils/widget/custom_dropdown.dart';
-import '../../../../utils/widget/custom_image_picker.dart';
+// import '../../../../utils/widget/custom_image_picker.dart';
 import '../../../../utils/widget/custom_textfield.dart';
 import 'set_answer_by_quiz_type/match_type.dart';
 import 'set_answer_by_quiz_type/multiple_choice_type.dart';
@@ -45,39 +45,40 @@ class CustomCreateQuizCard extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 17),
-                      child: CustomAvatar(
-                        height: 45,
-                        width: 45,
-                        imageFile: Injection
-                            .quizController.quiz.value.items![index].image,
-                        ontap: () {
-                          customImagePicker(context, '', onChange: (value) {
-                            if (value.path != '') {
-                              final updatedItems =
-                                  Injection.quizController.quiz.value.items!
-                                      .asMap()
-                                      .entries
-                                      .map((item) => item.key == index
-                                          ? item.value.copyWith(
-                                              image: value,
-                                            )
-                                          : item.value)
-                                      .toList();
+                    //! image
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 17),
+                    //   child: CustomAvatar(
+                    //     height: 45,
+                    //     width: 45,
+                    //     imageFile: Injection
+                    //         .quizController.quiz.value.items![index].image,
+                    //     ontap: () {
+                    //       customImagePicker(context, '', onChange: (value) {
+                    //         if (value.path != '') {
+                    //           final updatedItems =
+                    //               Injection.quizController.quiz.value.items!
+                    //                   .asMap()
+                    //                   .entries
+                    //                   .map((item) => item.key == index
+                    //                       ? item.value.copyWith(
+                    //                           image: value,
+                    //                         )
+                    //                       : item.value)
+                    //                   .toList();
 
-                              Injection.quizController.quiz.value =
-                                  Injection.quizController.quiz.value.copyWith(
-                                items: updatedItems,
-                              );
-                            }
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
+                    //           Injection.quizController.quiz.value =
+                    //               Injection.quizController.quiz.value.copyWith(
+                    //             items: updatedItems,
+                    //           );
+                    //         }
+                    //       });
+                    //     },
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   width: 5,
+                    // ),
                     Expanded(
                       child: CustomTextField(
                         title: "Question",

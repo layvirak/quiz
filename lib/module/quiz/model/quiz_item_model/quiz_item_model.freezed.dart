@@ -20,6 +20,7 @@ QuizItemModel _$QuizItemModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$QuizItemModel {
+  String? get name => throw _privateConstructorUsedError;
   @FileConverter()
   File? get image => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $QuizItemModelCopyWith<$Res> {
       _$QuizItemModelCopyWithImpl<$Res, QuizItemModel>;
   @useResult
   $Res call(
-      {@FileConverter() File? image,
+      {String? name,
+      @FileConverter() File? image,
       String? question,
       String? type,
       List<QuizOptionModel>? options,
@@ -68,6 +70,7 @@ class _$QuizItemModelCopyWithImpl<$Res, $Val extends QuizItemModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = freezed,
     Object? image = freezed,
     Object? question = freezed,
     Object? type = freezed,
@@ -76,6 +79,10 @@ class _$QuizItemModelCopyWithImpl<$Res, $Val extends QuizItemModel>
     Object? istype = freezed,
   }) {
     return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -113,7 +120,8 @@ abstract class _$$QuizItemModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@FileConverter() File? image,
+      {String? name,
+      @FileConverter() File? image,
       String? question,
       String? type,
       List<QuizOptionModel>? options,
@@ -134,6 +142,7 @@ class __$$QuizItemModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = freezed,
     Object? image = freezed,
     Object? question = freezed,
     Object? type = freezed,
@@ -142,6 +151,10 @@ class __$$QuizItemModelImplCopyWithImpl<$Res>
     Object? istype = freezed,
   }) {
     return _then(_$QuizItemModelImpl(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -174,7 +187,8 @@ class __$$QuizItemModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuizItemModelImpl implements _QuizItemModel {
   _$QuizItemModelImpl(
-      {@FileConverter() this.image,
+      {this.name = '',
+      @FileConverter() this.image,
       this.question = '',
       this.type = '',
       final List<QuizOptionModel>? options,
@@ -185,6 +199,9 @@ class _$QuizItemModelImpl implements _QuizItemModel {
   factory _$QuizItemModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizItemModelImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final String? name;
   @override
   @FileConverter()
   final File? image;
@@ -213,7 +230,7 @@ class _$QuizItemModelImpl implements _QuizItemModel {
 
   @override
   String toString() {
-    return 'QuizItemModel(image: $image, question: $question, type: $type, options: $options, isquestion: $isquestion, istype: $istype)';
+    return 'QuizItemModel(name: $name, image: $image, question: $question, type: $type, options: $options, isquestion: $isquestion, istype: $istype)';
   }
 
   @override
@@ -221,6 +238,7 @@ class _$QuizItemModelImpl implements _QuizItemModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuizItemModelImpl &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.question, question) ||
                 other.question == question) &&
@@ -233,7 +251,7 @@ class _$QuizItemModelImpl implements _QuizItemModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, image, question, type,
+  int get hashCode => Object.hash(runtimeType, name, image, question, type,
       const DeepCollectionEquality().hash(_options), isquestion, istype);
 
   /// Create a copy of QuizItemModel
@@ -254,7 +272,8 @@ class _$QuizItemModelImpl implements _QuizItemModel {
 
 abstract class _QuizItemModel implements QuizItemModel {
   factory _QuizItemModel(
-      {@FileConverter() final File? image,
+      {final String? name,
+      @FileConverter() final File? image,
       final String? question,
       final String? type,
       final List<QuizOptionModel>? options,
@@ -264,6 +283,8 @@ abstract class _QuizItemModel implements QuizItemModel {
   factory _QuizItemModel.fromJson(Map<String, dynamic> json) =
       _$QuizItemModelImpl.fromJson;
 
+  @override
+  String? get name;
   @override
   @FileConverter()
   File? get image;

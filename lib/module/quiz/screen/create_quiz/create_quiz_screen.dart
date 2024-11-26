@@ -39,6 +39,8 @@ class CreateQuizScreen extends StatelessWidget {
                             isValidate:
                                 Injection.quizController.quiz.value.isQuizTitle,
                             validateText: "Please input the quiz title",
+                            initialValue:
+                                Injection.quizController.quiz.value.quizTitle,
                             onChange: (value) {
                               Injection.quizController.quiz.value =
                                   Injection.quizController.quiz.value.copyWith(
@@ -89,15 +91,37 @@ class CreateQuizScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: SetWidget.paddingBottomWidget(),
-                  child: CustomButton(
-                    onPressed: () {
-                      if (Injection.quizController.quiz.value.quizTitle == '') {
-                        Injection.quizController.quiz.value = Injection
-                            .quizController.quiz.value
-                            .copyWith(isQuizTitle: true);
-                      }
-                    },
-                    title: "Submit",
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: CustomButton(
+                          isOutline: true,
+                          onPressed: () {
+                            Injection.quizController.quiz.value = QuizModel();
+                          },
+                          title: "Clear",
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: CustomButton(
+                          onPressed: () {
+                            // if (Injection.quizController.quiz.value.quizTitle == '') {
+                            //   Injection.quizController.quiz.value = Injection
+                            //       .quizController.quiz.value
+                            //       .copyWith(isQuizTitle: true);
+                            // }
+
+                            Injection.quizController.quizList
+                                .add(Injection.quizController.quiz.value);
+                            // print(Injection.quizController.quizList);
+                          },
+                          title: "Submit",
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

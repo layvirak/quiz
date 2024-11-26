@@ -1,6 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../constrants/api_service.dart';
+import '../../../utils/helper/api_base_helper.dart';
+import '../model/color_workflow_state/color_workflow_state.dart';
+
 class HomeController extends GetxController {
+  var apiBaseHelper = ApiBaseHelper();
   var selectIndex = 1.obs;
   var selectSubIndex = 1.obs;
   var isShowMore = true.obs;
@@ -10,4 +16,33 @@ class HomeController extends GetxController {
     'https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2F6zttqdyzc2uyl27r0i9k.png',
   ];
   var isLoading = false.obs;
+
+  var colorWorkflowState = <ColorWorkflowState>[].obs;
+  Future<void> getColorWorkflowState(BuildContext context) async {
+    try {
+      colorWorkflowState.value = [];
+      await apiBaseHelper
+          .onNetworkRequesting(
+        url:
+            '${ApiService.resource}Workflow State?limit=none&fields=["custom_color","custom_background_color","name"]',
+        methode: METHODE.get,
+        isAuthorize: true,
+      )
+          .then((response) {
+        if (ApiService.target != 'Release') {
+          debugPrint('Color Workflow State => 200');
+        }
+
+        response["data"].map((item) {
+          colorWorkflowState.add(ColorWorkflowState.fromJson(item));
+        }).toList();
+      }).onError((ErrorModel errorModel, stackTrace) {
+        if (ApiService.target != 'Release') {
+          debugPrint('Color Workflow State => ${errorModel.statusCode}');
+        }
+      });
+    } catch (e) {
+      debugPrint('getWorkflowState error => $e');
+    }
+  }
 }

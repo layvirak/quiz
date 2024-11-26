@@ -20,6 +20,8 @@ QuizModel _$QuizModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$QuizModel {
+  String? get name => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
   String? get quizTitle => throw _privateConstructorUsedError;
   List<QuizItemModel>? get items => throw _privateConstructorUsedError;
   bool? get isQuizTitle => throw _privateConstructorUsedError;
@@ -39,7 +41,12 @@ abstract class $QuizModelCopyWith<$Res> {
   factory $QuizModelCopyWith(QuizModel value, $Res Function(QuizModel) then) =
       _$QuizModelCopyWithImpl<$Res, QuizModel>;
   @useResult
-  $Res call({String? quizTitle, List<QuizItemModel>? items, bool? isQuizTitle});
+  $Res call(
+      {String? name,
+      String? status,
+      String? quizTitle,
+      List<QuizItemModel>? items,
+      bool? isQuizTitle});
 }
 
 /// @nodoc
@@ -57,11 +64,21 @@ class _$QuizModelCopyWithImpl<$Res, $Val extends QuizModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = freezed,
+    Object? status = freezed,
     Object? quizTitle = freezed,
     Object? items = freezed,
     Object? isQuizTitle = freezed,
   }) {
     return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
       quizTitle: freezed == quizTitle
           ? _value.quizTitle
           : quizTitle // ignore: cast_nullable_to_non_nullable
@@ -86,7 +103,12 @@ abstract class _$$QuizModelImplCopyWith<$Res>
       __$$QuizModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? quizTitle, List<QuizItemModel>? items, bool? isQuizTitle});
+  $Res call(
+      {String? name,
+      String? status,
+      String? quizTitle,
+      List<QuizItemModel>? items,
+      bool? isQuizTitle});
 }
 
 /// @nodoc
@@ -102,11 +124,21 @@ class __$$QuizModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = freezed,
+    Object? status = freezed,
     Object? quizTitle = freezed,
     Object? items = freezed,
     Object? isQuizTitle = freezed,
   }) {
     return _then(_$QuizModelImpl(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
       quizTitle: freezed == quizTitle
           ? _value.quizTitle
           : quizTitle // ignore: cast_nullable_to_non_nullable
@@ -127,7 +159,9 @@ class __$$QuizModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuizModelImpl implements _QuizModel {
   _$QuizModelImpl(
-      {this.quizTitle = '',
+      {this.name = 'A1212',
+      this.status = 'Open',
+      this.quizTitle = '',
       final List<QuizItemModel>? items,
       this.isQuizTitle = false})
       : _items = items;
@@ -135,6 +169,12 @@ class _$QuizModelImpl implements _QuizModel {
   factory _$QuizModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizModelImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final String? name;
+  @override
+  @JsonKey()
+  final String? status;
   @override
   @JsonKey()
   final String? quizTitle;
@@ -154,7 +194,7 @@ class _$QuizModelImpl implements _QuizModel {
 
   @override
   String toString() {
-    return 'QuizModel(quizTitle: $quizTitle, items: $items, isQuizTitle: $isQuizTitle)';
+    return 'QuizModel(name: $name, status: $status, quizTitle: $quizTitle, items: $items, isQuizTitle: $isQuizTitle)';
   }
 
   @override
@@ -162,6 +202,8 @@ class _$QuizModelImpl implements _QuizModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuizModelImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.quizTitle, quizTitle) ||
                 other.quizTitle == quizTitle) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
@@ -171,7 +213,7 @@ class _$QuizModelImpl implements _QuizModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, quizTitle,
+  int get hashCode => Object.hash(runtimeType, name, status, quizTitle,
       const DeepCollectionEquality().hash(_items), isQuizTitle);
 
   /// Create a copy of QuizModel
@@ -192,13 +234,19 @@ class _$QuizModelImpl implements _QuizModel {
 
 abstract class _QuizModel implements QuizModel {
   factory _QuizModel(
-      {final String? quizTitle,
+      {final String? name,
+      final String? status,
+      final String? quizTitle,
       final List<QuizItemModel>? items,
       final bool? isQuizTitle}) = _$QuizModelImpl;
 
   factory _QuizModel.fromJson(Map<String, dynamic> json) =
       _$QuizModelImpl.fromJson;
 
+  @override
+  String? get name;
+  @override
+  String? get status;
   @override
   String? get quizTitle;
   @override

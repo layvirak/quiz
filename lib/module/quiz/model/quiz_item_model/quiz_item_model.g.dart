@@ -8,6 +8,7 @@ part of 'quiz_item_model.dart';
 
 _$QuizItemModelImpl _$$QuizItemModelImplFromJson(Map<String, dynamic> json) =>
     _$QuizItemModelImpl(
+      name: json['name'] as String? ?? '',
       image: const FileConverter().fromJson(json['image'] as String?),
       question: json['question'] as String? ?? '',
       type: json['type'] as String? ?? '',
@@ -20,6 +21,7 @@ _$QuizItemModelImpl _$$QuizItemModelImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$QuizItemModelImplToJson(_$QuizItemModelImpl instance) =>
     <String, dynamic>{
+      'name': instance.name,
       'image': const FileConverter().toJson(instance.image),
       'question': instance.question,
       'type': instance.type,

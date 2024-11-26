@@ -8,6 +8,8 @@ part 'quiz_model.g.dart';
 @freezed
 class QuizModel with _$QuizModel {
   factory QuizModel({
+    @Default('A1212') final String? name,
+    @Default('Open') final String? status,
     @Default('') final String? quizTitle,
     final List<QuizItemModel>? items,
     @Default(false) final bool? isQuizTitle,

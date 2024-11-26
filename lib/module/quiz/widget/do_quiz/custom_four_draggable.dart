@@ -146,7 +146,7 @@ class CustomTwoDraggable extends StatelessWidget {
                     dragCompletion: (List<DraggableGridItem> list,
                         int beforeIndex, int afterIndex) {
                       DraggableGridItem(child: const Text('data'));
-                      print('onDragAccept: $beforeIndex -> $afterIndex');
+                      // print('onDragAccept: $beforeIndex -> $afterIndex');
                     },
                     dragFeedback: (List<DraggableGridItem> list, int index) {
                       return SizedBox(
@@ -215,7 +215,7 @@ class CustomTwoDraggable extends StatelessWidget {
                     isOnlyLongPress: false,
                     dragCompletion: (List<DraggableGridItem> list,
                         int beforeIndex, int afterIndex) {
-                      print('onDragAccept: $beforeIndex -> $afterIndex');
+                      // print('onDragAccept: $beforeIndex -> $afterIndex');
                     },
                     dragFeedback: (List<DraggableGridItem> list, int index) {
                       return SizedBox(

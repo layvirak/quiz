@@ -20,6 +20,7 @@ QuizOptionModel _$QuizOptionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$QuizOptionModel {
+  String? get name => throw _privateConstructorUsedError;
   @FileConverter()
   File? get image => throw _privateConstructorUsedError;
   String? get answer => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $QuizOptionModelCopyWith<$Res> {
       _$QuizOptionModelCopyWithImpl<$Res, QuizOptionModel>;
   @useResult
   $Res call(
-      {@FileConverter() File? image,
+      {String? name,
+      @FileConverter() File? image,
       String? answer,
       String? answerMatch,
       int? isCorrect,
@@ -68,6 +70,7 @@ class _$QuizOptionModelCopyWithImpl<$Res, $Val extends QuizOptionModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = freezed,
     Object? image = freezed,
     Object? answer = freezed,
     Object? answerMatch = freezed,
@@ -76,6 +79,10 @@ class _$QuizOptionModelCopyWithImpl<$Res, $Val extends QuizOptionModel>
     Object? score = freezed,
   }) {
     return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -113,7 +120,8 @@ abstract class _$$QuizOptionModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@FileConverter() File? image,
+      {String? name,
+      @FileConverter() File? image,
       String? answer,
       String? answerMatch,
       int? isCorrect,
@@ -134,6 +142,7 @@ class __$$QuizOptionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = freezed,
     Object? image = freezed,
     Object? answer = freezed,
     Object? answerMatch = freezed,
@@ -142,6 +151,10 @@ class __$$QuizOptionModelImplCopyWithImpl<$Res>
     Object? score = freezed,
   }) {
     return _then(_$QuizOptionModelImpl(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -174,7 +187,8 @@ class __$$QuizOptionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuizOptionModelImpl implements _QuizOptionModel {
   _$QuizOptionModelImpl(
-      {@FileConverter() this.image,
+      {this.name = '',
+      @FileConverter() this.image,
       this.answer = '',
       this.answerMatch = '',
       this.isCorrect = 0,
@@ -184,6 +198,9 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
   factory _$QuizOptionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizOptionModelImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final String? name;
   @override
   @FileConverter()
   final File? image;
@@ -205,7 +222,7 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
 
   @override
   String toString() {
-    return 'QuizOptionModel(image: $image, answer: $answer, answerMatch: $answerMatch, isCorrect: $isCorrect, isSelect: $isSelect, score: $score)';
+    return 'QuizOptionModel(name: $name, image: $image, answer: $answer, answerMatch: $answerMatch, isCorrect: $isCorrect, isSelect: $isSelect, score: $score)';
   }
 
   @override
@@ -213,6 +230,7 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuizOptionModelImpl &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.answer, answer) || other.answer == answer) &&
             (identical(other.answerMatch, answerMatch) ||
@@ -226,8 +244,8 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, image, answer, answerMatch, isCorrect, isSelect, score);
+  int get hashCode => Object.hash(runtimeType, name, image, answer, answerMatch,
+      isCorrect, isSelect, score);
 
   /// Create a copy of QuizOptionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -248,7 +266,8 @@ class _$QuizOptionModelImpl implements _QuizOptionModel {
 
 abstract class _QuizOptionModel implements QuizOptionModel {
   factory _QuizOptionModel(
-      {@FileConverter() final File? image,
+      {final String? name,
+      @FileConverter() final File? image,
       final String? answer,
       final String? answerMatch,
       final int? isCorrect,
@@ -258,6 +277,8 @@ abstract class _QuizOptionModel implements QuizOptionModel {
   factory _QuizOptionModel.fromJson(Map<String, dynamic> json) =
       _$QuizOptionModelImpl.fromJson;
 
+  @override
+  String? get name;
   @override
   @FileConverter()
   File? get image;
