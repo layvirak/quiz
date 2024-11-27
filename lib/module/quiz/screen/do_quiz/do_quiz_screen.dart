@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import '../../../../constrants/set_widget.dart';
 import '../../../../utils/widget/custom_button.dart';
 import '../../widget/do_quiz/custom_quiz_checkbox_card.dart';
+import '../../widget/do_quiz/custom_quiz_match_type.dart';
 import '../../widget/do_quiz/custom_quiz_multiple_choice_card.dart';
-import '../../widget/do_quiz/custom_two_draggable.dart';
 
 class DoQuizScreen extends StatelessWidget {
   final int index;
@@ -38,17 +38,16 @@ class DoQuizScreen extends StatelessWidget {
                         subIndex: item.key,
                       );
                     } else if (item.value.type == "Match Answers") {
-                      const SizedBox(height: 500, child: CustomTwoDraggable());
+                      return CustomQuizMatchType(
+                        mainIndex: index,
+                        subIndex: item.key,
+                      );
                     } else {
                       return CustomQuizCheckBoxCard(
                         mainIndex: index,
                         subIndex: item.key,
                       );
                     }
-                    return Container(
-                      height: 20,
-                      color: Colors.red,
-                    );
                   }).toList(),
                 ),
               ),

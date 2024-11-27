@@ -97,7 +97,8 @@ class CreateQuizScreen extends StatelessWidget {
                         child: CustomButton(
                           isOutline: true,
                           onPressed: () {
-                            Injection.quizController.quiz.value = QuizModel();
+                            Injection.quizController.quiz.value =
+                                QuizModel(items: []);
                           },
                           title: "Clear",
                         ),

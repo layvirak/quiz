@@ -13,7 +13,7 @@ class ApiService {
   static const baseUrl = 'https://uat-ditech.ditech.software';
   static const method = "/api/method/";
   static const resource = "/api/resource/";
-  static const version = 'UAT-1.1.0';
+  static const version = 'UAT-1.2.0';
   static const target = 'uat';
 
   //****************************************************************************
