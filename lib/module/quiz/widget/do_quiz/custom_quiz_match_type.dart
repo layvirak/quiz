@@ -1,4 +1,5 @@
 import 'package:ditech_crm/constrants/injection.dart';
+import 'package:ditech_crm/utils/widget/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_draggable_gridview/flutter_draggable_gridview.dart';
 import 'package:get/get.dart';
@@ -8,18 +9,19 @@ import 'custom_match_type_card.dart';
 class CustomQuizMatchType extends StatelessWidget {
   final int mainIndex;
   final int subIndex;
+  final int? index;
   const CustomQuizMatchType({
     super.key,
     this.mainIndex = 0,
     this.subIndex = 0,
+    this.index,
   });
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        padding:
-            const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 15),
+        padding: const EdgeInsets.only(bottom: 15),
         margin: const EdgeInsets.only(top: 15, left: 15, right: 15),
         decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
@@ -35,14 +37,31 @@ class CustomQuizMatchType extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              Injection.quizController.quizList[mainIndex].items![subIndex]
-                      .question ??
-                  '',
-              style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 15, right: 15, top: 10, bottom: 5),
+              child: Row(
+                children: [
+                  Text(
+                    "${index.toString()}.",
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).primaryColor,
+                        ),
                   ),
+                  Text(
+                    " ${Injection.quizController.quizList[mainIndex].items![subIndex].question ?? ''}",
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                  ),
+                ],
+              ),
+            ),
+            CustomDivider(
+              color: Theme.of(context).primaryColor,
             ),
             const SizedBox(
               height: 10,

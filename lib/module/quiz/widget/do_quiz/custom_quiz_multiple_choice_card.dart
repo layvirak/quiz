@@ -1,23 +1,26 @@
 import 'package:ditech_crm/constrants/injection.dart';
 import 'package:ditech_crm/utils/widget/custom_check_box.dart';
+import 'package:ditech_crm/utils/widget/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomQuizMultipleChoiceCard extends StatelessWidget {
   final int mainIndex;
   final int subIndex;
+  final int? number;
   const CustomQuizMultipleChoiceCard({
     super.key,
     this.mainIndex = 0,
     this.subIndex = 0,
+    this.number,
   });
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        padding:
-            const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 15),
+        // padding:
+        //     const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 15),
         margin: const EdgeInsets.only(top: 15, left: 15, right: 15),
         decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
@@ -33,79 +36,100 @@ class CustomQuizMultipleChoiceCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              Injection.quizController.quizList[mainIndex].items![subIndex]
-                      .question ??
-                  '',
-              style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 15, right: 15, top: 10, bottom: 5),
+              child: Row(
+                children: [
+                  Text(
+                    "${number.toString()}.",
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).primaryColor,
+                        ),
                   ),
+                  Text(
+                    " ${Injection.quizController.quizList[mainIndex].items![subIndex].question ?? ''}",
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                  ),
+                ],
+              ),
             ),
-            Column(
-              children: Injection
-                  .quizController.quizList[mainIndex].items![subIndex].options!
-                  .asMap()
-                  .entries
-                  .map((value) {
-                return CustomCheckBox(
-                  isSelect: value.value.isSelect == 1,
-                  onTap: () {
-                    final updatedOptionToSelect = Injection
-                        .quizController
-                        .quizList[mainIndex]
-                        .items![subIndex]
-                        .options![value.key]
-                        .copyWith(
-                      isSelect: 1,
-                    );
+            CustomDivider(
+              color: Theme.of(context).primaryColor,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 15, right: 15, top: 10, bottom: 15),
+              child: Column(
+                children: Injection.quizController.quizList[mainIndex]
+                    .items![subIndex].options!
+                    .asMap()
+                    .entries
+                    .map((value) {
+                  return CustomCheckBox(
+                    isSelect: value.value.isSelect == 1,
+                    onTap: () {
+                      final updatedOptionToSelect = Injection
+                          .quizController
+                          .quizList[mainIndex]
+                          .items![subIndex]
+                          .options![value.key]
+                          .copyWith(
+                        isSelect: 1,
+                      );
 
-                    final updatedOptions = Injection.quizController
-                        .quizList[mainIndex].items![subIndex].options!
-                        .asMap()
-                        .map(
-                          (index, opt) => MapEntry(
-                            index,
-                            index == value.key
-                                ? updatedOptionToSelect
-                                : Injection.quizController.quizList[mainIndex]
-                                    .items![subIndex].options![index]
-                                    .copyWith(
-                                    isSelect: 0,
-                                  ),
-                          ),
-                        )
-                        .values
-                        .toList();
+                      final updatedOptions = Injection.quizController
+                          .quizList[mainIndex].items![subIndex].options!
+                          .asMap()
+                          .map(
+                            (index, opt) => MapEntry(
+                              index,
+                              index == value.key
+                                  ? updatedOptionToSelect
+                                  : Injection.quizController.quizList[mainIndex]
+                                      .items![subIndex].options![index]
+                                      .copyWith(
+                                      isSelect: 0,
+                                    ),
+                            ),
+                          )
+                          .values
+                          .toList();
 
-                    final updatedItem = Injection
-                        .quizController.quizList[mainIndex].items![subIndex]
-                        .copyWith(options: updatedOptions);
+                      final updatedItem = Injection
+                          .quizController.quizList[mainIndex].items![subIndex]
+                          .copyWith(options: updatedOptions);
 
-                    final updatedItems = Injection
-                        .quizController.quizList[mainIndex].items!
-                        .asMap()
-                        .map((index, item) => MapEntry(
-                            index, index == subIndex ? updatedItem : item))
-                        .values
-                        .toList();
+                      final updatedItems = Injection
+                          .quizController.quizList[mainIndex].items!
+                          .asMap()
+                          .map((index, item) => MapEntry(
+                              index, index == subIndex ? updatedItem : item))
+                          .values
+                          .toList();
 
-                    final updatedQuiz = Injection
-                        .quizController.quizList[mainIndex]
-                        .copyWith(items: updatedItems);
+                      final updatedQuiz = Injection
+                          .quizController.quizList[mainIndex]
+                          .copyWith(items: updatedItems);
 
-                    final updatedQuizList = Injection.quizController.quizList
-                        .asMap()
-                        .map((index, quiz) => MapEntry(
-                            index, index == mainIndex ? updatedQuiz : quiz))
-                        .values
-                        .toList();
-                    Injection.quizController.quizList.value = [];
-                    Injection.quizController.quizList.addAll(updatedQuizList);
-                  },
-                  text: value.value.answer!,
-                );
-              }).toList(),
+                      final updatedQuizList = Injection.quizController.quizList
+                          .asMap()
+                          .map((index, quiz) => MapEntry(
+                              index, index == mainIndex ? updatedQuiz : quiz))
+                          .values
+                          .toList();
+                      Injection.quizController.quizList.value = [];
+                      Injection.quizController.quizList.addAll(updatedQuizList);
+                    },
+                    text: value.value.answer!,
+                  );
+                }).toList(),
+              ),
             ),
           ],
         ),

@@ -34,16 +34,19 @@ class DoQuizScreen extends StatelessWidget {
                     if (item.value.type == "Multiple Choice" ||
                         item.value.type == "True/False") {
                       return CustomQuizMultipleChoiceCard(
+                        number: item.key + 1,
                         mainIndex: index,
                         subIndex: item.key,
                       );
                     } else if (item.value.type == "Match Answers") {
                       return CustomQuizMatchType(
                         mainIndex: index,
+                        index: item.key + 1,
                         subIndex: item.key,
                       );
                     } else {
                       return CustomQuizCheckBoxCard(
+                        index: item.key + 1,
                         mainIndex: index,
                         subIndex: item.key,
                       );
