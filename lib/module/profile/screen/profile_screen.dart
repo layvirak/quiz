@@ -114,11 +114,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomProfileInfoCard(
-                                  label: "Customer Id",
-                                  value: Injection.profileController.userModel
-                                      .value.customerId,
-                                ),
-                                CustomProfileInfoCard(
                                   label: "Gender",
                                   value: Injection
                                       .profileController.userModel.value.gender,
@@ -136,11 +131,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   label: "Email",
                                   value: Injection
                                       .profileController.userModel.value.email,
-                                ),
-                                CustomProfileInfoCard(
-                                  label: "System Type",
-                                  value: Injection.profileController.userModel
-                                      .value.userType,
                                 ),
                                 CustomProfileInfoCard(
                                   label: "Time Zone",

@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../role_item_model/role_item_model.dart';
+
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
@@ -20,8 +22,8 @@ class UserModel with _$UserModel {
       @Default("") @JsonKey(name: 'birth_date') final String? birthDate,
       @JsonKey(name: 'user_type') final String? userType,
       @JsonKey(name: 'last_login') final String? lastLogin,
-      @JsonKey(name: 'block_modules') final List<String>? blockModules,
-      @JsonKey(name: 'roles') final List<String>? roles,
+      @JsonKey(name: 'block_modules') final List<RoleItemModel>? blockModules,
+      @JsonKey(name: 'roles') final List<RoleItemModel>? roles,
       @JsonKey(name: 'user_emails') final List<String>? userEmails,
       @JsonKey(name: 'employee_id') final String? employeeId,
       @JsonKey(name: 'customer_id') final String? customerId,

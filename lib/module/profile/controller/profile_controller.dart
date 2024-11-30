@@ -18,7 +18,7 @@ import '../model/user_model/user_model.dart';
 class ProfileController extends GetxController {
   var apiBaseHelper = ApiBaseHelper();
   var isDark = false.obs;
-
+  var userID = ''.obs;
 //****************************************************************************
 //Description: This function is used to get the user's profile
 //Required Field :
@@ -32,38 +32,38 @@ class ProfileController extends GetxController {
   Future<UserModel> onGetUser(BuildContext context) async {
     isLoadingGetUser(true);
     userModel.value = UserModel();
-    // try {
-    await apiBaseHelper
-        .onNetworkRequesting(
-      url: '${ApiService.method}ditech_api.auth.me',
-      methode: METHODE.get,
-      isAuthorize: true,
-    )
-        .then((value) {
-      userModel.value = UserModel.fromJson(value['message']);
-      if (ApiService.target != 'release') {
-        debugPrint('get user:------------------->> 200');
-      }
+    try {
+      await apiBaseHelper
+          .onNetworkRequesting(
+        url: '${ApiService.resource}User/${userID.value}',
+        methode: METHODE.get,
+        isAuthorize: true,
+      )
+          .then((value) {
+        userModel.value = UserModel.fromJson(value['data']);
+        if (ApiService.target != 'release') {
+          debugPrint('get user:------------------->> 200');
+        }
 
-      isLoadingGetUser(false);
-      status.value = 200;
-    }).onError((ErrorModel error, stackTrace) {
-      status.value = error.statusCode!;
+        status.value = 200;
+      }).onError((ErrorModel error, stackTrace) {
+        status.value = error.statusCode!;
+
+        if (ApiService.target != 'release') {
+          debugPrint('onError get user: --------------->> ${error.bodyString}');
+        }
+        CustomAlertResponse.showAlertMessage(
+          context: context,
+          error: error,
+        );
+      });
+    } catch (e) {
       isLoadingGetUser(false);
       if (ApiService.target != 'release') {
-        debugPrint('onError get user: --------------->> ${error.bodyString}');
+        debugPrint('catch get user: --------------->> $e');
       }
-      CustomAlertResponse.showAlertMessage(
-        context: context,
-        error: error,
-      );
-    });
-    // } catch (e) {
-    //   isLoadingGetUser(false);
-    //   if (ApiService.target != 'release') {
-    //     debugPrint('catch get user: --------------->> $e');
-    //   }
-    // }
+    }
+    isLoadingGetUser(false);
     return userModel.value;
   }
 

@@ -23,10 +23,11 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       userType: json['user_type'] as String?,
       lastLogin: json['last_login'] as String?,
       blockModules: (json['block_modules'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => RoleItemModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      roles:
-          (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      roles: (json['roles'] as List<dynamic>?)
+          ?.map((e) => RoleItemModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       userEmails: (json['user_emails'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),

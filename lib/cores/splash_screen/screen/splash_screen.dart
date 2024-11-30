@@ -29,6 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
   onRouter() async {
     Injection.authController.token.value =
         await LocalStorage.getStringValue(key: 'access_token');
+    Injection.profileController.userID.value =
+        await LocalStorage.getStringValue(key: 'user_id');
     if (ApiService.target != 'realease') {
       log('=======================================================================');
       log('token => ${Injection.authController.token.value}');

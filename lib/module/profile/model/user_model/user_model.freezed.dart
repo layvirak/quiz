@@ -49,9 +49,9 @@ mixin _$UserModel {
   @JsonKey(name: 'last_login')
   String? get lastLogin => throw _privateConstructorUsedError;
   @JsonKey(name: 'block_modules')
-  List<String>? get blockModules => throw _privateConstructorUsedError;
+  List<RoleItemModel>? get blockModules => throw _privateConstructorUsedError;
   @JsonKey(name: 'roles')
-  List<String>? get roles => throw _privateConstructorUsedError;
+  List<RoleItemModel>? get roles => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_emails')
   List<String>? get userEmails => throw _privateConstructorUsedError;
   @JsonKey(name: 'employee_id')
@@ -92,8 +92,8 @@ abstract class $UserModelCopyWith<$Res> {
       @JsonKey(name: 'birth_date') String? birthDate,
       @JsonKey(name: 'user_type') String? userType,
       @JsonKey(name: 'last_login') String? lastLogin,
-      @JsonKey(name: 'block_modules') List<String>? blockModules,
-      @JsonKey(name: 'roles') List<String>? roles,
+      @JsonKey(name: 'block_modules') List<RoleItemModel>? blockModules,
+      @JsonKey(name: 'roles') List<RoleItemModel>? roles,
       @JsonKey(name: 'user_emails') List<String>? userEmails,
       @JsonKey(name: 'employee_id') String? employeeId,
       @JsonKey(name: 'customer_id') String? customerId,
@@ -198,11 +198,11 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       blockModules: freezed == blockModules
           ? _value.blockModules
           : blockModules // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<RoleItemModel>?,
       roles: freezed == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<RoleItemModel>?,
       userEmails: freezed == userEmails
           ? _value.userEmails
           : userEmails // ignore: cast_nullable_to_non_nullable
@@ -250,8 +250,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       @JsonKey(name: 'birth_date') String? birthDate,
       @JsonKey(name: 'user_type') String? userType,
       @JsonKey(name: 'last_login') String? lastLogin,
-      @JsonKey(name: 'block_modules') List<String>? blockModules,
-      @JsonKey(name: 'roles') List<String>? roles,
+      @JsonKey(name: 'block_modules') List<RoleItemModel>? blockModules,
+      @JsonKey(name: 'roles') List<RoleItemModel>? roles,
       @JsonKey(name: 'user_emails') List<String>? userEmails,
       @JsonKey(name: 'employee_id') String? employeeId,
       @JsonKey(name: 'customer_id') String? customerId,
@@ -354,11 +354,11 @@ class __$$UserModelImplCopyWithImpl<$Res>
       blockModules: freezed == blockModules
           ? _value._blockModules
           : blockModules // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<RoleItemModel>?,
       roles: freezed == roles
           ? _value._roles
           : roles // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<RoleItemModel>?,
       userEmails: freezed == userEmails
           ? _value._userEmails
           : userEmails // ignore: cast_nullable_to_non_nullable
@@ -401,8 +401,8 @@ class _$UserModelImpl implements _UserModel {
       @JsonKey(name: 'birth_date') this.birthDate = "",
       @JsonKey(name: 'user_type') this.userType,
       @JsonKey(name: 'last_login') this.lastLogin,
-      @JsonKey(name: 'block_modules') final List<String>? blockModules,
-      @JsonKey(name: 'roles') final List<String>? roles,
+      @JsonKey(name: 'block_modules') final List<RoleItemModel>? blockModules,
+      @JsonKey(name: 'roles') final List<RoleItemModel>? roles,
       @JsonKey(name: 'user_emails') final List<String>? userEmails,
       @JsonKey(name: 'employee_id') this.employeeId,
       @JsonKey(name: 'customer_id') this.customerId,
@@ -458,10 +458,10 @@ class _$UserModelImpl implements _UserModel {
   @override
   @JsonKey(name: 'last_login')
   final String? lastLogin;
-  final List<String>? _blockModules;
+  final List<RoleItemModel>? _blockModules;
   @override
   @JsonKey(name: 'block_modules')
-  List<String>? get blockModules {
+  List<RoleItemModel>? get blockModules {
     final value = _blockModules;
     if (value == null) return null;
     if (_blockModules is EqualUnmodifiableListView) return _blockModules;
@@ -469,10 +469,10 @@ class _$UserModelImpl implements _UserModel {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _roles;
+  final List<RoleItemModel>? _roles;
   @override
   @JsonKey(name: 'roles')
-  List<String>? get roles {
+  List<RoleItemModel>? get roles {
     final value = _roles;
     if (value == null) return null;
     if (_roles is EqualUnmodifiableListView) return _roles;
@@ -616,8 +616,8 @@ abstract class _UserModel implements UserModel {
       @JsonKey(name: 'birth_date') final String? birthDate,
       @JsonKey(name: 'user_type') final String? userType,
       @JsonKey(name: 'last_login') final String? lastLogin,
-      @JsonKey(name: 'block_modules') final List<String>? blockModules,
-      @JsonKey(name: 'roles') final List<String>? roles,
+      @JsonKey(name: 'block_modules') final List<RoleItemModel>? blockModules,
+      @JsonKey(name: 'roles') final List<RoleItemModel>? roles,
       @JsonKey(name: 'user_emails') final List<String>? userEmails,
       @JsonKey(name: 'employee_id') final String? employeeId,
       @JsonKey(name: 'customer_id') final String? customerId,
@@ -671,10 +671,10 @@ abstract class _UserModel implements UserModel {
   String? get lastLogin;
   @override
   @JsonKey(name: 'block_modules')
-  List<String>? get blockModules;
+  List<RoleItemModel>? get blockModules;
   @override
   @JsonKey(name: 'roles')
-  List<String>? get roles;
+  List<RoleItemModel>? get roles;
   @override
   @JsonKey(name: 'user_emails')
   List<String>? get userEmails;

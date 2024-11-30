@@ -32,7 +32,7 @@ class AuthController extends GetxController {
     isLoadingLogIn(true);
     try {
       await apiBaseHelper.onNetworkRequesting(
-        url: '${ApiService.method}ditech_api.auth.login',
+        url: '${ApiService.method}api.auth.login',
         methode: METHODE.post,
         isAuthorize: true,
         body: {
@@ -47,6 +47,10 @@ class AuthController extends GetxController {
         }
         LocalStorage.storeData(
             key: 'access_token', value: response['message']['auth']);
+        LocalStorage.storeData(
+            key: 'user_id', value: response['message']['user_id']);
+        Injection.profileController.userID.value =
+            response['message']['user_id'];
         await Injection.profileController.onGetUser(context).then((value) {
           if (value != UserModel()) {
             context.go('/home');

@@ -10,7 +10,7 @@ class ApiService {
   ///****************************************************************************
   //##########--UAT--##########Name: Rak
   //****************************************************************************
-  static const baseUrl = 'https://uat-ditech.ditech.software';
+  static const baseUrl = 'https://quiz.nextcam.tech';
   static const method = "/api/method/";
   static const resource = "/api/resource/";
   static const version = 'UAT-1.2.0';
