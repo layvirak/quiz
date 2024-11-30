@@ -35,7 +35,8 @@ class HomeSmall extends StatelessWidget {
                 right: 15,
               ),
               child: CustomAvatar(
-                image: Injection.profileController.userModel.value.userImage,
+                image:
+                    "${ApiService.baseUrl}${Injection.profileController.userModel.value.userImage}",
                 defaultProfile: true,
                 ontap: () {
                   context.push('/profile');

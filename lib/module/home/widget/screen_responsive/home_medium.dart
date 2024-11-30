@@ -214,7 +214,9 @@ class HomeMedium extends StatelessWidget {
             right: 30,
             top: 30,
             child: CustomAvatar(
-              image: Injection.profileController.userModel.value.userImage,
+              image:
+                  '${ApiService.baseUrl}${Injection.profileController.userModel.value.userImage}',
+              defaultProfile: true,
               ontap: () {
                 context.push('/profile');
               },

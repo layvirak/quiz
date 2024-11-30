@@ -24,7 +24,6 @@ class _InputUserInforScreenState extends State<InputUserInforScreen> {
   @override
   void initState() {
     Injection.profileController.onGetGender(context);
-
     Injection.profileController.updateUserModel.value =
         Injection.profileController.userModel.value.copyWith();
     super.initState();

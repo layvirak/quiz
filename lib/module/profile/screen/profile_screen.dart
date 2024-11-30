@@ -72,8 +72,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: 130,
                               height: 130,
                               borderRadius: 1000,
-                              image: Injection
-                                  .profileController.userModel.value.userImage,
+                              image:
+                                  "${ApiService.baseUrl}${Injection.profileController.userModel.value.userImage}",
                               defaultProfile: true,
                               ontap: () {
                                 customImagePicker(
