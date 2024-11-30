@@ -18,10 +18,10 @@ ThemeData lightTheme() {
       titleTextStyle: GoogleFonts.battambang(
         fontSize: 20,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: Colors.white,
       ),
       backgroundColor: AppColor.primaryColor,
-      iconTheme: const IconThemeData(color: Colors.black),
+      iconTheme: const IconThemeData(color: Colors.white),
       elevation: 1.5,
       shadowColor: Colors.black12,
     ),
