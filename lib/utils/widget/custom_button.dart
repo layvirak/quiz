@@ -15,7 +15,7 @@ class CustomButton extends StatelessWidget {
   final TextStyle? textStyle;
   final Color? color;
   final Color? borderColor;
-  final bool? isdotBorder;
+  final bool? isdotBorder, isDisableCanTap;
   final Color? outlinedBGColor;
 
   // ignore: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
@@ -31,6 +31,7 @@ class CustomButton extends StatelessWidget {
     this.borderColor,
     this.isdotBorder = false,
     this.outlinedBGColor,
+    this.isDisableCanTap = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class CustomButton extends StatelessWidget {
                       : null,
               highlightColor:
                   isOutline! ? AppColor.primaryColor.withOpacity(0.4) : null,
-              onTap: isDisable! ? null : onPressed,
+              onTap: isDisable! && !isDisableCanTap! ? null : onPressed,
               child: Container(
                 padding:
                     EdgeInsets.symmetric(vertical: isdotBorder! ? 15 : 12.5),
@@ -62,46 +63,28 @@ class CustomButton extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(
                       left: isdotBorder! ? (Get.width - 32) / 3.5 : 0),
-                  child: Row(
-                    mainAxisAlignment: isdotBorder!
-                        ? MainAxisAlignment.start
-                        : MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      if (iconUrl != null)
-                        iconUrl!.contains('.svg')
-                            ? SvgPicture.asset(iconUrl!)
-                            : Image.asset(
-                                iconUrl!,
-                                height: 20,
-                                width: 20,
-                              ),
-                      SizedBox(
-                        width: iconUrl != null ? 10 : 0,
-                      ),
-                      isdotBorder!
-                          ? Text(title!,
-                              style: textStyle ??
-                                  Theme.of(context)
-                                      .textTheme
-                                      .displayMedium!
-                                      .copyWith(
-                                          color: AppColor.textColor,
-                                          fontWeight: FontWeight.w700))
-                          : Text(
-                              title!,
-                              textAlign: TextAlign.center,
-                              style: textStyle ??
-                                  Theme.of(context)
-                                      .textTheme
-                                      .displayMedium!
-                                      .copyWith(
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white,
-                                          height: 1.5),
-                            ),
-                    ],
-                  ),
+                  child: isdotBorder!
+                      ? Text(title!,
+                          style: textStyle ??
+                              Theme.of(context)
+                                  .textTheme
+                                  .displayMedium!
+                                  .copyWith(
+                                      color: AppColor.textColor,
+                                      fontWeight: FontWeight.w700))
+                      : Text(
+                          title!,
+                          textAlign: TextAlign.center,
+                          style: textStyle ??
+                              Theme.of(context)
+                                  .textTheme
+                                  .displayMedium!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                    // height: 1.5,
+                                  ),
+                        ),
                 ),
               ),
             ),
@@ -152,7 +135,7 @@ class CustomButton extends StatelessWidget {
                                       color:
                                           borderColor ?? AppColor.primaryColor,
                                       fontWeight: FontWeight.w700,
-                                      height: 1.5,
+                                      // height: 1.5,
                                     ),
                           ),
                         ],
@@ -167,16 +150,17 @@ class CustomButton extends StatelessWidget {
                 child: CupertinoButton(
                   padding: const EdgeInsets.only(
                       left: 5.0, right: 5.0, top: 10.0, bottom: 10.0),
-                  color: AppColor.primaryColor,
+                  color: Theme.of(context).disabledColor,
                   disabledColor: Theme.of(context).disabledColor,
-                  onPressed: null,
+                  onPressed: isDisable! && !isDisableCanTap! ? null : onPressed,
                   child: Text(
                     title!,
                     textAlign: TextAlign.center,
                     style: textStyle ??
                         Theme.of(context).textTheme.displayMedium!.copyWith(
-                            color: Theme.of(context).colorScheme.surface,
-                            fontWeight: FontWeight.w600),
+                              color: Theme.of(context).colorScheme.surface,
+                              fontWeight: FontWeight.w600,
+                            ),
                   ),
                 ),
               );

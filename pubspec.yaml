@@ -48,6 +48,7 @@ dependencies:
   syncfusion_flutter_gauges: ^21.2.4
   google_fonts: ^6.2.1
   flutter_draggable_gridview: ^0.0.12
+  flip_panel_plus: ^1.0.0+3
 
 dev_dependencies:
   flutter_test:
