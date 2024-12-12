@@ -43,7 +43,7 @@ class _DoQuizScreenState extends State<DoQuizScreen> {
               digitSize: 10.0,
               borderRadius: const BorderRadius.all(Radius.circular(3.0)),
               onDone: () {
-                print('OnDone');
+                debugPrint('OnDone');
               },
             )
           ],

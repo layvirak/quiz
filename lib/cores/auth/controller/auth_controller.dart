@@ -27,7 +27,14 @@ class AuthController extends GetxController {
   var password = ''.obs;
   var ispasswordNull = false.obs;
   var validatePassword = false.obs;
+  var email = ''.obs;
+  var isEmail = false.obs;
+  var phoneNumber = ''.obs;
+  var isPhoneNumber = false.obs;
 
+  //***************************************************************
+  //##########--log in--##########=>Rak
+  //***************************************************************
   Future<void> onLogIn(BuildContext context) async {
     isLoadingLogIn(true);
     try {
@@ -82,6 +89,13 @@ class AuthController extends GetxController {
     userName.value = '';
     isUserNameNull.value = false;
     password.value = '';
+    validatePassword.value = false;
+    ispasswordNull.value = false;
+    phoneNumber.value = '';
+    isPhoneNumber.value = false;
+    email.value = '';
+    isEmail.value = false;
+    password.value = '';
     ispasswordNull.value = false;
   }
 
@@ -91,5 +105,43 @@ class AuthController extends GetxController {
   signOut() {
     router.go('/login');
     LocalStorage.removeKey(key: "access_token");
+  }
+
+  //***************************************************************
+  //##########--sign up--##########=>Rak
+  //***************************************************************
+  Future<void> onSignUP(BuildContext context) async {
+    isLoadingLogIn(true);
+    try {
+      await apiBaseHelper.onNetworkRequesting(
+        url: '${ApiService.method}api.auth.signup',
+        methode: METHODE.post,
+        isAuthorize: true,
+        body: {
+          "mobile_no": phoneNumber.value,
+          "email": email.value,
+          "password": password.value,
+        },
+      ).then((response) async {
+        debugPrint('sign up => 200');
+        Navigator.pop(context);
+        CustomAlertResponse.showSuccess(
+          context: context,
+          message: response['message'],
+        );
+        clearLoginData();
+      }).onError((ErrorModel error, stackTrace) {
+        CustomAlertResponse.showAlertMessage(context: context, error: error);
+        if (ApiService.target != 'Release') {
+          debugPrint(
+              'onError sign up : ------------------->>> ${error.statusCode}');
+        }
+      });
+    } catch (e) {
+      if (ApiService.target != 'Release') {
+        debugPrint('catch sign up:------------------------->>> $e');
+      }
+    }
+    isLoadingLogIn(false);
   }
 }

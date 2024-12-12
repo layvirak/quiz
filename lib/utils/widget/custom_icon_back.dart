@@ -16,16 +16,14 @@ class CustomIconBack extends StatelessWidget {
               Navigator.pop(context);
             }
           : () => onTap!(),
-      child: Center(
-        child: Container(
-          color: Colors.transparent,
-          child: Icon(
-            kIsWeb || Platform.isAndroid
-                ? Icons.arrow_back
-                : Icons.arrow_back_ios,
-            size: 25,
-            color: Colors.white,
-          ),
+      child: Container(
+        color: Colors.transparent,
+        child: Icon(
+          kIsWeb || Platform.isAndroid
+              ? Icons.arrow_back
+              : Icons.arrow_back_ios,
+          size: 25,
+          color: color ?? Colors.white,
         ),
       ),
     );
