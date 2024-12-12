@@ -1,4 +1,4 @@
-import 'package:ditech_crm/module/home/widget/custom_slider.dart';
+import 'package:lomhat/module/home/widget/custom_slider.dart';
 import 'package:flutter/material.dart';
 
 class SliderScreen extends StatelessWidget {

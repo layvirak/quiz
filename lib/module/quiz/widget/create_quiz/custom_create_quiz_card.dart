@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:ditech_crm/module/quiz/model/quiz_option_model/quiz_option_model.dart';
-// import 'package:ditech_crm/utils/widget/custom_avatar.dart';
-import 'package:ditech_crm/utils/widget/custom_divider.dart';
+import 'package:lomhat/module/quiz/model/quiz_option_model/quiz_option_model.dart';
+// import 'package:lomhat/utils/widget/custom_avatar.dart';
+import 'package:lomhat/utils/widget/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

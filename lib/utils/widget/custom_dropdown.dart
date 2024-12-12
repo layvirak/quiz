@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ditech_crm/utils/widget/custom_divider.dart';
+import 'package:lomhat/utils/widget/custom_divider.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

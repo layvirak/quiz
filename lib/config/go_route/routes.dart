@@ -1,7 +1,7 @@
-import 'package:ditech_crm/cores/auth/screen/login_screen.dart';
-import 'package:ditech_crm/cores/splash_screen/screen/splash_screen.dart';
-import 'package:ditech_crm/module/notification/screen/notification_screen.dart';
-import 'package:ditech_crm/module/profile/screen/change_password.dart';
+import 'package:lomhat/cores/auth/screen/login_screen.dart';
+import 'package:lomhat/cores/splash_screen/screen/splash_screen.dart';
+import 'package:lomhat/module/notification/screen/notification_screen.dart';
+import 'package:lomhat/module/profile/screen/change_password.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../module/home/screen/home.dart';

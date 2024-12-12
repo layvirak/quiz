@@ -1,4 +1,4 @@
-import 'package:ditech_crm/utils/widget/custom_check_box.dart';
+import 'package:lomhat/utils/widget/custom_check_box.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

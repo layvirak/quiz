@@ -1,9 +1,9 @@
-import 'package:ditech_crm/constrants/injection.dart';
-import 'package:ditech_crm/module/quiz/model/quiz_item_model/quiz_item_model.dart';
-import 'package:ditech_crm/utils/widget/custom_add_item.dart';
-import 'package:ditech_crm/utils/widget/custom_button.dart';
-import 'package:ditech_crm/utils/widget/custom_loading.dart';
-import 'package:ditech_crm/utils/widget/custom_textfield.dart';
+import 'package:lomhat/constrants/injection.dart';
+import 'package:lomhat/module/quiz/model/quiz_item_model/quiz_item_model.dart';
+import 'package:lomhat/utils/widget/custom_add_item.dart';
+import 'package:lomhat/utils/widget/custom_button.dart';
+import 'package:lomhat/utils/widget/custom_loading.dart';
+import 'package:lomhat/utils/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

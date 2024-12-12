@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:ditech_crm/constrants/api_service.dart';
+import 'package:lomhat/constrants/api_service.dart';
 import 'package:get/get_connect.dart';
-import 'package:ditech_crm/utils/helper/local_storage.dart';
+import 'package:lomhat/utils/helper/local_storage.dart';
 
 import '../../constrants/injection.dart';
 

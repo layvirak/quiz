@@ -1,4 +1,4 @@
-import 'package:ditech_crm/constrants/injection.dart';
+import 'package:lomhat/constrants/injection.dart';
 import 'package:flip_panel_plus/flip_panel_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -113,7 +113,6 @@ class _DoQuizScreenState extends State<DoQuizScreen> {
                         child: SizedBox(
                           height: 35,
                           child: PageView(
-                            
                             padEnds: true,
                             controller: intPageController,
                             children: Injection

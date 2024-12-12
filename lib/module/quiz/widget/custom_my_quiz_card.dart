@@ -1,4 +1,4 @@
-import 'package:ditech_crm/utils/widget/custom_status.dart';
+import 'package:lomhat/utils/widget/custom_status.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/widget/custom_show_detail_info.dart';

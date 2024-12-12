@@ -1,6 +1,6 @@
-import 'package:ditech_crm/constrants/app_color.dart';
-import 'package:ditech_crm/utils/widget/custom_button.dart';
-import 'package:ditech_crm/utils/widget/custom_textfield.dart';
+import 'package:lomhat/constrants/app_color.dart';
+import 'package:lomhat/utils/widget/custom_button.dart';
+import 'package:lomhat/utils/widget/custom_textfield.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

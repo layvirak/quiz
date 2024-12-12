@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:ditech_crm/constrants/injection.dart';
-import 'package:ditech_crm/utils/widget/custom_textfield.dart';
+import 'package:lomhat/constrants/injection.dart';
+import 'package:lomhat/utils/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

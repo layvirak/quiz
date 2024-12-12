@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "ditech_crm" "\0"
+            VALUE "FileDescription", "lomhat" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "ditech_crm" "\0"
+            VALUE "InternalName", "lomhat" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "ditech_crm.exe" "\0"
-            VALUE "ProductName", "ditech_crm" "\0"
+            VALUE "OriginalFilename", "lomhat.exe" "\0"
+            VALUE "ProductName", "lomhat" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

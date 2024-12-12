@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:ditech_crm/config/go_route/routes.dart';
-import 'package:ditech_crm/constrants/app_logo.dart';
+import 'package:lomhat/config/go_route/routes.dart';
+import 'package:lomhat/constrants/app_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';

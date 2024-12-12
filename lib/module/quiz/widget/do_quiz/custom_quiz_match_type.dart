@@ -1,5 +1,5 @@
-import 'package:ditech_crm/constrants/injection.dart';
-import 'package:ditech_crm/utils/widget/custom_divider.dart';
+import 'package:lomhat/constrants/injection.dart';
+import 'package:lomhat/utils/widget/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_draggable_gridview/flutter_draggable_gridview.dart';
 import 'package:get/get.dart';
