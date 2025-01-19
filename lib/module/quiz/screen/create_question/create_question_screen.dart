@@ -26,8 +26,8 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
   @override
   void initState() {
     Injection.quizController.questionModel.value = QuestionModel();
-    question.text = Injection.quizController.questionModel.value.question ?? '';
-
+    Injection.optionController.onGetSubjectOption();
+    Injection.optionController.onGetClassesOption();
     super.initState();
   }
 
@@ -51,6 +51,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                         isRequired: true,
                         title: "Question",
                         hintText: "Enter Question",
+                        maxLine: 5,
                         onChange: (value) {
                           Injection.quizController.questionModel.value =
                               Injection.quizController.questionModel.value
@@ -82,10 +83,16 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                         height: 10,
                       ),
                       CustomDropDown(
-                        title: "For Subject",
+                        title: "Subject",
                         isRequire: true,
-                        hintText: "Enter For Subject",
-                        item: const ["Mathematic"],
+                        hintText: "Enter subject",
+                        item: Injection.optionController.subjectGroupOption
+                            .map((value) => value.name!)
+                            .toList(),
+                        itemDescription: Injection
+                            .optionController.subjectGroupOption
+                            .map((value) => value.description!)
+                            .toList(),
                         initValue: Injection
                             .quizController.questionModel.value.subject,
                         onTap: (value) {
@@ -99,11 +106,17 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                       ),
                       CustomDropDown(
                         isRequire: true,
-                        title: "For Class",
-                        hintText: "Enter For Class",
+                        title: "Class",
+                        hintText: "Enter class",
                         initValue:
                             Injection.quizController.questionModel.value.classs,
-                        item: const ["Grade 7"],
+                        item: Injection.optionController.classesGroupOpction
+                            .map((value) => value.name!)
+                            .toList(),
+                        itemDescription: Injection
+                            .optionController.classesGroupOpction
+                            .map((value) => value.description!)
+                            .toList(),
                         onTap: (value) {
                           Injection.quizController.questionModel.value =
                               Injection.quizController.questionModel.value
@@ -118,7 +131,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                         initValue: Injection
                             .quizController.questionModel.value.visibility,
                         title: "Visibility",
-                        hintText: "Enter Visibility",
+                        hintText: "Enter visibility",
                         item: const ["Public", "Private", "Protected"],
                         onTap: (value) {
                           Injection.quizController.questionModel.value =

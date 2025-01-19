@@ -22,4 +22,12 @@ class SetWidget {
       top: 10,
     );
   }
+
+  static EdgeInsets paddingForm() {
+    return const EdgeInsets.only(
+      left: 15,
+      right: 15,
+      top: 10,
+    );
+  }
 }

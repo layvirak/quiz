@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../constrants/app_color.dart';
@@ -10,7 +9,6 @@ class CustomButton extends StatelessWidget {
   final GestureTapCallback? onPressed;
   final bool? isDisable;
   final bool? isOutline;
-  final String? iconUrl;
   final bool? isHaveColor;
   final TextStyle? textStyle;
   final Color? color;
@@ -25,7 +23,6 @@ class CustomButton extends StatelessWidget {
     this.onPressed,
     this.isDisable = false,
     this.isOutline = false,
-    this.iconUrl,
     this.color,
     this.textStyle,
     this.borderColor,
@@ -115,15 +112,6 @@ class CustomButton extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          iconUrl != null
-                              ? SvgPicture.asset(
-                                  iconUrl!,
-                                )
-                              : Container(),
-                          if (iconUrl != null)
-                            const SizedBox(
-                              width: 15,
-                            ),
                           Text(
                             title!,
                             textAlign: TextAlign.center,

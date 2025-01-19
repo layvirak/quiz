@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lomhat/constrants/app_logo.dart';
 import 'package:lomhat/constrants/injection.dart';
+import 'package:lomhat/module/quiz/model/filter_question_mode/filter_question_mode.dart';
+import 'package:lomhat/utils/widget/custom_empty_state.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 
+import '../../../../constrants/set_widget.dart';
+import '../../../../utils/widget/custom_loading_pagegination.dart';
 import '../../widget/custom_question_card.dart';
 import 'create_question_screen.dart';
+import 'filter_question_screen.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -16,8 +22,9 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   @override
   void initState() {
+    Injection.quizController.filterQuestion.value = FilterQuestionMode();
+    Injection.quizController.questionLength.value = 0;
     Injection.quizController.onGetQuestion(context);
-    Injection.quizController.onGetQuestionDetails(context, id: "Q25011500003");
 
     super.initState();
   }
@@ -30,25 +37,62 @@ class _QuestionScreenState extends State<QuestionScreen> {
           Scaffold(
             appBar: AppBar(
               title: const Text("Question"),
-            ),
-            body: Column(
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(children: [
-                      ...Injection.quizController.questionList
-                          .asMap()
-                          .entries
-                          .map((e) {
-                        return CustomQuestionCard(
-                          questionModel: e.value,
-                          onTap: () {},
-                        );
-                      })
-                    ]),
+              actions: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FilterQuestionScreen(
+                          filterQuestionMode:
+                              Injection.quizController.filterQuestion.value,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Image.asset(
+                    AppImage.filters,
+                    width: 30,
+                    height: 30,
                   ),
                 ),
+                const SizedBox(width: 20)
               ],
+            ),
+            body: NotificationListener<ScrollUpdateNotification>(
+              onNotification: ((scrollNotification) {
+                if (scrollNotification.metrics.pixels ==
+                    scrollNotification.metrics.maxScrollExtent) {
+                  Injection.quizController.onGetQuestion(context);
+                }
+                return false;
+              }),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    if (Injection.quizController.questionList.isEmpty)
+                      const CustomEmptyState(),
+                    ...Injection.quizController.questionList
+                        .asMap()
+                        .entries
+                        .map((e) {
+                      return CustomQuestionCard(
+                        questionModel: e.value,
+                        onTap: () {},
+                      );
+                    }),
+                    if (Injection.quizController.isLoading.value &&
+                        Injection.quizController.questionLength > 0)
+                      Padding(
+                        padding: SetWidget.paddingForm(),
+                        child: const CustomLoadingPagegiantion(),
+                      ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                  ],
+                ),
+              ),
             ),
             floatingActionButton: FloatingActionButton(
                 elevation: 0.0,
@@ -65,7 +109,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   size: 30,
                 )),
           ),
-          if (Injection.quizController.isLoading.value) const CustomLoading(),
+          if (Injection.quizController.isLoading.value &&
+              Injection.quizController.questionLength.value == 0)
+            const CustomLoading(),
         ],
       ),
     );
