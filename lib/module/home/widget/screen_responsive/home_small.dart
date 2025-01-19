@@ -8,6 +8,7 @@ import '../../../../constrants/api_service.dart';
 import '../../../../constrants/app_logo.dart';
 import '../../../../constrants/injection.dart';
 import '../../../../utils/widget/custom_avatar.dart';
+import '../../../quiz/screen/create_question/question_screen.dart';
 import '../../../quiz/screen/create_quiz/create_quiz_screen.dart';
 import '../../../quiz/screen/quiz_screen.dart';
 import '../custom_item_drawer_bar.dart';
@@ -86,6 +87,11 @@ class HomeSmall extends StatelessWidget {
                 icon: AppImage.quiz,
                 title: "Edit",
                 onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const QuestionScreen(),
+                      ));
                   Injection.homeController.selectIndex.value = 3;
                 },
               ),

@@ -26,8 +26,12 @@ mixin _$ColorWorkflowState {
   @JsonKey(name: "custom_background_color")
   String? get backgroundColor => throw _privateConstructorUsedError;
 
+  /// Serializes this ColorWorkflowState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ColorWorkflowState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ColorWorkflowStateCopyWith<ColorWorkflowState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$ColorWorkflowStateCopyWithImpl<$Res, $Val extends ColorWorkflowState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ColorWorkflowState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$ColorWorkflowStateImplCopyWithImpl<$Res>
       $Res Function(_$ColorWorkflowStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ColorWorkflowState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,12 +169,14 @@ class _$ColorWorkflowStateImpl implements _ColorWorkflowState {
                 other.backgroundColor == backgroundColor));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, name, textColor, backgroundColor);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ColorWorkflowState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ColorWorkflowStateImplCopyWith<_$ColorWorkflowStateImpl> get copyWith =>
@@ -199,8 +209,11 @@ abstract class _ColorWorkflowState implements ColorWorkflowState {
   @override
   @JsonKey(name: "custom_background_color")
   String? get backgroundColor;
+
+  /// Create a copy of ColorWorkflowState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ColorWorkflowStateImplCopyWith<_$ColorWorkflowStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
