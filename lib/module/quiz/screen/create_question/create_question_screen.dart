@@ -52,6 +52,8 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                         title: "Question",
                         hintText: "Enter Question",
                         maxLine: 5,
+                        initialValue: Injection
+                            .quizController.questionModel.value.question,
                         onChange: (value) {
                           Injection.quizController.questionModel.value =
                               Injection.quizController.questionModel.value
@@ -142,25 +144,23 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      CustomTextField(
-                        title: "Used",
-                        hintText: "Enter Used",
-                        onChange: (value) {},
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomTextField(
-                        title: "Difficuly Level",
-                        hintText: "Enter Difficuly Level",
-                        onChange: (value) {},
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+
                       CustomCheckBox(
+                        isSelect: Injection.quizController.questionModel.value
+                                    .disabled ==
+                                1
+                            ? true
+                            : false,
                         onTap: () {
-                          Injection.quizController.questionModel.value.disabled;
+                          Injection.quizController.questionModel.value =
+                              Injection.quizController.questionModel.value
+                                  .copyWith(
+                            disabled: Injection.quizController.questionModel
+                                        .value.disabled ==
+                                    1
+                                ? 0
+                                : 1,
+                          );
                         },
                         text: "Disable",
                       ),
@@ -169,8 +169,8 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                       ),
                       // const CustomTableAnswer(),
                       ...List.generate(
-                          Injection.quizController.question.value.answers!
-                              .length, (indexItem) {
+                          Injection.quizController.questionModel.value.answers!
+                              .length, (index) {
                         return Container(
                           margin: const EdgeInsets.only(bottom: 10),
                           decoration: BoxDecoration(
@@ -192,28 +192,24 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                                           isRequired: true,
                                           initialValue: Injection
                                               .quizController
-                                              .question
+                                              .questionModel
                                               .value
-                                              .answers![indexItem]
+                                              .answers![index]
                                               .answer,
                                           noBorder: true,
                                           hintText: 'Enter answer',
                                           onChange: (v) {
-                                            var answer = v;
-                                            Injection.quizController.question
-                                                    .value.answers![indexItem] =
+                                            Injection
+                                                    .quizController
+                                                    .questionModel
+                                                    .value
+                                                    .answers![index] =
                                                 Injection
                                                     .quizController
-                                                    .question
+                                                    .questionModel
                                                     .value
-                                                    .answers![indexItem]
-                                                    .copyWith(answer: answer);
-                                            print(Injection
-                                                .quizController
-                                                .question
-                                                .value
-                                                .answers![indexItem]
-                                                .answer);
+                                                    .answers![index]
+                                                    .copyWith(answer: v);
                                           },
                                         ),
                                       ),
@@ -225,7 +221,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                                         onPressed: () {
                                           Injection.quizController.question
                                               .value.answers!
-                                              .removeAt(indexItem);
+                                              .removeAt(index);
                                         },
                                       )
                                     ],
@@ -233,29 +229,59 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                                 ),
                                 const CustomDivider(),
                                 IntrinsicHeight(
-                                  child: Column(
+                                  child: Row(
                                     children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: CustomTextField(
-                                              noBorder: true,
-                                              hintText: 'Match answer',
-                                              onChange: (v) {},
-                                            ),
-                                          ),
-                                          const CustomVerticalDivider(),
-                                          Expanded(
-                                            child: CustomTextField(
-                                              initialValue: '',
-                                              noBorder: true,
-                                              hintText: 'Explanation',
-                                              onChange: (v) {},
-                                            ),
-                                          ),
-                                        ],
+                                      Expanded(
+                                        child: CustomTextField(
+                                          noBorder: true,
+                                          hintText: 'Match answer',
+                                          initialValue: Injection
+                                              .quizController
+                                              .questionModel
+                                              .value
+                                              .answers![index]
+                                              .matchAnswer,
+                                          onChange: (v) {
+                                            Injection
+                                                    .quizController
+                                                    .questionModel
+                                                    .value
+                                                    .answers![index] =
+                                                Injection
+                                                    .quizController
+                                                    .questionModel
+                                                    .value
+                                                    .answers![index]
+                                                    .copyWith(matchAnswer: v);
+                                          },
+                                        ),
                                       ),
-                                      const CustomDivider(),
+                                      const CustomVerticalDivider(),
+                                      Expanded(
+                                        child: CustomTextField(
+                                          initialValue: Injection
+                                              .quizController
+                                              .questionModel
+                                              .value
+                                              .answers![index]
+                                              .explanation,
+                                          noBorder: true,
+                                          hintText: 'Explanation',
+                                          onChange: (v) {
+                                            Injection
+                                                    .quizController
+                                                    .questionModel
+                                                    .value
+                                                    .answers![index] =
+                                                Injection
+                                                    .quizController
+                                                    .questionModel
+                                                    .value
+                                                    .answers![index]
+                                                    .copyWith(explanation: v);
+                                          },
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 )
@@ -273,19 +299,22 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                           title: "Add Question",
                           onPress: () {
                             final questions = <AnswerModel>[];
-                            if (Injection.quizController.question.value !=
+                            if (Injection.quizController.questionModel.value !=
                                     QuestionModel() &&
-                                Injection.quizController.question.value.answers!
-                                    .isNotEmpty) {
+                                Injection.quizController.questionModel.value
+                                    .answers!.isNotEmpty) {
                               questions.addAll(Injection
-                                  .quizController.question.value.answers!);
+                                  .quizController.questionModel.value.answers!);
                             }
                             questions.add(
                               AnswerModel(),
                             );
-                            Injection.quizController.question.value = Injection
-                                .quizController.question.value
-                                .copyWith(answers: questions);
+                            Injection.quizController.questionModel.value =
+                                Injection.quizController.questionModel.value
+                                    .copyWith(answers: questions);
+                            print(Injection
+                                .quizController.questionModel.value.answers!
+                                .toString());
                           },
                         ),
                       ),

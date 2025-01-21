@@ -12,9 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const ScreenResponsive(
-      // largeScreen: HomeMedium(),
-      // mediumScreen: HomeMedium(),
-      smallScreen: kIsWeb ? HomeMedium() : HomeSmall(),
+      smallScreen: kIsWeb ? HomeMedium() : HomeMedium(),
     );
   }
 }

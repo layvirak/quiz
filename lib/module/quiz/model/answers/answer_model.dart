@@ -19,6 +19,9 @@ class AnswerModel with _$AnswerModel {
     @JsonKey(name: 'parentfield') final String? parentfield,
     @JsonKey(name: 'parenttype') final String? parenttype,
     @JsonKey(name: 'doctype') final String? doctype,
+    //add new
+    final String? explanation,
+    @JsonKey(name: 'match_answer') final String? matchAnswer,
   }) = _AnswerModel;
 
   factory AnswerModel.fromJson(Map<String, dynamic> json) =>

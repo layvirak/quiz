@@ -14,7 +14,7 @@ _$QuestionAnswerModelImpl _$$QuestionAnswerModelImplFromJson(
       creation: json['creation'] as String?,
       modified: json['modified'] as String?,
       modifiedBy: json['modified_by'] as String?,
-      docstatus: (json['docstatus'] as num?)?.toInt(),
+      docstatus: (json['docstatus'] as num?)?.toInt() ?? 0,
       idx: (json['idx'] as num?)?.toInt(),
       question: json['question'] as String?,
       questionType: json['question_type'] as String?,
@@ -24,8 +24,11 @@ _$QuestionAnswerModelImpl _$$QuestionAnswerModelImplFromJson(
       explanation: json['explanation'] as String?,
       visibility: json['visibility'] as String?,
       numberOfUsed: json['number_of_used'] as String?,
-      difficultyLevel: (json['difficulty_level'] as num?)?.toDouble(),
-      disabled: (json['disabled'] as num?)?.toInt(),
+      difficultyLevel: (json['difficulty_level'] as num?)?.toDouble() ?? 0,
+      disabled: (json['disabled'] as num?)?.toInt() ?? 0,
+      answers: (json['answers'] as List<dynamic>?)
+          ?.map((e) => AnswerModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$QuestionAnswerModelImplToJson(
@@ -48,4 +51,5 @@ Map<String, dynamic> _$$QuestionAnswerModelImplToJson(
       'number_of_used': instance.numberOfUsed,
       'difficulty_level': instance.difficultyLevel,
       'disabled': instance.disabled,
+      'answers': instance.answers,
     };

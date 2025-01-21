@@ -24,6 +24,10 @@ class AppImage {
   static const report = 'assets/images/image_assets/report.png';
   static const filters = 'assets/images/image_assets/filters.png';
   static const quiz = 'assets/images/image_assets/ideas.png';
+  static const classes = 'assets/images/image_assets/class.png';
+  static const subject = 'assets/images/image_assets/subject.png';
+  static const school = 'assets/images/image_assets/school.png';
+  static const question = 'assets/images/image_assets/question.png';
 
   static const announcement = 'assets/images/image_assets/announcement.png';
 }

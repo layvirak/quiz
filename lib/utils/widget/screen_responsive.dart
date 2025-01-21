@@ -1,7 +1,5 @@
 import "package:flutter/material.dart";
 
-import "../../constrants/app_color.dart";
-
 class ScreenResponsive extends StatelessWidget {
   final Widget? largeScreen;
   final Widget? mediumScreen;
@@ -34,16 +32,7 @@ class ScreenResponsive extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 1024) {
-          return Container(
-            color: AppColor.primaryColor.withOpacity(0.5),
-            child: Center(
-              child: SizedBox(
-                width: largeScreenWidth ?? 1024,
-                height: double.infinity,
-                child: largeScreen ?? smallScreen,
-              ),
-            ),
-          );
+          return largeScreen ?? smallScreen!;
         } else if (constraints.maxWidth <= 1024 &&
             constraints.maxWidth >= 800) {
           return mediumScreen ?? smallScreen!;

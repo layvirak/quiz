@@ -21,6 +21,8 @@ _$AnswerModelImpl _$$AnswerModelImplFromJson(Map<String, dynamic> json) =>
       parentfield: json['parentfield'] as String?,
       parenttype: json['parenttype'] as String?,
       doctype: json['doctype'] as String?,
+      explanation: json['explanation'] as String?,
+      matchAnswer: json['match_answer'] as String?,
     );
 
 Map<String, dynamic> _$$AnswerModelImplToJson(_$AnswerModelImpl instance) =>
@@ -38,4 +40,6 @@ Map<String, dynamic> _$$AnswerModelImplToJson(_$AnswerModelImpl instance) =>
       'parentfield': instance.parentfield,
       'parenttype': instance.parenttype,
       'doctype': instance.doctype,
+      'explanation': instance.explanation,
+      'match_answer': instance.matchAnswer,
     };

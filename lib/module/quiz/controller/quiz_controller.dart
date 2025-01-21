@@ -114,7 +114,7 @@ class QuizController extends GetxController {
           "subject": questionModel.value.subject,
           "class": questionModel.value.classs,
           "visibility": questionModel.value.visibility,
-          // "answers": questionModel.value.answers
+          "answers": questionModel.value.answers,
         },
       ).then((res) async {
         if (ApiService.target != 'Release') {

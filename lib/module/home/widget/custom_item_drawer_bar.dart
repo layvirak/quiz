@@ -23,8 +23,8 @@ class CustomItemDrawerBar extends StatelessWidget {
             onPressed: onTap,
             icon: Image.asset(
               icon,
-              height: 18,
-              width: 18,
+              height: 20,
+              width: 20,
               color: isSelect ? AppColor.primaryColor : null,
             ),
           )
@@ -36,8 +36,8 @@ class CustomItemDrawerBar extends StatelessWidget {
               child: Row(children: [
                 Image.asset(
                   icon,
-                  height: 18,
-                  width: 18,
+                  height: 20,
+                  width: 20,
                   color: isSelect ? AppColor.primaryColor : null,
                 ),
                 const SizedBox(

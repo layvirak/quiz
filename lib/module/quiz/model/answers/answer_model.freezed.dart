@@ -45,7 +45,10 @@ mixin _$AnswerModel {
   @JsonKey(name: 'parenttype')
   String? get parenttype => throw _privateConstructorUsedError;
   @JsonKey(name: 'doctype')
-  String? get doctype => throw _privateConstructorUsedError;
+  String? get doctype => throw _privateConstructorUsedError; //add new
+  String? get explanation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'match_answer')
+  String? get matchAnswer => throw _privateConstructorUsedError;
 
   /// Serializes this AnswerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -76,7 +79,9 @@ abstract class $AnswerModelCopyWith<$Res> {
       @JsonKey(name: 'parent') String? parent,
       @JsonKey(name: 'parentfield') String? parentfield,
       @JsonKey(name: 'parenttype') String? parenttype,
-      @JsonKey(name: 'doctype') String? doctype});
+      @JsonKey(name: 'doctype') String? doctype,
+      String? explanation,
+      @JsonKey(name: 'match_answer') String? matchAnswer});
 }
 
 /// @nodoc
@@ -107,6 +112,8 @@ class _$AnswerModelCopyWithImpl<$Res, $Val extends AnswerModel>
     Object? parentfield = freezed,
     Object? parenttype = freezed,
     Object? doctype = freezed,
+    Object? explanation = freezed,
+    Object? matchAnswer = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -161,6 +168,14 @@ class _$AnswerModelCopyWithImpl<$Res, $Val extends AnswerModel>
           ? _value.doctype
           : doctype // ignore: cast_nullable_to_non_nullable
               as String?,
+      explanation: freezed == explanation
+          ? _value.explanation
+          : explanation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      matchAnswer: freezed == matchAnswer
+          ? _value.matchAnswer
+          : matchAnswer // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -186,7 +201,9 @@ abstract class _$$AnswerModelImplCopyWith<$Res>
       @JsonKey(name: 'parent') String? parent,
       @JsonKey(name: 'parentfield') String? parentfield,
       @JsonKey(name: 'parenttype') String? parenttype,
-      @JsonKey(name: 'doctype') String? doctype});
+      @JsonKey(name: 'doctype') String? doctype,
+      String? explanation,
+      @JsonKey(name: 'match_answer') String? matchAnswer});
 }
 
 /// @nodoc
@@ -215,6 +232,8 @@ class __$$AnswerModelImplCopyWithImpl<$Res>
     Object? parentfield = freezed,
     Object? parenttype = freezed,
     Object? doctype = freezed,
+    Object? explanation = freezed,
+    Object? matchAnswer = freezed,
   }) {
     return _then(_$AnswerModelImpl(
       name: freezed == name
@@ -269,6 +288,14 @@ class __$$AnswerModelImplCopyWithImpl<$Res>
           ? _value.doctype
           : doctype // ignore: cast_nullable_to_non_nullable
               as String?,
+      explanation: freezed == explanation
+          ? _value.explanation
+          : explanation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      matchAnswer: freezed == matchAnswer
+          ? _value.matchAnswer
+          : matchAnswer // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -289,7 +316,9 @@ class _$AnswerModelImpl implements _AnswerModel {
       @JsonKey(name: 'parent') this.parent,
       @JsonKey(name: 'parentfield') this.parentfield,
       @JsonKey(name: 'parenttype') this.parenttype,
-      @JsonKey(name: 'doctype') this.doctype});
+      @JsonKey(name: 'doctype') this.doctype,
+      this.explanation,
+      @JsonKey(name: 'match_answer') this.matchAnswer});
 
   factory _$AnswerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AnswerModelImplFromJson(json);
@@ -333,10 +362,16 @@ class _$AnswerModelImpl implements _AnswerModel {
   @override
   @JsonKey(name: 'doctype')
   final String? doctype;
+//add new
+  @override
+  final String? explanation;
+  @override
+  @JsonKey(name: 'match_answer')
+  final String? matchAnswer;
 
   @override
   String toString() {
-    return 'AnswerModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, idx: $idx, answer: $answer, isCorrect: $isCorrect, parent: $parent, parentfield: $parentfield, parenttype: $parenttype, doctype: $doctype)';
+    return 'AnswerModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, idx: $idx, answer: $answer, isCorrect: $isCorrect, parent: $parent, parentfield: $parentfield, parenttype: $parenttype, doctype: $doctype, explanation: $explanation, matchAnswer: $matchAnswer)';
   }
 
   @override
@@ -363,7 +398,11 @@ class _$AnswerModelImpl implements _AnswerModel {
                 other.parentfield == parentfield) &&
             (identical(other.parenttype, parenttype) ||
                 other.parenttype == parenttype) &&
-            (identical(other.doctype, doctype) || other.doctype == doctype));
+            (identical(other.doctype, doctype) || other.doctype == doctype) &&
+            (identical(other.explanation, explanation) ||
+                other.explanation == explanation) &&
+            (identical(other.matchAnswer, matchAnswer) ||
+                other.matchAnswer == matchAnswer));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -382,7 +421,9 @@ class _$AnswerModelImpl implements _AnswerModel {
       parent,
       parentfield,
       parenttype,
-      doctype);
+      doctype,
+      explanation,
+      matchAnswer);
 
   /// Create a copy of AnswerModel
   /// with the given fields replaced by the non-null parameter values.
@@ -402,19 +443,22 @@ class _$AnswerModelImpl implements _AnswerModel {
 
 abstract class _AnswerModel implements AnswerModel {
   factory _AnswerModel(
-      {@JsonKey(name: 'name') final String? name,
-      @JsonKey(name: 'owner') final String? owner,
-      @JsonKey(name: 'creation') final String? creation,
-      @JsonKey(name: 'modified') final String? modified,
-      @JsonKey(name: 'modified_by') final String? modifiedBy,
-      @JsonKey(name: 'docstatus') final int? docstatus,
-      @JsonKey(name: 'idx') final int? idx,
-      @JsonKey(name: 'answer') final String? answer,
-      @JsonKey(name: 'is_correct') final int? isCorrect,
-      @JsonKey(name: 'parent') final String? parent,
-      @JsonKey(name: 'parentfield') final String? parentfield,
-      @JsonKey(name: 'parenttype') final String? parenttype,
-      @JsonKey(name: 'doctype') final String? doctype}) = _$AnswerModelImpl;
+          {@JsonKey(name: 'name') final String? name,
+          @JsonKey(name: 'owner') final String? owner,
+          @JsonKey(name: 'creation') final String? creation,
+          @JsonKey(name: 'modified') final String? modified,
+          @JsonKey(name: 'modified_by') final String? modifiedBy,
+          @JsonKey(name: 'docstatus') final int? docstatus,
+          @JsonKey(name: 'idx') final int? idx,
+          @JsonKey(name: 'answer') final String? answer,
+          @JsonKey(name: 'is_correct') final int? isCorrect,
+          @JsonKey(name: 'parent') final String? parent,
+          @JsonKey(name: 'parentfield') final String? parentfield,
+          @JsonKey(name: 'parenttype') final String? parenttype,
+          @JsonKey(name: 'doctype') final String? doctype,
+          final String? explanation,
+          @JsonKey(name: 'match_answer') final String? matchAnswer}) =
+      _$AnswerModelImpl;
 
   factory _AnswerModel.fromJson(Map<String, dynamic> json) =
       _$AnswerModelImpl.fromJson;
@@ -457,7 +501,12 @@ abstract class _AnswerModel implements AnswerModel {
   String? get parenttype;
   @override
   @JsonKey(name: 'doctype')
-  String? get doctype;
+  String? get doctype; //add new
+  @override
+  String? get explanation;
+  @override
+  @JsonKey(name: 'match_answer')
+  String? get matchAnswer;
 
   /// Create a copy of AnswerModel
   /// with the given fields replaced by the non-null parameter values.
