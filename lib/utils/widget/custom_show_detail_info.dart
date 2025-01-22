@@ -35,7 +35,7 @@ class CustomShowDetailInfo extends StatelessWidget {
                     FormatConvert.nullCheck(value: "$label"),
                     style: Theme.of(context)
                         .textTheme
-                        .displayMedium!
+                        .bodySmall!
                         .copyWith(fontSize: 14),
                   ),
                   const SizedBox(height: 5),
@@ -44,7 +44,7 @@ class CustomShowDetailInfo extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .displayMedium!
-                        .copyWith(fontSize: 14),
+                        .copyWith(fontSize: 16),
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.clip,
                   ),

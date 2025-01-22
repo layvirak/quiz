@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lomhat/constrants/app_logo.dart';
 import 'package:lomhat/constrants/injection.dart';
 import 'package:lomhat/module/quiz/model/filter_question_mode/filter_question_mode.dart';
@@ -80,7 +81,15 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         .map((e) {
                       return CustomQuestionCard(
                         questionModel: e.value,
-                        onTap: () {},
+                        onTap: () {
+                          context
+                              .push('/question/${e.value.name}')
+                              .then((value) {
+                            Injection.quizController.questionList[e.key] =
+                                Injection.quizController.questionModel.value
+                                    .copyWith();
+                          });
+                        },
                       );
                     }),
                     if (Injection.quizController.isLoading.value &&

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lomhat/module/quiz/model/quesstion_model/question_answer_model.dart';
 
 import '../../../utils/widget/custom_show_detail_info.dart';
 import '../../../utils/widget/custom_status.dart';
+import '../model/question_model/question_model.dart';
 
 class CustomQuestionCard extends StatelessWidget {
   final Function()? onTap;
-  final QuestionAnswerModel? questionModel;
+  final QuestionModel? questionModel;
   const CustomQuestionCard({super.key, this.onTap, this.questionModel});
 
   @override

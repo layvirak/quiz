@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:lomhat/cores/auth/screen/login_screen.dart';
 import 'package:lomhat/cores/splash_screen/screen/splash_screen.dart';
 import 'package:lomhat/module/notification/screen/notification_screen.dart';
@@ -8,6 +9,7 @@ import '../../module/home/screen/home.dart';
 import '../../module/profile/screen/input_user_infor_screen.dart';
 import '../../module/profile/screen/profile_screen.dart';
 import '../../module/profile/screen/term_and_conditionsreen.dart';
+import '../../module/quiz/screen/question/question_detail_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/splash-screen',
@@ -44,5 +46,22 @@ final router = GoRouter(
       path: '/change-password',
       builder: (context, state) => const ChangePasswordScreen(),
     ),
+    //***************************************************************
+    //##########--question--##########=>Rak
+    //***************************************************************
+    GoRoute(
+        path: '/question',
+        builder: (context, state) => const ChangePasswordScreen(),
+        routes: [
+          GoRoute(
+            path: ':id',
+            builder: (BuildContext context, GoRouterState state) {
+              return QuestionDetailScreen(
+                name: state.pathParameters['id'],
+              );
+            },
+            routes: const <GoRoute>[],
+          ),
+        ]),
   ],
 );

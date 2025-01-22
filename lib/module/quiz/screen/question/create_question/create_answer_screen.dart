@@ -377,7 +377,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                       ),
                       Expanded(
                         child: CustomButton(
-                          title: "Create",
+                          title: widget.name == null ? "Create" : "Save",
                           onPressed: () {
                             if (Injection.quizController.questionModel.value
                                 .answers!.isEmpty) {
@@ -411,6 +411,10 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                               if (widget.name == null) {
                                 Injection.quizController
                                     .onCreateQuestion(context);
+                              } else {
+                                Injection.quizController.onUpdateAnswerDetail(
+                                    context,
+                                    name: widget.name);
                               }
                             }
                           },

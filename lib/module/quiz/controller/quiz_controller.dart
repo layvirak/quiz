@@ -23,27 +23,28 @@ class QuizController extends GetxController {
   var isReloadSub = false.obs;
   var quiz = QuizModel(items: []).obs;
   var quizList = <QuizModel>[].obs;
-  var questionList = <QuestionAnswerModel>[].obs;
+  var questionList = <QuestionModel>[].obs;
 
   var question = QuestionModel(answers: []).obs;
 
   var filterQuestion = FilterQuestionMode().obs;
   var questionLength = 0.obs;
   Future<void> onGetQuestion(BuildContext context) async {
+    filterQuestion.value = FilterQuestionMode();
     Injection.homeController.isLoading(true);
 
     try {
       await apiBaseHelper
           .onNetworkRequesting(
         url:
-            '${ApiService.resource}Questions?fields=["name","question","question_type","disabled","visibility","number_of_used"]&limit_start=$questionLength&limit=30&filters={"name": ["like", "%${filterQuestion.value.name}%"],"question": ["like", "%${filterQuestion.value.question}%"],"subject": ["like", "%${filterQuestion.value.subject}%"],"class": ["like", "%${filterQuestion.value.classs}%"]}',
+            '${ApiService.resource}Questions?fields=["name","question","question_type","disabled","visibility","number_of_used"]&limit_start=$questionLength&limit=10&filters={"name": ["like", "%${filterQuestion.value.name}%"],"question": ["like", "%${filterQuestion.value.question}%"],"subject": ["like", "%${filterQuestion.value.subject}%"],"class": ["like", "%${filterQuestion.value.classs}%"]}&order_by=modified%20desc',
         methode: METHODE.get,
         isAuthorize: true,
       )
           .then((res) {
         if (questionLength.value == 0) questionList.value = [];
         res['data'].map((e) {
-          questionList.add(QuestionAnswerModel.fromJson(e));
+          questionList.add(QuestionModel.fromJson(e));
         }).toList();
         questionLength.value = questionList.length;
         if (ApiService.target != 'Release') {
@@ -170,5 +171,78 @@ class QuizController extends GetxController {
     }
     isLoadingDetail(false);
     return questionModel.value;
+  }
+
+  Future<void> onUpdateQuestionDetail(BuildContext context,
+      {String? name}) async {
+    isLoadingCreate(true);
+    try {
+      await apiBaseHelper.onNetworkRequesting(
+        url: '${ApiService.resource}Questions/$name',
+        methode: METHODE.update,
+        isAuthorize: true,
+        body: {
+          "question": questionModel.value.question,
+          "question_type": questionModel.value.questionType,
+          "subject": questionModel.value.subject,
+          "class": questionModel.value.classs,
+          "visibility": questionModel.value.visibility,
+          "disabled": questionModel.value.disabled,
+        },
+      ).then((res) async {
+        questionLength.value = 0;
+        onGetQuestionDetails(context, id: name);
+
+        Navigator.pop(context);
+        if (ApiService.target != 'Release') {
+          debugPrint('update question detail: ================>>> 200');
+        }
+      }).onError((ErrorModel error, stackTrace) {
+        if (ApiService.target != 'Release') {
+          debugPrint(
+              'update question detail: ===================>> ${error.statusCode}');
+        }
+        CustomAlertResponse.showAlertMessage(context: context, error: error);
+      });
+    } catch (e) {
+      if (ApiService.target != 'Release') {
+        debugPrint('catch update question detail: ===================>> $e');
+      }
+    }
+    isLoadingCreate(false);
+  }
+
+  Future<void> onUpdateAnswerDetail(BuildContext context,
+      {String? name}) async {
+    isLoadingCreate(true);
+    try {
+      await apiBaseHelper.onNetworkRequesting(
+        url: '${ApiService.resource}Questions/$name',
+        methode: METHODE.update,
+        isAuthorize: true,
+        body: {
+          "answers": questionModel.value.answers,
+        },
+      ).then((res) async {
+        questionLength.value = 0;
+        onGetQuestionDetails(context, id: name);
+
+        Navigator.pop(context);
+        if (ApiService.target != 'Release') {
+          debugPrint('update Answer detail: ================>>> 200');
+        }
+      }).onError((ErrorModel error, stackTrace) {
+        if (ApiService.target != 'Release') {
+          debugPrint(
+              'update Answer detail: ===================>> ${error.statusCode}');
+        }
+        CustomAlertResponse.showAlertMessage(context: context, error: error);
+      });
+    } catch (e) {
+      if (ApiService.target != 'Release') {
+        debugPrint('catch update Answer detail: ===================>> $e');
+      }
+    }
+    isLoadingCreate(false);
   }
 }
