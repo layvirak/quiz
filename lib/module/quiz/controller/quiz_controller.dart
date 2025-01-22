@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:lomhat/module/quiz/model/filter_question_mode/filter_question_mode.dart';
 
 import '../../../constrants/api_service.dart';
+import '../../../constrants/injection.dart';
 import '../../../utils/helper/api_base_helper.dart';
 import '../../../utils/widget/custom_alert_repoonse.dart';
 import '../model/quesstion_model/question_answer_model.dart';
@@ -29,7 +30,7 @@ class QuizController extends GetxController {
   var filterQuestion = FilterQuestionMode().obs;
   var questionLength = 0.obs;
   Future<void> onGetQuestion(BuildContext context) async {
-    isLoading(true);
+    Injection.homeController.isLoading(true);
 
     try {
       await apiBaseHelper
@@ -61,7 +62,7 @@ class QuizController extends GetxController {
         debugPrint('catch question: ===================>> $e');
       }
     }
-    isLoading(false);
+    Injection.homeController.isLoading(false);
   }
 
   var filterQuestionList = <QuestionAnswerModel>[].obs;
@@ -101,6 +102,7 @@ class QuizController extends GetxController {
   }
 
   var isLoadingCreate = false.obs;
+  var isReloadAnswer = false.obs;
   Future<void> onCreateQuestion(BuildContext context) async {
     isLoadingCreate(true);
     try {
@@ -114,9 +116,14 @@ class QuizController extends GetxController {
           "subject": questionModel.value.subject,
           "class": questionModel.value.classs,
           "visibility": questionModel.value.visibility,
+          "disabled": questionModel.value.disabled,
           "answers": questionModel.value.answers,
         },
       ).then((res) async {
+        questionLength.value = 0;
+        onGetQuestion(context);
+        Navigator.pop(context);
+        Navigator.pop(context);
         if (ApiService.target != 'Release') {
           debugPrint('create question: ================>>> 200');
         }
@@ -135,7 +142,7 @@ class QuizController extends GetxController {
     isLoadingCreate(false);
   }
 
-  var questionModel = QuestionModel().obs;
+  var questionModel = QuestionModel(answers: []).obs;
   var isLoadingDetail = false.obs;
   Future<QuestionModel> onGetQuestionDetails(BuildContext? context,
       {String? id}) async {

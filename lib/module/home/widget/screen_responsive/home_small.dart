@@ -8,7 +8,7 @@ import '../../../../constrants/api_service.dart';
 import '../../../../constrants/app_logo.dart';
 import '../../../../constrants/injection.dart';
 import '../../../../utils/widget/custom_avatar.dart';
-import '../../../quiz/screen/create_question/question_screen.dart';
+import '../../../quiz/screen/question/question_screen.dart';
 import '../../../quiz/screen/create_quiz/create_quiz_screen.dart';
 import '../../../quiz/screen/quiz_screen.dart';
 import '../custom_item_drawer_bar.dart';

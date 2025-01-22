@@ -9,7 +9,7 @@ import 'package:lomhat/utils/widget/custom_loading.dart';
 import '../../../../constrants/set_widget.dart';
 import '../../../../utils/widget/custom_loading_pagegination.dart';
 import '../../widget/custom_question_card.dart';
-import 'create_question_screen.dart';
+import 'create_question/create_question_screen.dart';
 import 'filter_question_screen.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -22,9 +22,11 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   @override
   void initState() {
-    Injection.quizController.filterQuestion.value = FilterQuestionMode();
-    Injection.quizController.questionLength.value = 0;
-    Injection.quizController.onGetQuestion(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Injection.quizController.filterQuestion.value = FilterQuestionMode();
+      Injection.quizController.questionLength.value = 0;
+      Injection.quizController.onGetQuestion(context);
+    });
 
     super.initState();
   }

@@ -8,25 +8,31 @@ part of 'question_model.dart';
 
 _$QuestionModelImpl _$$QuestionModelImplFromJson(Map<String, dynamic> json) =>
     _$QuestionModelImpl(
-      name: json['name'] as String?,
-      owner: json['owner'] as String?,
-      creation: json['creation'] as String?,
-      modified: json['modified'] as String?,
-      modifiedBy: json['modified_by'] as String?,
-      docstatus: (json['docstatus'] as num?)?.toInt(),
-      idx: (json['idx'] as num?)?.toInt(),
-      question: json['question'] as String?,
-      questionType: json['question_type'] as String?,
-      subject: json['subject'] as String?,
-      classs: json['class'] as String?,
-      visibility: json['visibility'] as String?,
-      numberOfUsed: json['number_of_used'] as String?,
+      name: json['name'] as String? ?? '',
+      owner: json['owner'] as String? ?? '',
+      creation: json['creation'] as String? ?? '',
+      modified: json['modified'] as String? ?? '',
+      modifiedBy: json['modified_by'] as String? ?? '',
+      docstatus: (json['docstatus'] as num?)?.toInt() ?? 0,
+      idx: (json['idx'] as num?)?.toInt() ?? 0,
+      question: json['question'] as String? ?? '',
+      questionType: json['question_type'] as String? ?? '',
+      subject: json['subject'] as String? ?? '',
+      classs: json['class'] as String? ?? '',
+      visibility: json['visibility'] as String? ?? '',
+      numberOfUsed: json['number_of_used'] as String? ?? '',
       difficultyLevel: (json['difficulty_level'] as num?)?.toInt(),
-      disabled: (json['disabled'] as num?)?.toInt(),
-      doctype: json['doctype'] as String?,
+      disabled: (json['disabled'] as num?)?.toInt() ?? 0,
+      doctype: json['doctype'] as String? ?? '',
       answers: (json['answers'] as List<dynamic>?)
           ?.map((e) => AnswerModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      isQuestion: json['isQuestion'] as bool? ?? false,
+      isQuestionType: json['isQuestionType'] as bool? ?? false,
+      isSubject: json['isSubject'] as bool? ?? false,
+      isClass: json['isClass'] as bool? ?? false,
+      isVisibility: json['isVisibility'] as bool? ?? false,
+      isAnswers: json['isAnswers'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$QuestionModelImplToJson(_$QuestionModelImpl instance) =>
@@ -48,4 +54,10 @@ Map<String, dynamic> _$$QuestionModelImplToJson(_$QuestionModelImpl instance) =>
       'disabled': instance.disabled,
       'doctype': instance.doctype,
       'answers': instance.answers,
+      'isQuestion': instance.isQuestion,
+      'isQuestionType': instance.isQuestionType,
+      'isSubject': instance.isSubject,
+      'isClass': instance.isClass,
+      'isVisibility': instance.isVisibility,
+      'isAnswers': instance.isAnswers,
     };

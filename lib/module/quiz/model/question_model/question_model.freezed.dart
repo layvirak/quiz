@@ -54,6 +54,12 @@ mixin _$QuestionModel {
   String? get doctype => throw _privateConstructorUsedError;
   @JsonKey(name: 'answers')
   List<AnswerModel>? get answers => throw _privateConstructorUsedError;
+  bool? get isQuestion => throw _privateConstructorUsedError;
+  bool? get isQuestionType => throw _privateConstructorUsedError;
+  bool? get isSubject => throw _privateConstructorUsedError;
+  bool? get isClass => throw _privateConstructorUsedError;
+  bool? get isVisibility => throw _privateConstructorUsedError;
+  bool? get isAnswers => throw _privateConstructorUsedError;
 
   /// Serializes this QuestionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -88,7 +94,13 @@ abstract class $QuestionModelCopyWith<$Res> {
       @JsonKey(name: 'difficulty_level') int? difficultyLevel,
       @JsonKey(name: 'disabled') int? disabled,
       @JsonKey(name: 'doctype') String? doctype,
-      @JsonKey(name: 'answers') List<AnswerModel>? answers});
+      @JsonKey(name: 'answers') List<AnswerModel>? answers,
+      bool? isQuestion,
+      bool? isQuestionType,
+      bool? isSubject,
+      bool? isClass,
+      bool? isVisibility,
+      bool? isAnswers});
 }
 
 /// @nodoc
@@ -123,6 +135,12 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
     Object? disabled = freezed,
     Object? doctype = freezed,
     Object? answers = freezed,
+    Object? isQuestion = freezed,
+    Object? isQuestionType = freezed,
+    Object? isSubject = freezed,
+    Object? isClass = freezed,
+    Object? isVisibility = freezed,
+    Object? isAnswers = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -193,6 +211,30 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<AnswerModel>?,
+      isQuestion: freezed == isQuestion
+          ? _value.isQuestion
+          : isQuestion // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isQuestionType: freezed == isQuestionType
+          ? _value.isQuestionType
+          : isQuestionType // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isSubject: freezed == isSubject
+          ? _value.isSubject
+          : isSubject // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isClass: freezed == isClass
+          ? _value.isClass
+          : isClass // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isVisibility: freezed == isVisibility
+          ? _value.isVisibility
+          : isVisibility // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isAnswers: freezed == isAnswers
+          ? _value.isAnswers
+          : isAnswers // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -222,7 +264,13 @@ abstract class _$$QuestionModelImplCopyWith<$Res>
       @JsonKey(name: 'difficulty_level') int? difficultyLevel,
       @JsonKey(name: 'disabled') int? disabled,
       @JsonKey(name: 'doctype') String? doctype,
-      @JsonKey(name: 'answers') List<AnswerModel>? answers});
+      @JsonKey(name: 'answers') List<AnswerModel>? answers,
+      bool? isQuestion,
+      bool? isQuestionType,
+      bool? isSubject,
+      bool? isClass,
+      bool? isVisibility,
+      bool? isAnswers});
 }
 
 /// @nodoc
@@ -255,6 +303,12 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
     Object? disabled = freezed,
     Object? doctype = freezed,
     Object? answers = freezed,
+    Object? isQuestion = freezed,
+    Object? isQuestionType = freezed,
+    Object? isSubject = freezed,
+    Object? isClass = freezed,
+    Object? isVisibility = freezed,
+    Object? isAnswers = freezed,
   }) {
     return _then(_$QuestionModelImpl(
       name: freezed == name
@@ -325,6 +379,30 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<AnswerModel>?,
+      isQuestion: freezed == isQuestion
+          ? _value.isQuestion
+          : isQuestion // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isQuestionType: freezed == isQuestionType
+          ? _value.isQuestionType
+          : isQuestionType // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isSubject: freezed == isSubject
+          ? _value.isSubject
+          : isSubject // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isClass: freezed == isClass
+          ? _value.isClass
+          : isClass // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isVisibility: freezed == isVisibility
+          ? _value.isVisibility
+          : isVisibility // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isAnswers: freezed == isAnswers
+          ? _value.isAnswers
+          : isAnswers // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -333,23 +411,29 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuestionModelImpl implements _QuestionModel {
   _$QuestionModelImpl(
-      {@JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'owner') this.owner,
-      @JsonKey(name: 'creation') this.creation,
-      @JsonKey(name: 'modified') this.modified,
-      @JsonKey(name: 'modified_by') this.modifiedBy,
-      @JsonKey(name: 'docstatus') this.docstatus,
-      @JsonKey(name: 'idx') this.idx,
-      @JsonKey(name: 'question') this.question,
-      @JsonKey(name: 'question_type') this.questionType,
-      @JsonKey(name: 'subject') this.subject,
-      @JsonKey(name: 'class') this.classs,
-      @JsonKey(name: 'visibility') this.visibility,
-      @JsonKey(name: 'number_of_used') this.numberOfUsed,
+      {@JsonKey(name: 'name') this.name = '',
+      @JsonKey(name: 'owner') this.owner = '',
+      @JsonKey(name: 'creation') this.creation = '',
+      @JsonKey(name: 'modified') this.modified = '',
+      @JsonKey(name: 'modified_by') this.modifiedBy = '',
+      @JsonKey(name: 'docstatus') this.docstatus = 0,
+      @JsonKey(name: 'idx') this.idx = 0,
+      @JsonKey(name: 'question') this.question = '',
+      @JsonKey(name: 'question_type') this.questionType = '',
+      @JsonKey(name: 'subject') this.subject = '',
+      @JsonKey(name: 'class') this.classs = '',
+      @JsonKey(name: 'visibility') this.visibility = '',
+      @JsonKey(name: 'number_of_used') this.numberOfUsed = '',
       @JsonKey(name: 'difficulty_level') this.difficultyLevel,
-      @JsonKey(name: 'disabled') this.disabled,
-      @JsonKey(name: 'doctype') this.doctype,
-      @JsonKey(name: 'answers') final List<AnswerModel>? answers})
+      @JsonKey(name: 'disabled') this.disabled = 0,
+      @JsonKey(name: 'doctype') this.doctype = '',
+      @JsonKey(name: 'answers') final List<AnswerModel>? answers,
+      this.isQuestion = false,
+      this.isQuestionType = false,
+      this.isSubject = false,
+      this.isClass = false,
+      this.isVisibility = false,
+      this.isAnswers = false})
       : _answers = answers;
 
   factory _$QuestionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -415,8 +499,27 @@ class _$QuestionModelImpl implements _QuestionModel {
   }
 
   @override
+  @JsonKey()
+  final bool? isQuestion;
+  @override
+  @JsonKey()
+  final bool? isQuestionType;
+  @override
+  @JsonKey()
+  final bool? isSubject;
+  @override
+  @JsonKey()
+  final bool? isClass;
+  @override
+  @JsonKey()
+  final bool? isVisibility;
+  @override
+  @JsonKey()
+  final bool? isAnswers;
+
+  @override
   String toString() {
-    return 'QuestionModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, idx: $idx, question: $question, questionType: $questionType, subject: $subject, classs: $classs, visibility: $visibility, numberOfUsed: $numberOfUsed, difficultyLevel: $difficultyLevel, disabled: $disabled, doctype: $doctype, answers: $answers)';
+    return 'QuestionModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, idx: $idx, question: $question, questionType: $questionType, subject: $subject, classs: $classs, visibility: $visibility, numberOfUsed: $numberOfUsed, difficultyLevel: $difficultyLevel, disabled: $disabled, doctype: $doctype, answers: $answers, isQuestion: $isQuestion, isQuestionType: $isQuestionType, isSubject: $isSubject, isClass: $isClass, isVisibility: $isVisibility, isAnswers: $isAnswers)';
   }
 
   @override
@@ -450,30 +553,48 @@ class _$QuestionModelImpl implements _QuestionModel {
             (identical(other.disabled, disabled) ||
                 other.disabled == disabled) &&
             (identical(other.doctype, doctype) || other.doctype == doctype) &&
-            const DeepCollectionEquality().equals(other._answers, _answers));
+            const DeepCollectionEquality().equals(other._answers, _answers) &&
+            (identical(other.isQuestion, isQuestion) ||
+                other.isQuestion == isQuestion) &&
+            (identical(other.isQuestionType, isQuestionType) ||
+                other.isQuestionType == isQuestionType) &&
+            (identical(other.isSubject, isSubject) ||
+                other.isSubject == isSubject) &&
+            (identical(other.isClass, isClass) || other.isClass == isClass) &&
+            (identical(other.isVisibility, isVisibility) ||
+                other.isVisibility == isVisibility) &&
+            (identical(other.isAnswers, isAnswers) ||
+                other.isAnswers == isAnswers));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      name,
-      owner,
-      creation,
-      modified,
-      modifiedBy,
-      docstatus,
-      idx,
-      question,
-      questionType,
-      subject,
-      classs,
-      visibility,
-      numberOfUsed,
-      difficultyLevel,
-      disabled,
-      doctype,
-      const DeepCollectionEquality().hash(_answers));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        name,
+        owner,
+        creation,
+        modified,
+        modifiedBy,
+        docstatus,
+        idx,
+        question,
+        questionType,
+        subject,
+        classs,
+        visibility,
+        numberOfUsed,
+        difficultyLevel,
+        disabled,
+        doctype,
+        const DeepCollectionEquality().hash(_answers),
+        isQuestion,
+        isQuestionType,
+        isSubject,
+        isClass,
+        isVisibility,
+        isAnswers
+      ]);
 
   /// Create a copy of QuestionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -493,24 +614,29 @@ class _$QuestionModelImpl implements _QuestionModel {
 
 abstract class _QuestionModel implements QuestionModel {
   factory _QuestionModel(
-          {@JsonKey(name: 'name') final String? name,
-          @JsonKey(name: 'owner') final String? owner,
-          @JsonKey(name: 'creation') final String? creation,
-          @JsonKey(name: 'modified') final String? modified,
-          @JsonKey(name: 'modified_by') final String? modifiedBy,
-          @JsonKey(name: 'docstatus') final int? docstatus,
-          @JsonKey(name: 'idx') final int? idx,
-          @JsonKey(name: 'question') final String? question,
-          @JsonKey(name: 'question_type') final String? questionType,
-          @JsonKey(name: 'subject') final String? subject,
-          @JsonKey(name: 'class') final String? classs,
-          @JsonKey(name: 'visibility') final String? visibility,
-          @JsonKey(name: 'number_of_used') final String? numberOfUsed,
-          @JsonKey(name: 'difficulty_level') final int? difficultyLevel,
-          @JsonKey(name: 'disabled') final int? disabled,
-          @JsonKey(name: 'doctype') final String? doctype,
-          @JsonKey(name: 'answers') final List<AnswerModel>? answers}) =
-      _$QuestionModelImpl;
+      {@JsonKey(name: 'name') final String? name,
+      @JsonKey(name: 'owner') final String? owner,
+      @JsonKey(name: 'creation') final String? creation,
+      @JsonKey(name: 'modified') final String? modified,
+      @JsonKey(name: 'modified_by') final String? modifiedBy,
+      @JsonKey(name: 'docstatus') final int? docstatus,
+      @JsonKey(name: 'idx') final int? idx,
+      @JsonKey(name: 'question') final String? question,
+      @JsonKey(name: 'question_type') final String? questionType,
+      @JsonKey(name: 'subject') final String? subject,
+      @JsonKey(name: 'class') final String? classs,
+      @JsonKey(name: 'visibility') final String? visibility,
+      @JsonKey(name: 'number_of_used') final String? numberOfUsed,
+      @JsonKey(name: 'difficulty_level') final int? difficultyLevel,
+      @JsonKey(name: 'disabled') final int? disabled,
+      @JsonKey(name: 'doctype') final String? doctype,
+      @JsonKey(name: 'answers') final List<AnswerModel>? answers,
+      final bool? isQuestion,
+      final bool? isQuestionType,
+      final bool? isSubject,
+      final bool? isClass,
+      final bool? isVisibility,
+      final bool? isAnswers}) = _$QuestionModelImpl;
 
   factory _QuestionModel.fromJson(Map<String, dynamic> json) =
       _$QuestionModelImpl.fromJson;
@@ -566,6 +692,18 @@ abstract class _QuestionModel implements QuestionModel {
   @override
   @JsonKey(name: 'answers')
   List<AnswerModel>? get answers;
+  @override
+  bool? get isQuestion;
+  @override
+  bool? get isQuestionType;
+  @override
+  bool? get isSubject;
+  @override
+  bool? get isClass;
+  @override
+  bool? get isVisibility;
+  @override
+  bool? get isAnswers;
 
   /// Create a copy of QuestionModel
   /// with the given fields replaced by the non-null parameter values.

@@ -8,21 +8,22 @@ part of 'answer_model.dart';
 
 _$AnswerModelImpl _$$AnswerModelImplFromJson(Map<String, dynamic> json) =>
     _$AnswerModelImpl(
-      name: json['name'] as String?,
-      owner: json['owner'] as String?,
-      creation: json['creation'] as String?,
-      modified: json['modified'] as String?,
-      modifiedBy: json['modified_by'] as String?,
+      name: json['name'] as String? ?? '',
+      owner: json['owner'] as String? ?? '',
+      creation: json['creation'] as String? ?? '',
+      modified: json['modified'] as String? ?? '',
+      modifiedBy: json['modified_by'] as String? ?? '',
       docstatus: (json['docstatus'] as num?)?.toInt(),
-      idx: (json['idx'] as num?)?.toInt(),
-      answer: json['answer'] as String?,
-      isCorrect: (json['is_correct'] as num?)?.toInt(),
-      parent: json['parent'] as String?,
-      parentfield: json['parentfield'] as String?,
-      parenttype: json['parenttype'] as String?,
-      doctype: json['doctype'] as String?,
-      explanation: json['explanation'] as String?,
-      matchAnswer: json['match_answer'] as String?,
+      idx: (json['idx'] as num?)?.toInt() ?? 0,
+      answer: json['answer'] as String? ?? '',
+      isCorrect: (json['is_correct'] as num?)?.toInt() ?? 0,
+      parent: json['parent'] as String? ?? '',
+      parentfield: json['parentfield'] as String? ?? '',
+      parenttype: json['parenttype'] as String? ?? '',
+      doctype: json['doctype'] as String? ?? '',
+      explanation: json['explanation'] as String? ?? '',
+      matchAnswer: json['match_answer'] as String? ?? '',
+      isValidate: json['isValidate'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$AnswerModelImplToJson(_$AnswerModelImpl instance) =>
@@ -42,4 +43,5 @@ Map<String, dynamic> _$$AnswerModelImplToJson(_$AnswerModelImpl instance) =>
       'doctype': instance.doctype,
       'explanation': instance.explanation,
       'match_answer': instance.matchAnswer,
+      'isValidate': instance.isValidate,
     };
