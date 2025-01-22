@@ -14,15 +14,15 @@ class NoConnectionAlert {
     return showGeneralDialog(
       barrierLabel: "Label",
       barrierDismissible: false,
-      barrierColor: Colors.black.withOpacity(0.5),
+      barrierColor: Colors.black.withValues(alpha: 0.5),
       transitionDuration: const Duration(milliseconds: 500),
       context: context!,
       pageBuilder: (context, anim1, anim2) {
         return Align(
           alignment: fromTop ? Alignment.topCenter : Alignment.bottomCenter,
           child: Container(
-            height: height?? 115,
-            width:width?? 350,
+            height: height ?? 115,
+            width: width ?? 350,
             margin:
                 const EdgeInsets.only(top: 50, bottom: 50, left: 15, right: 15),
             padding: const EdgeInsets.fromLTRB(10, 15, 5, 5),

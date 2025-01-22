@@ -75,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Text(
             'Version ${ApiService.version}',
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: Colors.white.withOpacity(0.6),
+                  color: Colors.white.withValues(alpha: 0.6),
                   fontWeight: FontWeight.normal,
                 ),
           ),

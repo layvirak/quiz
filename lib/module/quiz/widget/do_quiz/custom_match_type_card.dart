@@ -16,7 +16,7 @@ class CustomMatchTypeCard extends StatelessWidget {
           BoxShadow(
             blurRadius: 2,
             spreadRadius: 0.5,
-            color: Theme.of(context).primaryColor.withOpacity(0.5),
+            color: Theme.of(context).primaryColor.withValues(alpha: 0.5),
           )
         ],
       ),

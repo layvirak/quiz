@@ -39,12 +39,13 @@ class CustomButton extends StatelessWidget {
             color: isdotBorder! ? Colors.white : color ?? AppColor.primaryColor,
             child: InkWell(
               splashColor: isHaveColor!
-                  ? AppColor.primaryColor.withOpacity(0.4)
+                  ? AppColor.primaryColor.withValues(alpha: 0.4)
                   : isdotBorder!
-                      ? AppColor.iconColor.withOpacity(0.4)
+                      ? AppColor.iconColor.withValues(alpha: 0.4)
                       : null,
-              highlightColor:
-                  isOutline! ? AppColor.primaryColor.withOpacity(0.4) : null,
+              highlightColor: isOutline!
+                  ? AppColor.primaryColor.withValues(alpha: 0.4)
+                  : null,
               onTap: isDisable! && !isDisableCanTap! ? null : onPressed,
               child: Container(
                 padding:
@@ -93,8 +94,9 @@ class CustomButton extends StatelessWidget {
                 child: SizedBox(
                   width: double.infinity,
                   child: InkWell(
-                    splashColor:
-                        isOutline! ? AppColor.iconColor.withOpacity(0.4) : null,
+                    splashColor: isOutline!
+                        ? AppColor.iconColor.withValues(alpha: 0.4)
+                        : null,
                     onTap: onPressed,
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 12.5),

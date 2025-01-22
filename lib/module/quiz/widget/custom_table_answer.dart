@@ -20,7 +20,6 @@ class CustomTableAnswer extends StatefulWidget {
       this.customer,
       this.currency,
       this.doc,
-
       this.onTap,
       this.isPaid});
 
@@ -46,7 +45,9 @@ class _CustomTableAnswerState extends State<CustomTableAnswer> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       border: Border.all(
-                        color: Theme.of(context).disabledColor.withOpacity(0.5),
+                        color: Theme.of(context)
+                            .disabledColor
+                            .withValues(alpha: 0.5),
                       ),
                     ),
                     child: IntrinsicHeight(

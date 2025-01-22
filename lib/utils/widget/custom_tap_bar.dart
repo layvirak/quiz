@@ -31,7 +31,9 @@ class CustomTapBar extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
                       color: isSelect
                           ? AppColor.primaryColor
-                          : Theme.of(context).dividerColor.withOpacity(0.5),
+                          : Theme.of(context)
+                              .dividerColor
+                              .withValues(alpha: 0.5),
                     ),
               ),
               const SizedBox(
@@ -41,7 +43,7 @@ class CustomTapBar extends StatelessWidget {
                 height: isSelect ? 1.5 : 0,
                 color: isSelect
                     ? AppColor.primaryColor
-                    : Theme.of(context).dividerColor.withOpacity(0.5),
+                    : Theme.of(context).dividerColor.withValues(alpha: 0.5),
               ),
             ],
           ),

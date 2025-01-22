@@ -1,5 +1,4 @@
 import 'package:lomhat/module/home/widget/screen_responsive/home_medium.dart';
-import 'package:lomhat/module/home/widget/screen_responsive/home_small.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';

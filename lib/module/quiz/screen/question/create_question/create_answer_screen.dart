@@ -92,7 +92,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                             border: Border.all(
                                               color: Theme.of(context)
                                                   .disabledColor
-                                                  .withOpacity(0.5),
+                                                  .withValues(alpha: 0.5),
                                             ),
                                           ),
                                           child: IntrinsicHeight(

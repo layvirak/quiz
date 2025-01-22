@@ -124,7 +124,7 @@ class CustomStatus extends StatelessWidget {
                       return Colors.green;
                     }
                     if (status == "Submitted" || status == "Submit") {
-                      return Colors.blue.withOpacity(0.8);
+                      return Colors.blue.withValues(alpha: 0.8);
                     }
                     if (status == "Medium") {
                       return Colors.orange;
@@ -214,7 +214,7 @@ class CustomStatus extends StatelessWidget {
                           return Colors.green;
                         }
                         if (status == "Submitted" || status == "Submit") {
-                          return Colors.blue.withOpacity(0.8);
+                          return Colors.blue.withValues(alpha: 0.8);
                         }
 
                         if (status == "Medium") {

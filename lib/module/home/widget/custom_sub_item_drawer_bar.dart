@@ -23,7 +23,7 @@ class CustomSubItemDrawerBar extends StatelessWidget {
             onTap: onTap,
             child: Container(
               color: isSelect
-                  ? AppColor.primaryColor.withOpacity(0.2)
+                  ? AppColor.primaryColor.withValues(alpha: 0.2)
                   : Colors.transparent,
               child: Row(children: [
                 Container(

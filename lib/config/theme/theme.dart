@@ -9,7 +9,7 @@ ThemeData lightTheme() {
     scaffoldBackgroundColor: const Color(0xfffbfbfb),
     primaryColor: AppColor.primaryColor,
     secondaryHeaderColor: AppColor.secondaryColor,
-    disabledColor: Colors.grey.withOpacity(0.5),
+    disabledColor: Colors.grey.withValues(alpha: 0.5),
     dialogBackgroundColor: Colors.white,
     brightness: Brightness.dark,
     appBarTheme: AppBarTheme(
@@ -59,17 +59,17 @@ ThemeData lightTheme() {
       bodyLarge: GoogleFonts.battambang(
         fontSize: 18,
         fontWeight: FontWeight.normal,
-        color: Colors.black.withOpacity(0.6),
+        color: Colors.black.withValues(alpha: 0.6),
       ),
       bodyMedium: GoogleFonts.battambang(
         fontSize: 16,
         fontWeight: FontWeight.normal,
-        color: Colors.black.withOpacity(0.6),
+        color: Colors.black.withValues(alpha: 0.6),
       ),
       bodySmall: GoogleFonts.battambang(
         fontSize: 12,
         fontWeight: FontWeight.normal,
-        color: Colors.black.withOpacity(0.6),
+        color: Colors.black.withValues(alpha: 0.6),
       ),
       headlineLarge: GoogleFonts.battambang(
         fontSize: 18,
@@ -128,7 +128,7 @@ ThemeData darkTheme() {
     dividerColor: Colors.white30,
     brightness: Brightness.light,
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColor.primaryColor.withOpacity(0.3),
+      backgroundColor: AppColor.primaryColor.withValues(alpha: 0.3),
       centerTitle: true,
       systemOverlayStyle: SystemUiOverlayStyle.light,
       iconTheme: const IconThemeData(color: Colors.white),

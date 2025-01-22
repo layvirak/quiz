@@ -77,7 +77,7 @@ class CustomSliderState extends State<CustomSlider> {
                   right: 3,
                 ),
                 decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: Colors.grey.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(15)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
