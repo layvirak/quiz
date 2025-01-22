@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:lomhat/module/classes/screen/class_screen.dart';
-import 'package:lomhat/module/school/screen/school_screen.dart';
-import 'package:lomhat/module/subject/screen/subject_screen.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 
 import '../../../../constrants/api_service.dart';
 import '../../../../constrants/app_color.dart';
 import '../../../../constrants/app_logo.dart';
 import '../../../../constrants/injection.dart';
-import '../../../quiz/screen/question/question_screen.dart';
+import '../../../dashboard/screen/dashboard_screen.dart';
+import '../../../history/screen/history_screen.dart';
+import '../../../my_quiz/screen/my_quiz_screen.dart';
+import '../../../question/screen/question_screen.dart';
+import '../../../quiz/screen/quiz_screen.dart';
+import '../../../report/screen/report_screen.dart';
 import '../custom_item_drawer_bar.dart';
-import '../custom_sub_item_drawer_bar.dart';
 
 class HomeMedium extends StatelessWidget {
   const HomeMedium({super.key});
@@ -61,9 +62,9 @@ class HomeMedium extends StatelessWidget {
                                         isSelect: Injection.homeController
                                                 .selectIndex.value ==
                                             1,
+                                        icon: AppImage.dashboard,
                                         isShowMore: Injection
                                             .homeController.isShowMore.value,
-                                        icon: AppImage.quiz,
                                         onTap: () {
                                           Injection.homeController.selectIndex
                                               .value = 1;
@@ -74,23 +75,23 @@ class HomeMedium extends StatelessWidget {
                                         isSelect: Injection.homeController
                                                 .selectIndex.value ==
                                             2,
+                                        icon: AppImage.myQuiz,
                                         isShowMore: Injection
                                             .homeController.isShowMore.value,
-                                        icon: AppImage.quiz,
-                                        title: "Quiz",
                                         onTap: () {
                                           Injection.homeController.selectIndex
                                               .value = 2;
                                         },
+                                        title: "My Quiz",
                                       ),
                                       CustomItemDrawerBar(
                                         isSelect: Injection.homeController
                                                 .selectIndex.value ==
                                             3,
+                                        icon: AppImage.quiz,
+                                        title: "Quiz",
                                         isShowMore: Injection
                                             .homeController.isShowMore.value,
-                                        icon: AppImage.question,
-                                        title: "Question",
                                         onTap: () {
                                           Injection.homeController.selectIndex
                                               .value = 3;
@@ -99,11 +100,24 @@ class HomeMedium extends StatelessWidget {
                                       CustomItemDrawerBar(
                                         isSelect: Injection.homeController
                                                 .selectIndex.value ==
-                                            5,
+                                            4,
+                                        icon: AppImage.question,
+                                        title: "Question",
                                         isShowMore: Injection
                                             .homeController.isShowMore.value,
-                                        icon: AppImage.classes,
-                                        title: "Classes",
+                                        onTap: () {
+                                          Injection.homeController.selectIndex
+                                              .value = 4;
+                                        },
+                                      ),
+                                      CustomItemDrawerBar(
+                                        isSelect: Injection.homeController
+                                                .selectIndex.value ==
+                                            5,
+                                        icon: AppImage.report,
+                                        title: "Report",
+                                        isShowMore: Injection
+                                            .homeController.isShowMore.value,
                                         onTap: () {
                                           Injection.homeController.selectIndex
                                               .value = 5;
@@ -115,77 +129,13 @@ class HomeMedium extends StatelessWidget {
                                             6,
                                         isShowMore: Injection
                                             .homeController.isShowMore.value,
-                                        icon: AppImage.subject,
-                                        title: "Subject",
+                                        icon: AppImage.history,
+                                        title: "History",
                                         onTap: () {
                                           Injection.homeController.selectIndex
                                               .value = 6;
                                         },
                                       ),
-                                      CustomItemDrawerBar(
-                                        isSelect: Injection.homeController
-                                                .selectIndex.value ==
-                                            7,
-                                        isShowMore: Injection
-                                            .homeController.isShowMore.value,
-                                        icon: AppImage.school,
-                                        title: "School",
-                                        onTap: () {
-                                          Injection.homeController.selectIndex
-                                              .value = 7;
-                                        },
-                                      ),
-                                      CustomItemDrawerBar(
-                                        isSelect: Injection.homeController
-                                                .selectIndex.value ==
-                                            4,
-                                        isShowMore: Injection
-                                            .homeController.isShowMore.value,
-                                        icon: AppImage.quiz,
-                                        isHaveChild: true,
-                                        title: "Courses",
-                                        onTap: () {
-                                          Injection.homeController.selectIndex
-                                              .value = 4;
-                                          Injection.homeController
-                                              .selectSubIndex.value = 1;
-                                        },
-                                      ),
-                                      if (Injection.homeController.selectIndex
-                                              .value ==
-                                          4)
-                                        Column(
-                                          children: [
-                                            CustomSubItemDrawerBar(
-                                              isSelect: Injection.homeController
-                                                      .selectSubIndex.value ==
-                                                  1,
-                                              isShowMore: Injection
-                                                  .homeController
-                                                  .isShowMore
-                                                  .value,
-                                              title: "User Portal",
-                                              onTap: () {
-                                                Injection.homeController
-                                                    .selectSubIndex.value = 1;
-                                              },
-                                            ),
-                                            CustomSubItemDrawerBar(
-                                              isSelect: Injection.homeController
-                                                      .selectSubIndex.value ==
-                                                  2,
-                                              isShowMore: Injection
-                                                  .homeController
-                                                  .isShowMore
-                                                  .value,
-                                              title: "Edit Courses",
-                                              onTap: () {
-                                                Injection.homeController
-                                                    .selectSubIndex.value = 2;
-                                              },
-                                            ),
-                                          ],
-                                        ),
                                     ],
                                   ),
                                 ),
@@ -226,17 +176,23 @@ class HomeMedium extends StatelessWidget {
                     ),
                     Expanded(
                       child: (() {
-                        if (Injection.homeController.selectIndex.value == 3) {
+                        if (Injection.homeController.selectIndex.value == 1) {
+                          return const DashboardScreen();
+                        } else if (Injection.homeController.selectIndex.value ==
+                            2) {
+                          return const MyQuizScreen();
+                        } else if (Injection.homeController.selectIndex.value ==
+                            3) {
+                          return const QuizScreen();
+                        } else if (Injection.homeController.selectIndex.value ==
+                            4) {
                           return const QuestionScreen();
                         } else if (Injection.homeController.selectIndex.value ==
                             5) {
-                          return const ClassScreen();
+                          return const ReportScreen();
                         } else if (Injection.homeController.selectIndex.value ==
                             6) {
-                          return const SubjectScreen();
-                        } else if (Injection.homeController.selectIndex.value ==
-                            7) {
-                          return const SchoolScreen();
+                          return const HistoryScreen();
                         } else {
                           return Container();
                         }
@@ -275,21 +231,6 @@ class HomeMedium extends StatelessWidget {
                     ),
                   ],
                 ),
-                // Positioned(
-                //   right: 30,
-                //   top: 30,
-                //   child: CustomAvatar(
-                //     image:
-                //         '${ApiService.baseUrl}${Injection.profileController.userModel.value.userImage}',
-                //     defaultProfile: true,
-                //     ontap: () {
-                //       context.push('/profile');
-                //     },
-                //     borderRadius: 1000,
-                //     width: 50,
-                //     height: 50,
-                //   ),
-                // ),
               ],
             ),
           ),

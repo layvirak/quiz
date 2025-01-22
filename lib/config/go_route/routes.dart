@@ -9,7 +9,7 @@ import '../../module/home/screen/home.dart';
 import '../../module/profile/screen/input_user_infor_screen.dart';
 import '../../module/profile/screen/profile_screen.dart';
 import '../../module/profile/screen/term_and_conditionsreen.dart';
-import '../../module/quiz/screen/question/question_detail_screen.dart';
+import '../../module/question/screen/question_detail_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/splash-screen',

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:lomhat/module/quiz/model/answers/answer_model.dart';
+import 'package:lomhat/module/question/model/answers/answer_model.dart';
 
 part 'question_model.freezed.dart';
 part 'question_model.g.dart';

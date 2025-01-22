@@ -3,6 +3,7 @@ import 'package:lomhat/module/profile/controller/profile_controller.dart';
 import 'package:get/get.dart';
 import 'package:lomhat/cores/splash_screen/controller/splash_screen_controller.dart';
 import 'package:lomhat/cores/walk_through/controller/walk_through_controller.dart';
+import 'package:lomhat/module/question/controller/question_controller.dart';
 import '../module/home/controller/home_controller.dart';
 import '../module/quiz/controller/quiz_controller.dart';
 import '../utils/controller/option_controller.dart';
@@ -16,4 +17,5 @@ class Injection {
   static final authController = Get.put(AuthController());
   static final quizController = Get.put(QuizController());
   static final optionController = Get.put(OptionController());
+  static final questionController = Get.put(QuestionController());
 }

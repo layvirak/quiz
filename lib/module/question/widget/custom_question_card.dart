@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/widget/custom_show_detail_info.dart';
 import '../../../utils/widget/custom_status.dart';
-import '../model/question_model/question_model.dart';
+import '../model/quesstion_model/question_model.dart';
 
 class CustomQuestionCard extends StatelessWidget {
   final Function()? onTap;

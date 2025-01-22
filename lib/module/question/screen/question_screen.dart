@@ -3,18 +3,22 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lomhat/constrants/app_logo.dart';
 import 'package:lomhat/constrants/injection.dart';
-import 'package:lomhat/module/quiz/model/filter_question_mode/filter_question_mode.dart';
+import 'package:lomhat/module/question/model/filter_question_mode/filter_question_mode.dart';
 import 'package:lomhat/utils/widget/custom_empty_state.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 
-import '../../../../constrants/set_widget.dart';
-import '../../../../utils/widget/custom_loading_pagegination.dart';
-import '../../widget/custom_question_card.dart';
+import '../../../constrants/set_widget.dart';
+import '../../../utils/widget/custom_loading_pagegination.dart';
+import '../widget/custom_question_card.dart';
 import 'create_question/create_question_screen.dart';
 import 'filter_question_screen.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  final Widget? drawer;
+  const QuestionScreen({
+    super.key,
+    this.drawer,
+  });
 
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
@@ -24,9 +28,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Injection.quizController.filterQuestion.value = FilterQuestionMode();
-      Injection.quizController.questionLength.value = 0;
-      Injection.quizController.onGetQuestion(context);
+      Injection.questionController.filterQuestion.value = FilterQuestionMode();
+      Injection.questionController.questionLength.value = 0;
+      Injection.questionController.onGetQuestion(context);
     });
 
     super.initState();
@@ -48,7 +52,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       MaterialPageRoute(
                         builder: (context) => FilterQuestionScreen(
                           filterQuestionMode:
-                              Injection.quizController.filterQuestion.value,
+                              Injection.questionController.filterQuestion.value,
                         ),
                       ),
                     );
@@ -62,20 +66,21 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 const SizedBox(width: 20)
               ],
             ),
+            drawer: widget.drawer,
             body: NotificationListener<ScrollUpdateNotification>(
               onNotification: ((scrollNotification) {
                 if (scrollNotification.metrics.pixels ==
                     scrollNotification.metrics.maxScrollExtent) {
-                  Injection.quizController.onGetQuestion(context);
+                  Injection.questionController.onGetQuestion(context);
                 }
                 return false;
               }),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    if (Injection.quizController.questionList.isEmpty)
+                    if (Injection.questionController.questionList.isEmpty)
                       const CustomEmptyState(),
-                    ...Injection.quizController.questionList
+                    ...Injection.questionController.questionList
                         .asMap()
                         .entries
                         .map((e) {
@@ -85,15 +90,15 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           context
                               .push('/question/${e.value.name}')
                               .then((value) {
-                            Injection.quizController.questionList[e.key] =
-                                Injection.quizController.questionModel.value
+                            Injection.questionController.questionList[e.key] =
+                                Injection.questionController.questionModel.value
                                     .copyWith();
                           });
                         },
                       );
                     }),
-                    if (Injection.quizController.isLoading.value &&
-                        Injection.quizController.questionLength > 0)
+                    if (Injection.questionController.isLoading.value &&
+                        Injection.questionController.questionLength > 0)
                       Padding(
                         padding: SetWidget.paddingForm(),
                         child: const CustomLoadingPagegiantion(),
@@ -120,8 +125,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   size: 30,
                 )),
           ),
-          if (Injection.quizController.isLoading.value &&
-              Injection.quizController.questionLength.value == 0)
+          if (Injection.questionController.isLoading.value &&
+              Injection.questionController.questionLength.value == 0)
             const CustomLoading(),
         ],
       ),

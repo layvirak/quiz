@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lomhat/constrants/injection.dart';
-import 'package:lomhat/module/quiz/model/answers/answer_model.dart';
+import 'package:lomhat/module/question/model/answers/answer_model.dart';
 
 import '../../../utils/widget/custom_add_item.dart';
 import '../../../utils/widget/custom_divider.dart';
 import '../../../utils/widget/custom_textfield.dart';
-import '../model/question_model/question_model.dart';
+import '../../question/model/quesstion_model/question_model.dart';
 
 class CustomTableAnswer extends StatefulWidget {
   final String? name, customer, currency, doc;

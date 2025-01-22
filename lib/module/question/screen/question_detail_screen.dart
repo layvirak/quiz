@@ -25,7 +25,7 @@ class QuestionDetailScreen extends StatefulWidget {
 class _QuestionDetailScreenState extends State<QuestionDetailScreen> {
   @override
   void initState() {
-    Injection.quizController.onGetQuestionDetails(
+    Injection.questionController.onGetQuestionDetails(
       context,
       id: widget.name,
     );
@@ -76,7 +76,7 @@ class _QuestionDetailScreenState extends State<QuestionDetailScreen> {
                   child: CustomShowDetailInfo(
                     label: "Question",
                     value:
-                        Injection.quizController.questionModel.value.question,
+                        Injection.questionController.questionModel.value.question,
                   ),
                 ),
                 Padding(
@@ -84,7 +84,7 @@ class _QuestionDetailScreenState extends State<QuestionDetailScreen> {
                   child: CustomShowDetailInfo(
                     label: "Question Type",
                     value: Injection
-                        .quizController.questionModel.value.questionType,
+                        .questionController.questionModel.value.questionType,
                   ),
                 ),
                 Row(
@@ -97,7 +97,7 @@ class _QuestionDetailScreenState extends State<QuestionDetailScreen> {
                           isVertical: true,
                           label: "Class",
                           value: Injection
-                              .quizController.questionModel.value.classs,
+                              .questionController.questionModel.value.classs,
                         ),
                       ),
                     ),
@@ -116,7 +116,7 @@ class _QuestionDetailScreenState extends State<QuestionDetailScreen> {
                           ),
                           label: "Subject",
                           value: Injection
-                              .quizController.questionModel.value.subject,
+                              .questionController.questionModel.value.subject,
                         ),
                       ),
                     ),
@@ -135,7 +135,7 @@ class _QuestionDetailScreenState extends State<QuestionDetailScreen> {
                           ),
                           label: "Visibility",
                           value: Injection
-                              .quizController.questionModel.value.visibility,
+                              .questionController.questionModel.value.visibility,
                         ),
                       ),
                     ),
@@ -228,7 +228,7 @@ class _QuestionDetailScreenState extends State<QuestionDetailScreen> {
                           ],
                         ),
                       ),
-                      ...Injection.quizController.questionModel.value.answers!
+                      ...Injection.questionController.questionModel.value.answers!
                           .asMap()
                           .entries
                           .map(
@@ -311,7 +311,7 @@ class _QuestionDetailScreenState extends State<QuestionDetailScreen> {
               ],
             ),
           ),
-          if (Injection.quizController.isLoading.value) const CustomLoading(),
+          if (Injection.questionController.isLoading.value) const CustomLoading(),
         ],
       ),
     );

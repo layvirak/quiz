@@ -8,8 +8,8 @@ import 'package:lomhat/utils/widget/custom_dropdown.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 import 'package:lomhat/utils/widget/custom_textfield.dart';
 
-import '../../../../../constrants/injection.dart';
-import '../../../model/question_model/question_model.dart';
+import '../../../../constrants/injection.dart';
+import '../../model/quesstion_model/question_model.dart';
 import 'create_answer_screen.dart';
 
 class CreateQuestionScreen extends StatefulWidget {
@@ -33,7 +33,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
     Injection.optionController.onGetSubjectOption();
     Injection.optionController.onGetClassesOption();
     if (widget.name == null) {
-      Injection.quizController.questionModel.value = QuestionModel(answers: []);
+      Injection.questionController.questionModel.value = QuestionModel(answers: []);
     }
     super.initState();
   }
@@ -61,13 +61,13 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                             hintText: "Enter Question",
                             maxLine: 5,
                             initialValue: Injection
-                                .quizController.questionModel.value.question,
+                                .questionController.questionModel.value.question,
                             isValidate: Injection
-                                .quizController.questionModel.value.isQuestion,
+                                .questionController.questionModel.value.isQuestion,
                             validateText: "Please enter question",
                             onChange: (value) {
-                              Injection.quizController.questionModel.value =
-                                  Injection.quizController.questionModel.value
+                              Injection.questionController.questionModel.value =
+                                  Injection.questionController.questionModel.value
                                       .copyWith(
                                 question: value,
                                 isQuestion: false,
@@ -81,9 +81,9 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                             isRequire: true,
                             title: "Question Type",
                             hintText: "Enter Question Type",
-                            initValue: Injection.quizController.questionModel
+                            initValue: Injection.questionController.questionModel
                                 .value.questionType,
-                            isValidate: Injection.quizController.questionModel
+                            isValidate: Injection.questionController.questionModel
                                 .value.isQuestionType!,
                             validateText: "Please select question type",
                             item: const [
@@ -93,8 +93,8 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                               "Matching"
                             ],
                             onTap: (value) {
-                              Injection.quizController.questionModel.value =
-                                  Injection.quizController.questionModel.value
+                              Injection.questionController.questionModel.value =
+                                  Injection.questionController.questionModel.value
                                       .copyWith(
                                 questionType: value.value,
                                 isQuestionType: false,
@@ -116,13 +116,13 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                                 .map((value) => value.description!)
                                 .toList(),
                             isValidate: Injection
-                                .quizController.questionModel.value.isSubject!,
+                                .questionController.questionModel.value.isSubject!,
                             validateText: "Please select subject",
                             initValue: Injection
-                                .quizController.questionModel.value.subject,
+                                .questionController.questionModel.value.subject,
                             onTap: (value) {
-                              Injection.quizController.questionModel.value =
-                                  Injection.quizController.questionModel.value
+                              Injection.questionController.questionModel.value =
+                                  Injection.questionController.questionModel.value
                                       .copyWith(
                                 subject: value.value,
                                 isSubject: false,
@@ -137,7 +137,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                             title: "Class",
                             hintText: "Enter class",
                             initValue: Injection
-                                .quizController.questionModel.value.classs,
+                                .questionController.questionModel.value.classs,
                             item: Injection.optionController.classesGroupOpction
                                 .map((value) => value.name!)
                                 .toList(),
@@ -146,11 +146,11 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                                 .map((value) => value.description!)
                                 .toList(),
                             isValidate: Injection
-                                .quizController.questionModel.value.isClass!,
+                                .questionController.questionModel.value.isClass!,
                             validateText: "Please select class",
                             onTap: (value) {
-                              Injection.quizController.questionModel.value =
-                                  Injection.quizController.questionModel.value
+                              Injection.questionController.questionModel.value =
+                                  Injection.questionController.questionModel.value
                                       .copyWith(
                                 classs: value.value,
                                 isClass: false,
@@ -163,16 +163,16 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                           child: CustomDropDown(
                             isRequire: true,
                             initValue: Injection
-                                .quizController.questionModel.value.visibility,
+                                .questionController.questionModel.value.visibility,
                             title: "Visibility",
                             hintText: "Enter visibility",
                             item: const ["Public", "Private", "Protected"],
-                            isValidate: Injection.quizController.questionModel
+                            isValidate: Injection.questionController.questionModel
                                 .value.isVisibility!,
                             validateText: "Please select visibility",
                             onTap: (value) {
-                              Injection.quizController.questionModel.value =
-                                  Injection.quizController.questionModel.value
+                              Injection.questionController.questionModel.value =
+                                  Injection.questionController.questionModel.value
                                       .copyWith(
                                 visibility: value.value,
                                 isVisibility: false,
@@ -183,16 +183,16 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                         Padding(
                           padding: SetWidget.paddingForm(),
                           child: CustomCheckBox(
-                            isSelect: Injection.quizController.questionModel
+                            isSelect: Injection.questionController.questionModel
                                         .value.disabled ==
                                     1
                                 ? true
                                 : false,
                             onTap: () {
-                              Injection.quizController.questionModel.value =
-                                  Injection.quizController.questionModel.value
+                              Injection.questionController.questionModel.value =
+                                  Injection.questionController.questionModel.value
                                       .copyWith(
-                                disabled: Injection.quizController.questionModel
+                                disabled: Injection.questionController.questionModel
                                             .value.disabled ==
                                         1
                                     ? 0
@@ -230,44 +230,44 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                         child: CustomButton(
                           title: widget.name == null ? "Next" : "Save",
                           onPressed: () {
-                            Injection.quizController.questionModel.value =
-                                Injection.quizController.questionModel.value
+                            Injection.questionController.questionModel.value =
+                                Injection.questionController.questionModel.value
                                     .copyWith(
-                              isVisibility: Injection.quizController
+                              isVisibility: Injection.questionController
                                           .questionModel.value.visibility !=
                                       ''
                                   ? false
                                   : true,
-                              isQuestion: Injection.quizController.questionModel
+                              isQuestion: Injection.questionController.questionModel
                                           .value.question !=
                                       ''
                                   ? false
                                   : true,
-                              isClass: Injection.quizController.questionModel
+                              isClass: Injection.questionController.questionModel
                                           .value.classs !=
                                       ''
                                   ? false
                                   : true,
-                              isSubject: Injection.quizController.questionModel
+                              isSubject: Injection.questionController.questionModel
                                           .value.subject !=
                                       ''
                                   ? false
                                   : true,
-                              isQuestionType: Injection.quizController
+                              isQuestionType: Injection.questionController
                                           .questionModel.value.questionType !=
                                       ''
                                   ? false
                                   : true,
                             );
-                            if (!Injection.quizController.questionModel.value
+                            if (!Injection.questionController.questionModel.value
                                     .isQuestion! &&
-                                !Injection.quizController.questionModel.value
+                                !Injection.questionController.questionModel.value
                                     .isQuestionType! &&
-                                !Injection.quizController.questionModel.value
+                                !Injection.questionController.questionModel.value
                                     .isClass! &&
-                                !Injection.quizController.questionModel.value
+                                !Injection.questionController.questionModel.value
                                     .isSubject! &&
-                                !Injection.quizController.questionModel.value
+                                !Injection.questionController.questionModel.value
                                     .isVisibility!) {
                               if (widget.name == null) {
                                 Navigator.push(
@@ -278,7 +278,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                                   ),
                                 );
                               } else {
-                                Injection.quizController.onUpdateQuestionDetail(
+                                Injection.questionController.onUpdateQuestionDetail(
                                     context,
                                     name: widget.name);
                               }
@@ -292,7 +292,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
               ],
             ),
           ),
-          if (Injection.quizController.isLoadingCreate.value)
+          if (Injection.questionController.isLoadingCreate.value)
             const CustomLoading(),
         ],
       ),

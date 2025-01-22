@@ -6,14 +6,14 @@ import 'package:lomhat/utils/widget/custom_empty_state.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 import 'package:lomhat/utils/widget/custom_validate.dart';
 
-import '../../../../../constrants/injection.dart';
-import '../../../../../constrants/set_widget.dart';
-import '../../../../../utils/widget/custom_add_item.dart';
-import '../../../../../utils/widget/custom_alert_repoonse.dart';
-import '../../../../../utils/widget/custom_button.dart';
-import '../../../../../utils/widget/custom_divider.dart';
-import '../../../../../utils/widget/custom_textfield.dart';
-import '../../../model/answers/answer_model.dart';
+import '../../../../constrants/injection.dart';
+import '../../../../constrants/set_widget.dart';
+import '../../../../utils/widget/custom_add_item.dart';
+import '../../../../utils/widget/custom_alert_repoonse.dart';
+import '../../../../utils/widget/custom_button.dart';
+import '../../../../utils/widget/custom_divider.dart';
+import '../../../../utils/widget/custom_textfield.dart';
+import '../../model/answers/answer_model.dart';
 
 class CreateAnswerScreen extends StatefulWidget {
   final String? name;
@@ -51,36 +51,36 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                             title: "Add Question",
                             onPress: () {
                               final questions = <AnswerModel>[];
-                              if (Injection.quizController.questionModel.value
+                              if (Injection.questionController.questionModel.value
                                       .answers !=
                                   null) {
-                                questions.addAll(Injection.quizController
+                                questions.addAll(Injection.questionController
                                     .questionModel.value.answers!);
                               }
                               questions.add(
                                 AnswerModel(),
                               );
-                              Injection.quizController.questionModel.value =
-                                  Injection.quizController.questionModel.value
+                              Injection.questionController.questionModel.value =
+                                  Injection.questionController.questionModel.value
                                       .copyWith(answers: questions);
                             },
                           ),
                         ),
-                        if (Injection.quizController.questionModel.value
+                        if (Injection.questionController.questionModel.value
                                     .answers ==
                                 null ||
-                            Injection.quizController.questionModel.value
+                            Injection.questionController.questionModel.value
                                 .answers!.isEmpty)
                           const CustomEmptyState(),
                         if (Injection
-                                .quizController.questionModel.value.answers !=
+                                .questionController.questionModel.value.answers !=
                             null)
                           ...List.generate(
-                            Injection.quizController.questionModel.value
+                            Injection.questionController.questionModel.value
                                 .answers!.length,
                             (index) {
                               return Injection
-                                      .quizController.isReloadAnswer.value
+                                      .questionController.isReloadAnswer.value
                                   ? const SizedBox()
                                   : Column(
                                       children: [
@@ -105,7 +105,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                         child: CustomTextField(
                                                           isRequired: true,
                                                           initialValue: Injection
-                                                              .quizController
+                                                              .questionController
                                                               .questionModel
                                                               .value
                                                               .answers![index]
@@ -116,7 +116,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                             var setValue =
                                                                 <AnswerModel>[];
                                                             setValue.addAll(Injection
-                                                                .quizController
+                                                                .questionController
                                                                 .questionModel
                                                                 .value
                                                                 .answers!);
@@ -128,11 +128,11 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                               isValidate: false,
                                                             );
                                                             Injection
-                                                                    .quizController
+                                                                    .questionController
                                                                     .questionModel
                                                                     .value =
                                                                 Injection
-                                                                    .quizController
+                                                                    .questionController
                                                                     .questionModel
                                                                     .value
                                                                     .copyWith(
@@ -151,14 +151,14 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                         color: Colors.red,
                                                         onPressed: () {
                                                           Injection
-                                                              .quizController
+                                                              .questionController
                                                               .isReloadAnswer(
                                                                   true);
                                                           var setValue =
                                                               <AnswerModel>[];
                                                           setValue.addAll(
                                                               Injection
-                                                                  .quizController
+                                                                  .questionController
                                                                   .questionModel
                                                                   .value
                                                                   .answers!);
@@ -167,11 +167,11 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                               .removeAt(index);
 
                                                           Injection
-                                                                  .quizController
+                                                                  .questionController
                                                                   .questionModel
                                                                   .value =
                                                               Injection
-                                                                  .quizController
+                                                                  .questionController
                                                                   .questionModel
                                                                   .value
                                                                   .copyWith(
@@ -184,7 +184,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                                   milliseconds:
                                                                       200), () {
                                                             Injection
-                                                                .quizController
+                                                                .questionController
                                                                 .isReloadAnswer(
                                                                     false);
                                                           });
@@ -203,7 +203,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                           hintText:
                                                               'Match answer',
                                                           initialValue: Injection
-                                                              .quizController
+                                                              .questionController
                                                               .questionModel
                                                               .value
                                                               .answers![index]
@@ -212,7 +212,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                             var setValue =
                                                                 <AnswerModel>[];
                                                             setValue.addAll(Injection
-                                                                .quizController
+                                                                .questionController
                                                                 .questionModel
                                                                 .value
                                                                 .answers!);
@@ -224,11 +224,11 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                                     matchAnswer:
                                                                         v);
                                                             Injection
-                                                                    .quizController
+                                                                    .questionController
                                                                     .questionModel
                                                                     .value =
                                                                 Injection
-                                                                    .quizController
+                                                                    .questionController
                                                                     .questionModel
                                                                     .value
                                                                     .copyWith(
@@ -243,7 +243,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                       Expanded(
                                                         child: CustomTextField(
                                                           initialValue: Injection
-                                                              .quizController
+                                                              .questionController
                                                               .questionModel
                                                               .value
                                                               .answers![index]
@@ -255,7 +255,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                             var setValue =
                                                                 <AnswerModel>[];
                                                             setValue.addAll(Injection
-                                                                .quizController
+                                                                .questionController
                                                                 .questionModel
                                                                 .value
                                                                 .answers!);
@@ -267,11 +267,11 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                                     explanation:
                                                                         v);
                                                             Injection
-                                                                    .quizController
+                                                                    .questionController
                                                                     .questionModel
                                                                     .value =
                                                                 Injection
-                                                                    .quizController
+                                                                    .questionController
                                                                     .questionModel
                                                                     .value
                                                                     .copyWith(
@@ -285,7 +285,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                       const CustomVerticalDivider(),
                                                       IconButton(
                                                         icon: Icon(Injection
-                                                                    .quizController
+                                                                    .questionController
                                                                     .questionModel
                                                                     .value
                                                                     .answers![
@@ -301,7 +301,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                               <AnswerModel>[];
                                                           setValue.addAll(
                                                               Injection
-                                                                  .quizController
+                                                                  .questionController
                                                                   .questionModel
                                                                   .value
                                                                   .answers!);
@@ -316,11 +316,11 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                                                           ? 0
                                                                           : 1);
                                                           Injection
-                                                                  .quizController
+                                                                  .questionController
                                                                   .questionModel
                                                                   .value =
                                                               Injection
-                                                                  .quizController
+                                                                  .questionController
                                                                   .questionModel
                                                                   .value
                                                                   .copyWith(
@@ -338,7 +338,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                           ),
                                         ),
                                         if (Injection
-                                            .quizController
+                                            .questionController
                                             .questionModel
                                             .value
                                             .answers![index]
@@ -379,26 +379,26 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                         child: CustomButton(
                           title: widget.name == null ? "Create" : "Save",
                           onPressed: () {
-                            if (Injection.quizController.questionModel.value
+                            if (Injection.questionController.questionModel.value
                                 .answers!.isEmpty) {
                               CustomAlertResponse.showWarning(
                                   context: context,
                                   message: "Please add answer");
                             } else {
                               Injection
-                                  .quizController.questionModel.value.answers!
+                                  .questionController.questionModel.value.answers!
                                   .asMap()
                                   .entries
                                   .map((value) {
                                 if (value.value.answer == '') {
                                   var setValue = <AnswerModel>[];
-                                  setValue.addAll(Injection.quizController
+                                  setValue.addAll(Injection.questionController
                                       .questionModel.value.answers!);
                                   setValue[value.key] = setValue[value.key]
                                       .copyWith(isValidate: true);
-                                  Injection.quizController.questionModel.value =
+                                  Injection.questionController.questionModel.value =
                                       Injection
-                                          .quizController.questionModel.value
+                                          .questionController.questionModel.value
                                           .copyWith(
                                     isAnswers: true,
                                     answers: setValue,
@@ -406,13 +406,13 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
                                 }
                               }).toList();
                             }
-                            if (!Injection.quizController.questionModel.value
+                            if (!Injection.questionController.questionModel.value
                                 .isAnswers!) {
                               if (widget.name == null) {
-                                Injection.quizController
+                                Injection.questionController
                                     .onCreateQuestion(context);
                               } else {
-                                Injection.quizController.onUpdateAnswerDetail(
+                                Injection.questionController.onUpdateAnswerDetail(
                                     context,
                                     name: widget.name);
                               }
@@ -426,7 +426,7 @@ class _CreateAnswerScreenState extends State<CreateAnswerScreen> {
               ],
             ),
           ),
-          if (Injection.quizController.isLoadingCreate.value)
+          if (Injection.questionController.isLoadingCreate.value)
             const CustomLoading(),
         ],
       ),

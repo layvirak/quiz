@@ -9,15 +9,20 @@ import '../../../utils/widget/screen_responsive.dart';
 import '../widget/custom_my_quiz_card.dart';
 
 class QuizScreen extends StatelessWidget {
-  const QuizScreen({super.key});
+  final Widget? drawer;
+  const QuizScreen({
+    super.key,
+    this.drawer,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        // appBar: AppBar(
-        //   title: const Text("Quiz"),
-        // ),
+        appBar: AppBar(
+          title: const Text("Quiz"),
+        ),
+        drawer: drawer,
         body: Column(
           children: [
             if (Injection.quizController.quizList.isNotEmpty)

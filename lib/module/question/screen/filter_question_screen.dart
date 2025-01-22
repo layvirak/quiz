@@ -7,12 +7,12 @@ import 'package:lomhat/utils/widget/custom_dropdown.dart';
 import 'package:lomhat/utils/widget/custom_icon_back.dart';
 import 'package:lomhat/utils/widget/custom_textfield.dart';
 
-import '../../../../constrants/set_widget.dart';
-import '../../../../utils/helper/debouncer.dart';
-import '../../../../utils/widget/custom_button.dart';
-import '../../../../utils/widget/custom_divider.dart';
-import '../../../../utils/widget/custom_loading.dart';
-import '../../model/filter_question_mode/filter_question_mode.dart';
+import '../../../constrants/set_widget.dart';
+import '../../../utils/helper/debouncer.dart';
+import '../../../utils/widget/custom_button.dart';
+import '../../../utils/widget/custom_divider.dart';
+import '../../../utils/widget/custom_loading.dart';
+import '../model/filter_question_mode/filter_question_mode.dart';
 
 class FilterQuestionScreen extends StatefulWidget {
   final FilterQuestionMode? filterQuestionMode;
@@ -32,7 +32,7 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Injection.quizController.onGetFilterQuestion(context);
+      Injection.questionController.onGetFilterQuestion(context);
       Injection.optionController.onGetSubjectOption();
       Injection.optionController.onGetClassesOption();
     });
@@ -54,7 +54,7 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
             appBar: AppBar(
               leading: CustomIconBack(
                 onTap: () {
-                  Injection.quizController.filterQuestion.value =
+                  Injection.questionController.filterQuestion.value =
                       widget.filterQuestionMode!.copyWith();
                   Navigator.pop(context);
                 },
@@ -75,11 +75,11 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
                             controller: nameCon,
                             onChange: (value) {
                               deb.bounce(() {
-                                Injection.quizController.filterQuestion.value =
+                                Injection.questionController.filterQuestion.value =
                                     Injection
-                                        .quizController.filterQuestion.value
+                                        .questionController.filterQuestion.value
                                         .copyWith(name: value);
-                                Injection.quizController
+                                Injection.questionController
                                     .onGetFilterQuestion(context);
                               });
                             },
@@ -93,11 +93,11 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
                             controller: questionCon,
                             onChange: (value) {
                               deb.bounce(() {
-                                Injection.quizController.filterQuestion.value =
+                                Injection.questionController.filterQuestion.value =
                                     Injection
-                                        .quizController.filterQuestion.value
+                                        .questionController.filterQuestion.value
                                         .copyWith(question: value);
-                                Injection.quizController
+                                Injection.questionController
                                     .onGetFilterQuestion(context);
                               });
                             },
@@ -115,19 +115,19 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
                               .map((value) => value.description!)
                               .toList(),
                           initValue: Injection
-                              .quizController.filterQuestion.value.subject,
+                              .questionController.filterQuestion.value.subject,
                           onTap: (value) {
-                            Injection.quizController.filterQuestion.value =
-                                Injection.quizController.filterQuestion.value
+                            Injection.questionController.filterQuestion.value =
+                                Injection.questionController.filterQuestion.value
                                     .copyWith(subject: value.value);
-                            Injection.quizController
+                            Injection.questionController
                                 .onGetFilterQuestion(context);
                           },
                           onCancel: () {
-                            Injection.quizController.filterQuestion.value =
-                                Injection.quizController.filterQuestion.value
+                            Injection.questionController.filterQuestion.value =
+                                Injection.questionController.filterQuestion.value
                                     .copyWith(subject: '');
-                            Injection.quizController
+                            Injection.questionController
                                 .onGetFilterQuestion(context);
                           },
                         ),
@@ -143,19 +143,19 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
                               .map((value) => value.description!)
                               .toList(),
                           initValue: Injection
-                              .quizController.filterQuestion.value.classs,
+                              .questionController.filterQuestion.value.classs,
                           onTap: (value) {
-                            Injection.quizController.filterQuestion.value =
-                                Injection.quizController.filterQuestion.value
+                            Injection.questionController.filterQuestion.value =
+                                Injection.questionController.filterQuestion.value
                                     .copyWith(classs: value.value);
-                            Injection.quizController
+                            Injection.questionController
                                 .onGetFilterQuestion(context);
                           },
                           onCancel: () {
-                            Injection.quizController.filterQuestion.value =
-                                Injection.quizController.filterQuestion.value
+                            Injection.questionController.filterQuestion.value =
+                                Injection.questionController.filterQuestion.value
                                     .copyWith(classs: '');
-                            Injection.quizController
+                            Injection.questionController
                                 .onGetFilterQuestion(context);
                           },
                         ),
@@ -173,11 +173,11 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
                           isOutline: true,
                           title: "clear",
                           onPressed: () {
-                            Injection.quizController.filterQuestion.value =
+                            Injection.questionController.filterQuestion.value =
                                 FilterQuestionMode();
                             nameCon.clear();
                             questionCon.clear();
-                            Injection.quizController.onGetFilterQuestion(
+                            Injection.questionController.onGetFilterQuestion(
                               context,
                             );
                           },
@@ -187,10 +187,10 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
                       Expanded(
                         child: CustomButton(
                           title:
-                              "Apply (${Injection.quizController.filterQuestionList.length})",
+                              "Apply (${Injection.questionController.filterQuestionList.length})",
                           onPressed: () {
-                            Injection.quizController.questionLength.value = 0;
-                            Injection.quizController
+                            Injection.questionController.questionLength.value = 0;
+                            Injection.questionController
                                 .onGetQuestion(
                               context,
                             )
@@ -206,7 +206,7 @@ class _FilterQuestionScreenState extends State<FilterQuestionScreen> {
               ],
             ),
           ),
-          if (Injection.quizController.isLoading.value) const CustomLoading(),
+          if (Injection.questionController.isLoading.value) const CustomLoading(),
         ],
       ),
     );

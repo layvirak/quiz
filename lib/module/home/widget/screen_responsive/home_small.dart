@@ -1,18 +1,15 @@
-import 'package:lomhat/constrants/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
+import 'package:lomhat/module/dashboard/screen/dashboard_screen.dart';
+import 'package:lomhat/module/history/screen/history_screen.dart';
+import 'package:lomhat/module/home/widget/screen_responsive/custom_drawer.dart';
+import 'package:lomhat/module/my_quiz/screen/my_quiz_screen.dart';
+import 'package:lomhat/module/report/screen/report_screen.dart';
 
-import '../../../../constrants/api_service.dart';
-import '../../../../constrants/app_logo.dart';
 import '../../../../constrants/injection.dart';
-import '../../../../utils/widget/custom_avatar.dart';
-import '../../../quiz/screen/question/question_screen.dart';
-import '../../../quiz/screen/create_quiz/create_quiz_screen.dart';
+import '../../../../utils/widget/custom_loading.dart';
+import '../../../question/screen/question_screen.dart';
 import '../../../quiz/screen/quiz_screen.dart';
-import '../custom_item_drawer_bar.dart';
-import '../custom_sub_item_drawer_bar.dart';
 
 class HomeSmall extends StatelessWidget {
   const HomeSmall({super.key});
@@ -20,131 +17,42 @@ class HomeSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Scaffold(
-        appBar: AppBar(
-          actions: [
-            if (ApiService.target != "release")
-              IconButton(
-                onPressed: () {
-                  context.push('/notification');
-                },
-                icon: const Icon(Icons.notifications_active),
-                iconSize: 27,
-              ),
-            Padding(
-              padding: const EdgeInsets.only(
-                right: 15,
-              ),
-              child: CustomAvatar(
-                image:
-                    "${ApiService.baseUrl}${Injection.profileController.userModel.value.userImage}",
-                defaultProfile: true,
-                ontap: () {
-                  context.push('/profile');
-                },
-                borderRadius: 1000,
-                width: 40,
-                height: 40,
-              ),
-            ),
-          ],
-        ),
-        drawer: Drawer(
-          width: 250,
-          child: Column(
-            children: [
-              Image.asset(
-                AppLogo.horizontalAppLogoNoBackGround,
-                color: AppColor.primaryColor,
-                width: 150,
-                height: 150,
-              ),
-              CustomItemDrawerBar(
-                isSelect: Injection.homeController.selectIndex.value == 1,
-                icon: AppImage.quiz,
-                onTap: () {
-                  Injection.homeController.selectIndex.value = 1;
-                  Navigator.pop(context);
-                },
-                title: "My Quiz",
-              ),
-              CustomItemDrawerBar(
-                isSelect: Injection.homeController.selectIndex.value == 2,
-                icon: AppImage.quiz,
-                title: "New Quiz",
-                onTap: () {
-                  // Injection.homeController.selectIndex.value = 2;
-                  Navigator.pop(context);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CreateQuizScreen(),
-                      ));
-                },
-              ),
-              CustomItemDrawerBar(
-                isSelect: Injection.homeController.selectIndex.value == 3,
-                icon: AppImage.quiz,
-                title: "Edit",
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const QuestionScreen(),
-                      ));
-                  Injection.homeController.selectIndex.value = 3;
-                },
-              ),
-              CustomItemDrawerBar(
-                isSelect: Injection.homeController.selectIndex.value == 4,
-                icon: AppImage.quiz,
-                isHaveChild: true,
-                title: "Courses",
-                onTap: () {
-                  Injection.homeController.selectIndex.value = 4;
-                  Injection.homeController.selectSubIndex.value = 1;
-                },
-              ),
-              if (Injection.homeController.selectIndex.value == 4)
-                Column(
-                  children: [
-                    CustomSubItemDrawerBar(
-                      isSelect:
-                          Injection.homeController.selectSubIndex.value == 1,
-                      title: "User Portal",
-                      onTap: () {
-                        Injection.homeController.selectSubIndex.value = 1;
-                        Navigator.pop(context);
-                      },
-                    ),
-                    CustomSubItemDrawerBar(
-                      isSelect:
-                          Injection.homeController.selectSubIndex.value == 2,
-                      title: "Edit Courses",
-                      onTap: () {
-                        Injection.homeController.selectSubIndex.value = 2;
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
-              const Spacer(),
-              Text(
-                'Version ${ApiService.version}',
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontWeight: FontWeight.normal,
-                    ),
-              ),
-              const Gap(25),
-            ],
+      () => Stack(
+        children: [
+          Scaffold(
+            drawer: const CustomDrawer(),
+            body: (() {
+              if (Injection.homeController.selectIndex.value == 1) {
+                return const DashboardScreen(
+                  drawer: CustomDrawer(),
+                );
+              } else if (Injection.homeController.selectIndex.value == 2) {
+                return const MyQuizScreen(
+                  drawer: CustomDrawer(),
+                );
+              } else if (Injection.homeController.selectIndex.value == 3) {
+                return const QuizScreen(
+                  drawer: CustomDrawer(),
+                );
+              } else if (Injection.homeController.selectIndex.value == 4) {
+                return const QuestionScreen(
+                  drawer: CustomDrawer(),
+                );
+              } else if (Injection.homeController.selectIndex.value == 5) {
+                return const ReportScreen(
+                  drawer: CustomDrawer(),
+                );
+              } else if (Injection.homeController.selectIndex.value == 6) {
+                return const HistoryScreen(
+                  drawer: CustomDrawer(),
+                );
+              } else {
+                return Container();
+              }
+            }()),
           ),
-        ),
-        body: (() {
-          if (Injection.homeController.selectIndex.value == 1) {
-            return const QuizScreen();
-          }
-          return Container();
-        }()),
+          if (Injection.homeController.isLoading.value) const CustomLoading(),
+        ],
       ),
     );
   }
