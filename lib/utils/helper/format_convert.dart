@@ -242,6 +242,18 @@ class FormatConvert {
       return 'just now';
     }
   }
+
+  static String formatQty(double value) {
+    // Check if the number is an integer (i.e., has no decimal part)
+    if (value == value.toInt()) {
+      return value
+          .toInt()
+          .toString(); // Return the integer part if there's no decimal
+    } else {
+      return value
+          .toStringAsFixed(2); // Return the number with two decimal places
+    }
+  }
 }
 
 List countryCodeList = [

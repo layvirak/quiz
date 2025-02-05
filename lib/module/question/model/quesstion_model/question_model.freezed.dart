@@ -32,6 +32,8 @@ mixin _$QuestionModel {
   String? get modifiedBy => throw _privateConstructorUsedError;
   @JsonKey(name: 'docstatus')
   int? get docstatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'duration')
+  int? get duration => throw _privateConstructorUsedError;
   @JsonKey(name: 'idx')
   int? get idx => throw _privateConstructorUsedError;
   @JsonKey(name: 'question')
@@ -85,6 +87,7 @@ abstract class $QuestionModelCopyWith<$Res> {
       @JsonKey(name: 'modified') String? modified,
       @JsonKey(name: 'modified_by') String? modifiedBy,
       @JsonKey(name: 'docstatus') int? docstatus,
+      @JsonKey(name: 'duration') int? duration,
       @JsonKey(name: 'idx') int? idx,
       @JsonKey(name: 'question') String? question,
       @JsonKey(name: 'question_type') String? questionType,
@@ -126,6 +129,7 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
     Object? modified = freezed,
     Object? modifiedBy = freezed,
     Object? docstatus = freezed,
+    Object? duration = freezed,
     Object? idx = freezed,
     Object? question = freezed,
     Object? questionType = freezed,
@@ -169,6 +173,10 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
       docstatus: freezed == docstatus
           ? _value.docstatus
           : docstatus // ignore: cast_nullable_to_non_nullable
+              as int?,
+      duration: freezed == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
               as int?,
       idx: freezed == idx
           ? _value.idx
@@ -261,6 +269,7 @@ abstract class _$$QuestionModelImplCopyWith<$Res>
       @JsonKey(name: 'modified') String? modified,
       @JsonKey(name: 'modified_by') String? modifiedBy,
       @JsonKey(name: 'docstatus') int? docstatus,
+      @JsonKey(name: 'duration') int? duration,
       @JsonKey(name: 'idx') int? idx,
       @JsonKey(name: 'question') String? question,
       @JsonKey(name: 'question_type') String? questionType,
@@ -300,6 +309,7 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
     Object? modified = freezed,
     Object? modifiedBy = freezed,
     Object? docstatus = freezed,
+    Object? duration = freezed,
     Object? idx = freezed,
     Object? question = freezed,
     Object? questionType = freezed,
@@ -343,6 +353,10 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
       docstatus: freezed == docstatus
           ? _value.docstatus
           : docstatus // ignore: cast_nullable_to_non_nullable
+              as int?,
+      duration: freezed == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
               as int?,
       idx: freezed == idx
           ? _value.idx
@@ -427,8 +441,9 @@ class _$QuestionModelImpl implements _QuestionModel {
       @JsonKey(name: 'modified') this.modified = '',
       @JsonKey(name: 'modified_by') this.modifiedBy = '',
       @JsonKey(name: 'docstatus') this.docstatus = 0,
+      @JsonKey(name: 'duration') this.duration = 0,
       @JsonKey(name: 'idx') this.idx = 0,
-      @JsonKey(name: 'question') this.question = '',
+      @JsonKey(name: 'question') this.question,
       @JsonKey(name: 'question_type') this.questionType = '',
       @JsonKey(name: 'subject') this.subject = '',
       @JsonKey(name: 'class') this.classs = '',
@@ -468,6 +483,9 @@ class _$QuestionModelImpl implements _QuestionModel {
   @override
   @JsonKey(name: 'docstatus')
   final int? docstatus;
+  @override
+  @JsonKey(name: 'duration')
+  final int? duration;
   @override
   @JsonKey(name: 'idx')
   final int? idx;
@@ -532,7 +550,7 @@ class _$QuestionModelImpl implements _QuestionModel {
 
   @override
   String toString() {
-    return 'QuestionModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, idx: $idx, question: $question, questionType: $questionType, subject: $subject, classs: $classs, visibility: $visibility, numberOfUsed: $numberOfUsed, difficultyLevel: $difficultyLevel, disabled: $disabled, doctype: $doctype, answers: $answers, isQuestion: $isQuestion, isQuestionType: $isQuestionType, isSubject: $isSubject, isClass: $isClass, isVisibility: $isVisibility, isAnswers: $isAnswers, s: $s)';
+    return 'QuestionModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, duration: $duration, idx: $idx, question: $question, questionType: $questionType, subject: $subject, classs: $classs, visibility: $visibility, numberOfUsed: $numberOfUsed, difficultyLevel: $difficultyLevel, disabled: $disabled, doctype: $doctype, answers: $answers, isQuestion: $isQuestion, isQuestionType: $isQuestionType, isSubject: $isSubject, isClass: $isClass, isVisibility: $isVisibility, isAnswers: $isAnswers, s: $s)';
   }
 
   @override
@@ -550,6 +568,8 @@ class _$QuestionModelImpl implements _QuestionModel {
                 other.modifiedBy == modifiedBy) &&
             (identical(other.docstatus, docstatus) ||
                 other.docstatus == docstatus) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
             (identical(other.idx, idx) || other.idx == idx) &&
             (identical(other.question, question) ||
                 other.question == question) &&
@@ -591,6 +611,7 @@ class _$QuestionModelImpl implements _QuestionModel {
         modified,
         modifiedBy,
         docstatus,
+        duration,
         idx,
         question,
         questionType,
@@ -635,6 +656,7 @@ abstract class _QuestionModel implements QuestionModel {
       @JsonKey(name: 'modified') final String? modified,
       @JsonKey(name: 'modified_by') final String? modifiedBy,
       @JsonKey(name: 'docstatus') final int? docstatus,
+      @JsonKey(name: 'duration') final int? duration,
       @JsonKey(name: 'idx') final int? idx,
       @JsonKey(name: 'question') final String? question,
       @JsonKey(name: 'question_type') final String? questionType,
@@ -675,6 +697,9 @@ abstract class _QuestionModel implements QuestionModel {
   @override
   @JsonKey(name: 'docstatus')
   int? get docstatus;
+  @override
+  @JsonKey(name: 'duration')
+  int? get duration;
   @override
   @JsonKey(name: 'idx')
   int? get idx;

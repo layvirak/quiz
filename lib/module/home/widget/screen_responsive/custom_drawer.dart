@@ -5,6 +5,7 @@ import '../../../../constrants/api_service.dart';
 import '../../../../constrants/app_color.dart';
 import '../../../../constrants/app_logo.dart';
 import '../../../../constrants/injection.dart';
+import '../../../quiz/screen/create_quiz/quiz_screen.dart';
 import '../custom_item_drawer_bar.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -47,11 +48,11 @@ class CustomDrawer extends StatelessWidget {
             onTap: () {
               Injection.homeController.selectIndex.value = 3;
               Navigator.pop(context);
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => const CreateQuizScreen(),
-              //     ));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const QuizScreen(),
+                  ));
             },
           ),
           CustomItemDrawerBar(
