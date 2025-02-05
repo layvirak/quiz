@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lomhat/constrants/injection.dart';
-import 'package:lomhat/module/quiz/model/quiz_details/quiz_details_model.dart';
+import 'package:lomhat/module/quiz/model/new_quiz_model/quiz_details/quiz_details_model.dart';
 import 'package:lomhat/utils/widget/custom_add_item.dart';
 import 'package:lomhat/utils/widget/custom_button.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';

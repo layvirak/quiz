@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lomhat/module/quiz/screen/create_quiz/create_new_quiz.dart';
+import 'package:lomhat/module/quiz/screen/new_quiz/create_new_quiz.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 
 import '../../../../constrants/injection.dart';
-import '../../widget/custom_quiz_card.dart';
+import '../../widget/new_quiz/custom_quiz_card.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});

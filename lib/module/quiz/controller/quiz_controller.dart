@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lomhat/module/quiz/model/quiz_details/quiz_details_model.dart';
+import 'package:lomhat/module/quiz/model/new_quiz_model/quiz_details/quiz_details_model.dart';
 
 import '../../../constrants/api_service.dart';
 import '../../../constrants/injection.dart';
@@ -8,7 +8,7 @@ import '../../../utils/helper/api_base_helper.dart';
 import '../../../utils/widget/custom_alert_repoonse.dart';
 import '../../question/model/quesstion_model/question_model.dart';
 import '../model/create_question/create_question.dart';
-import '../model/quiz2/quiz2_model.dart';
+import '../model/new_quiz_model/quiz2/quiz2_model.dart';
 import '../model/quiz_model/quiz_model.dart';
 
 class QuizController extends GetxController {

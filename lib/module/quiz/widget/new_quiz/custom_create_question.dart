@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../constrants/injection.dart';
-import '../../../../utils/widget/custom_dropdown.dart';
-import '../../../../utils/widget/custom_textfield.dart';
+import '../../../../../constrants/injection.dart';
+import '../../../../../utils/widget/custom_dropdown.dart';
+import '../../../../../utils/widget/custom_textfield.dart';
 
 class CustomCreateQuestionCard extends StatelessWidget {
   final int index;
@@ -51,8 +51,6 @@ class CustomCreateQuestionCard extends StatelessWidget {
                                   .copyWith(
                             question: value.value,
                           );
-                          print(
-                              '-------------------${Injection.quizController.quizDetatilModel.value.questions}');
                         },
                       ),
                     ),
@@ -69,7 +67,7 @@ class CustomCreateQuestionCard extends StatelessWidget {
                   onChange: (value) {
                     Injection.quizController.questionDataList[index] = Injection
                         .quizController.questionDataList[index]
-                        .copyWith(duration: 22);
+                        .copyWith(duration: 0);
                   },
                 ),
               ],
