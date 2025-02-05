@@ -24,6 +24,9 @@ _$QuizDetailsModelImpl _$$QuizDetailsModelImplFromJson(
               ?.map((e) => QuestionModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      isQuizDuration: json['isQuizDuration'] as bool? ?? false,
+      isQuizTitle: json['isQuizTitle'] as bool? ?? false,
+      isQuestion: json['isQuestion'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$QuizDetailsModelImplToJson(
@@ -41,4 +44,7 @@ Map<String, dynamic> _$$QuizDetailsModelImplToJson(
       'is_random': instance.isRandom,
       'doctype': instance.doctype,
       'questions': instance.questions,
+      'isQuizDuration': instance.isQuizDuration,
+      'isQuizTitle': instance.isQuizTitle,
+      'isQuestion': instance.isQuestion,
     };

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lomhat/constrants/set_widget.dart';
-import 'package:lomhat/module/quiz/model/new_quiz_model/quiz2/quiz2_model.dart';
+import 'package:lomhat/module/new_quiz/model/quiz2/quiz2_model.dart';
 
 class CustomQuizCard extends StatelessWidget {
   const CustomQuizCard({

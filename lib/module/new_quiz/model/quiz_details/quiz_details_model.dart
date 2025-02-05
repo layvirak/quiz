@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../question/model/quesstion_model/question_model.dart';
+import '../../../question/model/quesstion_model/question_model.dart';
 
 part 'quiz_details_model.freezed.dart';
 part 'quiz_details_model.g.dart';
@@ -22,6 +22,9 @@ class QuizDetailsModel with _$QuizDetailsModel {
     @JsonKey(name: 'questions')
     @Default([])
     final List<QuestionModel>? questions,
+    @Default(false) final bool? isQuizDuration,
+    @Default(false) final bool? isQuizTitle,
+    @Default(false) final bool? isQuestion,
   }) = _QuizDetailsModel;
 
   factory QuizDetailsModel.fromJson(Map<String, dynamic> json) =>

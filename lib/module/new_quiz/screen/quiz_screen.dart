@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lomhat/module/quiz/screen/new_quiz/create_new_quiz.dart';
+import 'package:lomhat/module/new_quiz/screen/new_quiz/create_new_quiz.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 
-import '../../../../constrants/injection.dart';
-import '../../widget/new_quiz/custom_quiz_card.dart';
+import '../../../constrants/injection.dart';
+import '../widget/new_quiz/custom_quiz_card.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -17,7 +17,7 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Injection.quizController.onGetQuiz(context);
+      Injection.newQuizController.onGetQuiz(context);
       Injection.questionController.onGetQuestion(context);
     });
     super.initState();
@@ -35,7 +35,7 @@ class _QuizScreenState extends State<QuizScreen> {
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  ...Injection.quizController.quizNewList
+                  ...Injection.newQuizController.quizNewList
                       .asMap()
                       .entries
                       .map((e) {

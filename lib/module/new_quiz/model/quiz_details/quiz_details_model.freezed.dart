@@ -44,6 +44,9 @@ mixin _$QuizDetailsModel {
   String? get doctype => throw _privateConstructorUsedError;
   @JsonKey(name: 'questions')
   List<QuestionModel>? get questions => throw _privateConstructorUsedError;
+  bool? get isQuizDuration => throw _privateConstructorUsedError;
+  bool? get isQuizTitle => throw _privateConstructorUsedError;
+  bool? get isQuestion => throw _privateConstructorUsedError;
 
   /// Serializes this QuizDetailsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,7 +76,10 @@ abstract class $QuizDetailsModelCopyWith<$Res> {
       @JsonKey(name: 'quiz_duration') int? quizDuration,
       @JsonKey(name: 'is_random') int? isRandom,
       @JsonKey(name: 'doctype') String? doctype,
-      @JsonKey(name: 'questions') List<QuestionModel>? questions});
+      @JsonKey(name: 'questions') List<QuestionModel>? questions,
+      bool? isQuizDuration,
+      bool? isQuizTitle,
+      bool? isQuestion});
 }
 
 /// @nodoc
@@ -103,6 +109,9 @@ class _$QuizDetailsModelCopyWithImpl<$Res, $Val extends QuizDetailsModel>
     Object? isRandom = freezed,
     Object? doctype = freezed,
     Object? questions = freezed,
+    Object? isQuizDuration = freezed,
+    Object? isQuizTitle = freezed,
+    Object? isQuestion = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -153,6 +162,18 @@ class _$QuizDetailsModelCopyWithImpl<$Res, $Val extends QuizDetailsModel>
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<QuestionModel>?,
+      isQuizDuration: freezed == isQuizDuration
+          ? _value.isQuizDuration
+          : isQuizDuration // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isQuizTitle: freezed == isQuizTitle
+          ? _value.isQuizTitle
+          : isQuizTitle // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isQuestion: freezed == isQuestion
+          ? _value.isQuestion
+          : isQuestion // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -177,7 +198,10 @@ abstract class _$$QuizDetailsModelImplCopyWith<$Res>
       @JsonKey(name: 'quiz_duration') int? quizDuration,
       @JsonKey(name: 'is_random') int? isRandom,
       @JsonKey(name: 'doctype') String? doctype,
-      @JsonKey(name: 'questions') List<QuestionModel>? questions});
+      @JsonKey(name: 'questions') List<QuestionModel>? questions,
+      bool? isQuizDuration,
+      bool? isQuizTitle,
+      bool? isQuestion});
 }
 
 /// @nodoc
@@ -205,6 +229,9 @@ class __$$QuizDetailsModelImplCopyWithImpl<$Res>
     Object? isRandom = freezed,
     Object? doctype = freezed,
     Object? questions = freezed,
+    Object? isQuizDuration = freezed,
+    Object? isQuizTitle = freezed,
+    Object? isQuestion = freezed,
   }) {
     return _then(_$QuizDetailsModelImpl(
       name: freezed == name
@@ -255,6 +282,18 @@ class __$$QuizDetailsModelImplCopyWithImpl<$Res>
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<QuestionModel>?,
+      isQuizDuration: freezed == isQuizDuration
+          ? _value.isQuizDuration
+          : isQuizDuration // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isQuizTitle: freezed == isQuizTitle
+          ? _value.isQuizTitle
+          : isQuizTitle // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isQuestion: freezed == isQuestion
+          ? _value.isQuestion
+          : isQuestion // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -275,7 +314,10 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
       @JsonKey(name: 'is_random') this.isRandom,
       @JsonKey(name: 'doctype') this.doctype,
       @JsonKey(name: 'questions')
-      final List<QuestionModel>? questions = const []})
+      final List<QuestionModel>? questions = const [],
+      this.isQuizDuration = false,
+      this.isQuizTitle = false,
+      this.isQuestion = false})
       : _questions = questions;
 
   factory _$QuizDetailsModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -326,8 +368,18 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
   }
 
   @override
+  @JsonKey()
+  final bool? isQuizDuration;
+  @override
+  @JsonKey()
+  final bool? isQuizTitle;
+  @override
+  @JsonKey()
+  final bool? isQuestion;
+
+  @override
   String toString() {
-    return 'QuizDetailsModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, idx: $idx, quizTitle: $quizTitle, quizDuration: $quizDuration, isRandom: $isRandom, doctype: $doctype, questions: $questions)';
+    return 'QuizDetailsModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, idx: $idx, quizTitle: $quizTitle, quizDuration: $quizDuration, isRandom: $isRandom, doctype: $doctype, questions: $questions, isQuizDuration: $isQuizDuration, isQuizTitle: $isQuizTitle, isQuestion: $isQuestion)';
   }
 
   @override
@@ -354,7 +406,13 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
                 other.isRandom == isRandom) &&
             (identical(other.doctype, doctype) || other.doctype == doctype) &&
             const DeepCollectionEquality()
-                .equals(other._questions, _questions));
+                .equals(other._questions, _questions) &&
+            (identical(other.isQuizDuration, isQuizDuration) ||
+                other.isQuizDuration == isQuizDuration) &&
+            (identical(other.isQuizTitle, isQuizTitle) ||
+                other.isQuizTitle == isQuizTitle) &&
+            (identical(other.isQuestion, isQuestion) ||
+                other.isQuestion == isQuestion));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -372,7 +430,10 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
       quizDuration,
       isRandom,
       doctype,
-      const DeepCollectionEquality().hash(_questions));
+      const DeepCollectionEquality().hash(_questions),
+      isQuizDuration,
+      isQuizTitle,
+      isQuestion);
 
   /// Create a copy of QuizDetailsModel
   /// with the given fields replaced by the non-null parameter values.
@@ -393,19 +454,21 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
 
 abstract class _QuizDetailsModel implements QuizDetailsModel {
   factory _QuizDetailsModel(
-          {@JsonKey(name: 'name') final String? name,
-          @JsonKey(name: 'owner') final String? owner,
-          @JsonKey(name: 'creation') final String? creation,
-          @JsonKey(name: 'modified') final String? modified,
-          @JsonKey(name: 'modified_by') final String? modifiedBy,
-          @JsonKey(name: 'docstatus') final int? docstatus,
-          @JsonKey(name: 'idx') final int? idx,
-          @JsonKey(name: 'quiz_title') final String? quizTitle,
-          @JsonKey(name: 'quiz_duration') final int? quizDuration,
-          @JsonKey(name: 'is_random') final int? isRandom,
-          @JsonKey(name: 'doctype') final String? doctype,
-          @JsonKey(name: 'questions') final List<QuestionModel>? questions}) =
-      _$QuizDetailsModelImpl;
+      {@JsonKey(name: 'name') final String? name,
+      @JsonKey(name: 'owner') final String? owner,
+      @JsonKey(name: 'creation') final String? creation,
+      @JsonKey(name: 'modified') final String? modified,
+      @JsonKey(name: 'modified_by') final String? modifiedBy,
+      @JsonKey(name: 'docstatus') final int? docstatus,
+      @JsonKey(name: 'idx') final int? idx,
+      @JsonKey(name: 'quiz_title') final String? quizTitle,
+      @JsonKey(name: 'quiz_duration') final int? quizDuration,
+      @JsonKey(name: 'is_random') final int? isRandom,
+      @JsonKey(name: 'doctype') final String? doctype,
+      @JsonKey(name: 'questions') final List<QuestionModel>? questions,
+      final bool? isQuizDuration,
+      final bool? isQuizTitle,
+      final bool? isQuestion}) = _$QuizDetailsModelImpl;
 
   factory _QuizDetailsModel.fromJson(Map<String, dynamic> json) =
       _$QuizDetailsModelImpl.fromJson;
@@ -446,6 +509,12 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
   @override
   @JsonKey(name: 'questions')
   List<QuestionModel>? get questions;
+  @override
+  bool? get isQuizDuration;
+  @override
+  bool? get isQuizTitle;
+  @override
+  bool? get isQuestion;
 
   /// Create a copy of QuizDetailsModel
   /// with the given fields replaced by the non-null parameter values.

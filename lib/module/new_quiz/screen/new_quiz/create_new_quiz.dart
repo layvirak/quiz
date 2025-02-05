@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lomhat/constrants/injection.dart';
-import 'package:lomhat/module/quiz/model/new_quiz_model/quiz_details/quiz_details_model.dart';
+import 'package:lomhat/module/new_quiz/model/quiz_details/quiz_details_model.dart';
 import 'package:lomhat/utils/widget/custom_add_item.dart';
 import 'package:lomhat/utils/widget/custom_button.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
@@ -25,12 +25,14 @@ var duration = TextEditingController(text: '0');
 class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
   @override
   void initState() {
-    Injection.quizController.quizDetatilModel.value = QuizDetailsModel();
-    Injection.quizController.questionDataList.value = <CreateQuestionModel>[];
+    Injection.newQuizController.quizDetatilModel.value = QuizDetailsModel();
+    Injection.newQuizController.questionDataList.value =
+        <CreateQuestionModel>[];
     quizTitle.text =
-        Injection.quizController.quizDetatilModel.value.quizTitle ?? "";
-    duration.text =
-        Injection.quizController.quizDetatilModel.value.quizDuration.toString();
+        Injection.newQuizController.quizDetatilModel.value.quizTitle ?? "";
+    duration.text = Injection
+        .newQuizController.quizDetatilModel.value.quizDuration
+        .toString();
     super.initState();
   }
 
@@ -56,19 +58,17 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                             title: "Quiz Title",
                             isRequired: true,
                             hintText: "Enter quiz title",
-                            isValidate:
-                                Injection.quizController.quiz.value.isQuizTitle,
+                            isValidate: Injection.newQuizController
+                                .quizDetatilModel.value.isQuizTitle,
                             validateText: "Please input the quiz title",
                             controller: quizTitle,
                             onChange: (value) {
-                              Injection.quizController.quizDetatilModel.value =
+                              Injection.newQuizController.quizDetatilModel
+                                      .value =
                                   Injection
-                                      .quizController.quizDetatilModel.value
+                                      .newQuizController.quizDetatilModel.value
                                       .copyWith(
-                                quizTitle: value,
-                              );
-                              print(
-                                  "title -----------------_${Injection.quizController.quizDetatilModel.value.quizTitle}");
+                                          quizTitle: value, isQuizTitle: false);
                             },
                           ),
                         ),
@@ -79,26 +79,50 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                             title: "Quiz Duration",
                             isRequired: true,
                             hintText: "Enter quiz duration",
-                            isValidate:
-                                Injection.quizController.quiz.value.isQuizTitle,
+                            isValidate: Injection.newQuizController
+                                .quizDetatilModel.value.isQuizDuration,
                             validateText: "Please input the quiz duration",
                             controller: duration,
                             onChange: (value) {
                               var duration =
                                   value == "" ? 0 : double.parse(value);
-                              Injection.quizController.quizDetatilModel.value =
+                              Injection.newQuizController.quizDetatilModel
+                                      .value =
                                   Injection
-                                      .quizController.quizDetatilModel.value
-                                      .copyWith(quizDuration: duration.toInt());
+                                      .newQuizController.quizDetatilModel.value
+                                      .copyWith(
+                                          quizDuration: duration.toInt(),
+                                          isQuizDuration: false);
                             },
                           ),
                         ),
                         Padding(
                           padding: SetWidget.paddingForm(),
-                          child: const CustomCheckBox(
-                              isSelect: false, text: 'Random Questions'),
+                          child: CustomCheckBox(
+                            isSelect: Injection.newQuizController
+                                    .quizDetatilModel.value.isRandom ==
+                                1,
+                            text: 'Random Questions',
+                            onTap: () {
+                              Injection.newQuizController.quizDetatilModel
+                                      .value =
+                                  Injection
+                                      .newQuizController.quizDetatilModel.value
+                                      .copyWith(
+                                          isRandom: Injection
+                                                      .newQuizController
+                                                      .quizDetatilModel
+                                                      .value
+                                                      .isRandom ==
+                                                  1
+                                              ? 0
+                                              : 1);
+                            },
+                          ),
                         ),
-                        ...Injection.quizController.questionDataList
+
+                        /**********************Add Question */
+                        ...Injection.newQuizController.questionDataList
                             .asMap()
                             .entries
                             .map((item) {
@@ -129,7 +153,7 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                                         hintText: "Enter question",
                                         isRequire: true,
                                         initValue: Injection
-                                            .quizController
+                                            .newQuizController
                                             .questionDataList[item.key]
                                             .question,
                                         item: Injection
@@ -143,15 +167,9 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                                           return e.question!;
                                         }).toList(),
                                         onTap: (value) {
-                                          // Injection.quizController
-                                          //         .quizDetatilModel.value =
-                                          //     Injection.quizController
-                                          //         .quizDetatilModel.value
-                                          //         .copyWith(
-                                          //             quizTitle: value.value);
-                                          Injection.quizController
+                                          Injection.newQuizController
                                                   .questionDataList[item.key] =
-                                              Injection.quizController
+                                              Injection.newQuizController
                                                   .questionDataList[item.key]
                                                   .copyWith(
                                             question: value.value,
@@ -168,15 +186,15 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                                   title: "Duration",
                                   hintText: "Select duration",
                                   isRequired: true,
-                                  initialValue: Injection.quizController
+                                  initialValue: Injection.newQuizController
                                       .questionDataList[item.key].duration
                                       .toString(),
                                   onChange: (value) {
                                     var duration =
                                         value == "" ? 0 : double.parse(value);
-                                    Injection.quizController
+                                    Injection.newQuizController
                                             .questionDataList[item.key] =
-                                        Injection.quizController
+                                        Injection.newQuizController
                                             .questionDataList[item.key]
                                             .copyWith(
                                                 duration: duration.toInt());
@@ -185,9 +203,6 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                               ],
                             ),
                           );
-                          // CustomCreateQuestionCard(
-                          //   index: item.key,
-                          // );
                         }).toList(),
                         Padding(
                           padding: const EdgeInsets.only(
@@ -195,7 +210,7 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                           child: CustomAddItem(
                             title: "Add Question",
                             onPress: () {
-                              Injection.quizController.questionDataList.add(
+                              Injection.newQuizController.questionDataList.add(
                                 CreateQuestionModel(question: ''),
                               );
                             },
@@ -213,7 +228,7 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                         child: CustomButton(
                           isOutline: true,
                           onPressed: () {
-                            Injection.quizController.quizDetatilModel.value =
+                            Injection.newQuizController.quizDetatilModel.value =
                                 QuizDetailsModel();
                           },
                           title: "Clear",
@@ -225,7 +240,39 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                       Expanded(
                         child: CustomButton(
                           onPressed: () {
-                            Injection.quizController.onCreateQuiz(context);
+                            if (Injection.newQuizController.quizDetatilModel
+                                        .value.quizTitle ==
+                                    '' ||
+                                Injection.newQuizController.quizDetatilModel
+                                        .value.quizTitle ==
+                                    null) {
+                              Injection.newQuizController.quizDetatilModel
+                                      .value =
+                                  Injection
+                                      .newQuizController.quizDetatilModel.value
+                                      .copyWith(isQuizTitle: true);
+                            }
+                            if (Injection.newQuizController.quizDetatilModel
+                                        .value.quizDuration
+                                        .toString() ==
+                                    '' ||
+                                Injection.newQuizController.quizDetatilModel
+                                        .value.quizDuration ==
+                                    null) {
+                              Injection.newQuizController.quizDetatilModel
+                                      .value =
+                                  Injection
+                                      .newQuizController.quizDetatilModel.value
+                                      .copyWith(isQuizDuration: true);
+                            }
+
+                            //*************submit*/
+                            if (!Injection.newQuizController.quizDetatilModel
+                                    .value.isQuizTitle! &&
+                                !Injection.newQuizController.quizDetatilModel
+                                    .value.isQuizDuration!) {
+                              Injection.newQuizController.onCreateQuiz(context);
+                            }
                           },
                           title: "Submit",
                         ),
@@ -236,7 +283,7 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
               ],
             ),
           ),
-          if (Injection.quizController.isLoadingCreate.value)
+          if (Injection.newQuizController.isLoadingCreate.value)
             const CustomLoading(),
         ],
       ),
