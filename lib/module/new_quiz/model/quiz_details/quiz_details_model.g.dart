@@ -21,7 +21,8 @@ _$QuizDetailsModelImpl _$$QuizDetailsModelImplFromJson(
       isRandom: (json['is_random'] as num?)?.toInt(),
       doctype: json['doctype'] as String?,
       questions: (json['questions'] as List<dynamic>?)
-              ?.map((e) => QuestionModel.fromJson(e as Map<String, dynamic>))
+              ?.map((e) =>
+                  CreateQuestionModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       isQuizDuration: json['isQuizDuration'] as bool? ?? false,

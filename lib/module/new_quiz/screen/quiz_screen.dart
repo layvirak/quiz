@@ -5,6 +5,7 @@ import 'package:lomhat/utils/widget/custom_loading.dart';
 
 import '../../../constrants/injection.dart';
 import '../widget/new_quiz/custom_quiz_card.dart';
+import 'quiz_detail_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -42,6 +43,14 @@ class _QuizScreenState extends State<QuizScreen> {
                       .map((e) {
                     return CustomQuizCard(
                       quizModel: e.value,
+                      ontap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => QuizDetailScreen(
+                                      id: e.value.name!,
+                                    )));
+                      },
                     );
                   })
                 ],

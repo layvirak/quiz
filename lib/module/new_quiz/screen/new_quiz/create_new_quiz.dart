@@ -14,7 +14,9 @@ import '../../model/create_question/create_question.dart';
 
 class CreateNewQuizScreen extends StatefulWidget {
   final String? id;
-  const CreateNewQuizScreen({super.key, this.id});
+  final List<CreateQuestionModel>? updateQuestionList;
+
+  const CreateNewQuizScreen({super.key, this.id = '', this.updateQuestionList});
 
   @override
   State<CreateNewQuizScreen> createState() => _CreateNewQuizScreenState();
@@ -26,9 +28,16 @@ var duration = TextEditingController(text: '0');
 class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
   @override
   void initState() {
-    Injection.newQuizController.quizDetatilModel.value = QuizDetailsModel();
-    Injection.newQuizController.questionDataList.value =
-        <CreateQuestionModel>[];
+    if (widget.id == '' || widget.id == null) {
+      Injection.newQuizController.quizDetatilModel.value = QuizDetailsModel();
+      Injection.newQuizController.questionDataList.value =
+          <CreateQuestionModel>[];
+    }
+    if (widget.updateQuestionList != [] && widget.updateQuestionList != null) {
+      Injection.newQuizController.questionDataList.value = [];
+      Injection.newQuizController.questionDataList
+          .addAll(widget.updateQuestionList!);
+    }
     quizTitle.text =
         Injection.newQuizController.quizDetatilModel.value.quizTitle ?? "";
     duration.text = Injection
@@ -44,7 +53,9 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
         children: [
           Scaffold(
             appBar: AppBar(
-              title: const Text("Create Quiz"),
+              title: Text(widget.id == '' || widget.id == null
+                  ? "Create Quiz"
+                  : "Update Quiz"),
             ),
             body: Column(
               children: [
@@ -229,8 +240,6 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                         child: CustomButton(
                           isOutline: true,
                           onPressed: () {
-                            Injection.newQuizController.quizDetatilModel.value =
-                                QuizDetailsModel();
                             Navigator.pop(context);
                           },
                           title: "Back",
@@ -282,7 +291,9 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                               }
                             }
                           },
-                          title: "Submit",
+                          title: widget.id == '' || widget.id == null
+                              ? "Submit"
+                              : "Update",
                         ),
                       ),
                     ],
