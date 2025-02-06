@@ -13,7 +13,8 @@ import '../../../../utils/widget/custom_dropdown.dart';
 import '../../model/create_question/create_question.dart';
 
 class CreateNewQuizScreen extends StatefulWidget {
-  const CreateNewQuizScreen({super.key});
+  final String? id;
+  const CreateNewQuizScreen({super.key, this.id});
 
   @override
   State<CreateNewQuizScreen> createState() => _CreateNewQuizScreenState();
@@ -230,8 +231,9 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                           onPressed: () {
                             Injection.newQuizController.quizDetatilModel.value =
                                 QuizDetailsModel();
+                            Navigator.pop(context);
                           },
-                          title: "Clear",
+                          title: "Back",
                         ),
                       ),
                       const SizedBox(
@@ -266,12 +268,18 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                                       .copyWith(isQuizDuration: true);
                             }
 
-                            //*************submit*/
+                            //*************submit */
                             if (!Injection.newQuizController.quizDetatilModel
                                     .value.isQuizTitle! &&
                                 !Injection.newQuizController.quizDetatilModel
                                     .value.isQuizDuration!) {
-                              Injection.newQuizController.onCreateQuiz(context);
+                              if (widget.id == '' || widget.id == null) {
+                                Injection.newQuizController
+                                    .onCreateQuiz(context);
+                              } else {
+                                Injection.newQuizController
+                                    .onUpdateQuiz(context, widget.id!);
+                              }
                             }
                           },
                           title: "Submit",
@@ -283,7 +291,8 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
               ],
             ),
           ),
-          if (Injection.newQuizController.isLoadingCreate.value)
+          if (Injection.newQuizController.isLoadingCreate.value ||
+              Injection.newQuizController.isLoadingCreate.value)
             const CustomLoading(),
         ],
       ),

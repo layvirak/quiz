@@ -21,6 +21,14 @@ class NewQuizController extends GetxController {
   var isLoading = false.obs;
   var question = QuestionModel(answers: []).obs;
 
+  //****************************************************************************
+  //Description : This function is used to get the get quiz
+  //Required Field : context
+  //
+  //Response Detail :
+  //Feb 05,2025 Nith: Created
+  //****************************************************************************
+  var isLoadingClearVar = false.obs;
   var quizNewList = <NewQuizModel>[].obs;
   Future<void> onGetQuiz(BuildContext context) async {
     quizNewList.value = [];
@@ -55,6 +63,13 @@ class NewQuizController extends GetxController {
     Injection.homeController.isLoading(false);
   }
 
+  //****************************************************************************
+  //Description : This function is used to get the create quiz
+  //Required Field : context
+  //
+  //Response Detail :
+  //Feb 05,2025 Nith: Created
+  //****************************************************************************
   var quizDetatilModel = QuizDetailsModel().obs;
   var isLoadingCreate = false.obs;
   var questionDataList = <CreateQuestionModel>[].obs;
@@ -93,5 +108,82 @@ class NewQuizController extends GetxController {
       }
     }
     isLoadingCreate(false);
+  }
+
+  //****************************************************************************
+  //Description : This function is used to get the updat quiz
+  //Required Field : context
+  //
+  //Response Detail :
+  //Feb 05,2025 Nith: Created
+  //****************************************************************************
+  Future<void> onUpdateQuiz(BuildContext context, String id) async {
+    isLoadingCreate(true);
+    try {
+      await apiBaseHelper.onNetworkRequesting(
+          url: '${ApiService.resource}Quiz/$id',
+          methode: METHODE.update,
+          isAuthorize: true,
+          body: {
+            'quiz_title': quizDetatilModel.value.quizTitle,
+            'quiz_duration': quizDetatilModel.value.quizDuration,
+            'questions': questionDataList
+          }).then((response) async {
+        await onGetQuizDetails(context, id).then((_) {
+          Navigator.pop(context);
+        });
+        debugPrint("------------- update quiz");
+        isLoadingCreate(false);
+        if (ApiService.target != "release") {
+          debugPrint("create quiz =>200   ");
+        }
+      }).onError((ErrorModel error, stackTrace) {
+        isLoadingCreate(false);
+        debugPrint("error create quiz =>${error.bodyString}");
+        CustomAlertResponse.showAlertMessage(context: context, error: error);
+      });
+    } catch (e) {
+      if (ApiService.target != "release") {
+        debugPrint("Catch=======>$e");
+      }
+    }
+    isLoadingCreate(false);
+  }
+  //****************************************************************************
+  //Description : This function is used to get the detail quiz
+  //Required Field : context
+  //
+  //Response Detail :
+  //Feb 05,2025 Nith: Created
+  //****************************************************************************
+
+  var isLoadingDetails = false.obs;
+  Future<void> onGetQuizDetails(BuildContext? context, String? id) async {
+    isLoadingDetails(true);
+    try {
+      await apiBaseHelper
+          .onNetworkRequesting(
+        url: '${ApiService.resource}Quiz/$id',
+        methode: METHODE.get,
+        isAuthorize: true,
+      )
+          .then((res) {
+        quizDetatilModel.value = QuizDetailsModel.fromJson(res['data']);
+        if (ApiService.target != 'Release') {
+          debugPrint('Get quiz Details: ------------------>> 200');
+        }
+        isLoadingDetails(false);
+      }).onError((ErrorModel error, stackTrace) {
+        if (ApiService.target != 'Release') {
+          isLoadingDetails(false);
+        }
+      });
+    } catch (e) {
+      isLoadingDetails(false);
+      if (ApiService.target != 'Release') {
+        debugPrint("catch get quiz details: ----------------->> $e");
+      }
+    }
+    isLoadingDetails(false);
   }
 }

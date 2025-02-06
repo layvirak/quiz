@@ -19,6 +19,7 @@ class _QuizScreenState extends State<QuizScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Injection.newQuizController.onGetQuiz(context);
       Injection.questionController.onGetQuestion(context);
+      Injection.newQuizController.onGetQuizDetails(context, '2502QZ-0000046');
     });
     super.initState();
   }
