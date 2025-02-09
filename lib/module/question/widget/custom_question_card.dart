@@ -16,7 +16,7 @@ class CustomQuestionCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
         padding: const EdgeInsets.all(10),
-        // height: 100,
+        
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(10),

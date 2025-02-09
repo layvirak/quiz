@@ -17,7 +17,7 @@ class QuestionController extends GetxController {
 
   var questionList = <QuestionModel>[].obs;
   Future<void> onGetQuestion(BuildContext context) async {
-    filterQuestion.value = FilterQuestionMode();
+   
     Injection.homeController.isLoading(true);
 
     try {

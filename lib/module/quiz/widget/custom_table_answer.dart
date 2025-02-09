@@ -11,7 +11,7 @@ import '../../question/model/quesstion_model/question_model.dart';
 class CustomTableAnswer extends StatefulWidget {
   final String? name, customer, currency, doc;
 
-  // final List<ItemModel>? upDateItemList;
+  // final List<ItemModel>? upDateItemList; 
   final GestureTapCallback? onTap;
   final bool? isPaid;
   const CustomTableAnswer(

@@ -9,7 +9,7 @@ import 'package:lomhat/module/report/screen/report_screen.dart';
 import '../../../../constrants/injection.dart';
 import '../../../../utils/widget/custom_loading.dart';
 import '../../../question/screen/question_screen.dart';
-import '../../../quiz/screen/quiz_screen.dart';
+import '../../../quiz_2/screen/quiz_screen.dart';
 
 class HomeSmall extends StatelessWidget {
   const HomeSmall({super.key});
