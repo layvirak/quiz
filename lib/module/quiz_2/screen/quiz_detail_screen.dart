@@ -6,8 +6,8 @@ import 'package:lomhat/constrants/set_widget.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 
 import '../../../utils/widget/custom_title.dart';
-import '../widget/new_quiz/custom_quiz_detail.dart';
-import 'new_quiz/create_new_quiz.dart';
+import '../../new_quiz/widget/new_quiz/custom_quiz_detail.dart';
+import 'create_new_quiz.dart';
 
 class QuizDetailScreen extends StatefulWidget {
   final String id;
@@ -20,7 +20,7 @@ class QuizDetailScreen extends StatefulWidget {
 class _QuizDetailScreenState extends State<QuizDetailScreen> {
   @override
   void initState() {
-    Injection.newQuizController.onGetQuizDetails(context, widget.id);
+    Injection.quiz2Controller.onGetQuizDetails(context, widget.id);
     super.initState();
   }
 
@@ -50,7 +50,7 @@ class _QuizDetailScreenState extends State<QuizDetailScreen> {
                             MaterialPageRoute(
                               builder: (context) => CreateNewQuizScreen(
                                 id: widget.id,
-                                updateQuestionList: Injection.newQuizController
+                                updateQuestionList: Injection.quiz2Controller
                                     .quizDetatilModel.value.questions,
                               ),
                             ),
@@ -69,7 +69,7 @@ class _QuizDetailScreenState extends State<QuizDetailScreen> {
                   child: CustomQuizDetatilData(
                     label: 'Quiz Title',
                     value: Injection
-                        .newQuizController.quizDetatilModel.value.quizTitle,
+                        .quiz2Controller.quizDetatilModel.value.quizTitle,
                   ),
                 ),
                 Padding(
@@ -77,7 +77,7 @@ class _QuizDetailScreenState extends State<QuizDetailScreen> {
                   child: CustomQuizDetatilData(
                     label: 'Quiz Duration',
                     value: Injection
-                        .newQuizController.quizDetatilModel.value.quizDuration
+                        .quiz2Controller.quizDetatilModel.value.quizDuration
                         .toString(),
                   ),
                 ),
@@ -131,7 +131,7 @@ class _QuizDetailScreenState extends State<QuizDetailScreen> {
                         ),
                       ),
                       ...Injection
-                          .newQuizController.quizDetatilModel.value.questions!
+                          .quiz2Controller.quizDetatilModel.value.questions!
                           .asMap()
                           .entries
                           .map(
@@ -193,7 +193,7 @@ class _QuizDetailScreenState extends State<QuizDetailScreen> {
               ],
             ),
           ),
-          if (Injection.newQuizController.isLoadingDetails.value)
+          if (Injection.quiz2Controller.isLoadingDetails.value)
             const CustomLoading()
         ],
       ),

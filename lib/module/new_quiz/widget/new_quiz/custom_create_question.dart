@@ -40,15 +40,14 @@ class CustomCreateQuestionCard extends StatelessWidget {
                         hintText: "Enter question",
                         isRequire: true,
                         initValue: Injection
-                            .newQuizController.questionDataList[index].question,
+                            .quiz2Controller.questionDataList[index].question,
                         item:
                             Injection.questionController.questionList.map((e) {
                           return e.question!;
                         }).toList(),
                         onTap: (value) {
-                          Injection.newQuizController.questionDataList[index] =
-                              Injection
-                                  .newQuizController.questionDataList[index]
+                          Injection.quiz2Controller.questionDataList[index] =
+                              Injection.quiz2Controller.questionDataList[index]
                                   .copyWith(
                             question: value.value,
                           );
@@ -66,8 +65,8 @@ class CustomCreateQuestionCard extends StatelessWidget {
                   isRequired: true,
                   initialValue: '',
                   onChange: (value) {
-                    Injection.newQuizController.questionDataList[index] =
-                        Injection.newQuizController.questionDataList[index]
+                    Injection.quiz2Controller.questionDataList[index] =
+                        Injection.quiz2Controller.questionDataList[index]
                             .copyWith(duration: 0);
                   },
                 ),

@@ -7,14 +7,14 @@ import 'package:lomhat/utils/widget/custom_button.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 import 'package:lomhat/utils/widget/custom_textfield.dart';
 
-import '../../../../constrants/set_widget.dart';
-import '../../../../utils/widget/custom_check_box.dart';
-import '../../../../utils/widget/custom_dropdown.dart';
-import '../../model/create_question/create_question.dart';
+import '../../../constrants/set_widget.dart';
+import '../../../utils/widget/custom_check_box.dart';
+import '../../../utils/widget/custom_dropdown.dart';
+import '../model/quiz_question_model/quiz_question_model.dart';
 
 class CreateNewQuizScreen extends StatefulWidget {
   final String? id;
-  final List<CreateQuestionModel>? updateQuestionList;
+  final List<QuizQuestionModel>? updateQuestionList;
 
   const CreateNewQuizScreen({super.key, this.id = '', this.updateQuestionList});
 
@@ -29,19 +29,18 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
   @override
   void initState() {
     if (widget.id == '' || widget.id == null) {
-      Injection.newQuizController.quizDetatilModel.value = QuizDetailsModel();
-      Injection.newQuizController.questionDataList.value =
-          <CreateQuestionModel>[];
+      Injection.quiz2Controller.quizDetatilModel.value = QuizDetailsModel();
+      Injection.quiz2Controller.questionDataList.value = <QuizQuestionModel>[];
     }
     if (widget.updateQuestionList != [] && widget.updateQuestionList != null) {
-      Injection.newQuizController.questionDataList.value = [];
-      Injection.newQuizController.questionDataList
+      Injection.quiz2Controller.questionDataList.value = [];
+      Injection.quiz2Controller.questionDataList
           .addAll(widget.updateQuestionList!);
     }
     quizTitle.text =
-        Injection.newQuizController.quizDetatilModel.value.quizTitle ?? "";
+        Injection.quiz2Controller.quizDetatilModel.value.quizTitle ?? "";
     duration.text = Injection
-        .newQuizController.quizDetatilModel.value.quizDuration
+        .quiz2Controller.quizDetatilModel.value.quizDuration
         .toString();
     super.initState();
   }
@@ -70,15 +69,14 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                             title: "Quiz Title",
                             isRequired: true,
                             hintText: "Enter quiz title",
-                            isValidate: Injection.newQuizController
+                            isValidate: Injection.quiz2Controller
                                 .quizDetatilModel.value.isQuizTitle,
                             validateText: "Please input the quiz title",
                             controller: quizTitle,
                             onChange: (value) {
-                              Injection.newQuizController.quizDetatilModel
-                                      .value =
+                              Injection.quiz2Controller.quizDetatilModel.value =
                                   Injection
-                                      .newQuizController.quizDetatilModel.value
+                                      .quiz2Controller.quizDetatilModel.value
                                       .copyWith(
                                           quizTitle: value, isQuizTitle: false);
                             },
@@ -91,17 +89,16 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                             title: "Quiz Duration",
                             isRequired: true,
                             hintText: "Enter quiz duration",
-                            isValidate: Injection.newQuizController
+                            isValidate: Injection.quiz2Controller
                                 .quizDetatilModel.value.isQuizDuration,
                             validateText: "Please input the quiz duration",
                             controller: duration,
                             onChange: (value) {
                               var duration =
                                   value == "" ? 0 : double.parse(value);
-                              Injection.newQuizController.quizDetatilModel
-                                      .value =
+                              Injection.quiz2Controller.quizDetatilModel.value =
                                   Injection
-                                      .newQuizController.quizDetatilModel.value
+                                      .quiz2Controller.quizDetatilModel.value
                                       .copyWith(
                                           quizDuration: duration.toInt(),
                                           isQuizDuration: false);
@@ -111,18 +108,17 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                         Padding(
                           padding: SetWidget.paddingForm(),
                           child: CustomCheckBox(
-                            isSelect: Injection.newQuizController
-                                    .quizDetatilModel.value.isRandom ==
+                            isSelect: Injection.quiz2Controller.quizDetatilModel
+                                    .value.isRandom ==
                                 1,
                             text: 'Random Questions',
                             onTap: () {
-                              Injection.newQuizController.quizDetatilModel
-                                      .value =
+                              Injection.quiz2Controller.quizDetatilModel.value =
                                   Injection
-                                      .newQuizController.quizDetatilModel.value
+                                      .quiz2Controller.quizDetatilModel.value
                                       .copyWith(
                                           isRandom: Injection
-                                                      .newQuizController
+                                                      .quiz2Controller
                                                       .quizDetatilModel
                                                       .value
                                                       .isRandom ==
@@ -134,7 +130,7 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                         ),
 
                         /**********************Add Question */
-                        ...Injection.newQuizController.questionDataList
+                        ...Injection.quiz2Controller.questionDataList
                             .asMap()
                             .entries
                             .map((item) {
@@ -165,7 +161,7 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                                         hintText: "Enter question",
                                         isRequire: true,
                                         initValue: Injection
-                                            .newQuizController
+                                            .quiz2Controller
                                             .questionDataList[item.key]
                                             .question,
                                         item: Injection
@@ -179,9 +175,9 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                                           return e.question!;
                                         }).toList(),
                                         onTap: (value) {
-                                          Injection.newQuizController
+                                          Injection.quiz2Controller
                                                   .questionDataList[item.key] =
-                                              Injection.newQuizController
+                                              Injection.quiz2Controller
                                                   .questionDataList[item.key]
                                                   .copyWith(
                                             question: value.value,
@@ -198,15 +194,15 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                                   title: "Duration",
                                   hintText: "Select duration",
                                   isRequired: true,
-                                  initialValue: Injection.newQuizController
+                                  initialValue: Injection.quiz2Controller
                                       .questionDataList[item.key].duration
                                       .toString(),
                                   onChange: (value) {
                                     var duration =
                                         value == "" ? 0 : double.parse(value);
-                                    Injection.newQuizController
+                                    Injection.quiz2Controller
                                             .questionDataList[item.key] =
-                                        Injection.newQuizController
+                                        Injection.quiz2Controller
                                             .questionDataList[item.key]
                                             .copyWith(
                                                 duration: duration.toInt());
@@ -222,8 +218,8 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                           child: CustomAddItem(
                             title: "Add Question",
                             onPress: () {
-                              Injection.newQuizController.questionDataList.add(
-                                CreateQuestionModel(question: ''),
+                              Injection.quiz2Controller.questionDataList.add(
+                                QuizQuestionModel(question: ''),
                               );
                             },
                           ),
@@ -251,43 +247,40 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
                       Expanded(
                         child: CustomButton(
                           onPressed: () {
-                            if (Injection.newQuizController.quizDetatilModel
-                                        .value.quizTitle ==
+                            if (Injection.quiz2Controller.quizDetatilModel.value
+                                        .quizTitle ==
                                     '' ||
-                                Injection.newQuizController.quizDetatilModel
-                                        .value.quizTitle ==
+                                Injection.quiz2Controller.quizDetatilModel.value
+                                        .quizTitle ==
                                     null) {
-                              Injection.newQuizController.quizDetatilModel
-                                      .value =
+                              Injection.quiz2Controller.quizDetatilModel.value =
                                   Injection
-                                      .newQuizController.quizDetatilModel.value
+                                      .quiz2Controller.quizDetatilModel.value
                                       .copyWith(isQuizTitle: true);
                             }
-                            if (Injection.newQuizController.quizDetatilModel
-                                        .value.quizDuration
+                            if (Injection.quiz2Controller.quizDetatilModel.value
+                                        .quizDuration
                                         .toString() ==
                                     '' ||
-                                Injection.newQuizController.quizDetatilModel
-                                        .value.quizDuration ==
+                                Injection.quiz2Controller.quizDetatilModel.value
+                                        .quizDuration ==
                                     null) {
-                              Injection.newQuizController.quizDetatilModel
-                                      .value =
+                              Injection.quiz2Controller.quizDetatilModel.value =
                                   Injection
-                                      .newQuizController.quizDetatilModel.value
+                                      .quiz2Controller.quizDetatilModel.value
                                       .copyWith(isQuizDuration: true);
                             }
 
                             //*************submit */
-                            if (!Injection.newQuizController.quizDetatilModel
+                            if (!Injection.quiz2Controller.quizDetatilModel
                                     .value.isQuizTitle! &&
-                                !Injection.newQuizController.quizDetatilModel
+                                !Injection.quiz2Controller.quizDetatilModel
                                     .value.isQuizDuration!) {
                               if (widget.id == '' || widget.id == null) {
-                                Injection.newQuizController
-                                    .onCreateQuiz(context);
+                                Injection.quiz2Controller.onCreateQuiz(context);
                               } else {
-                                Injection.newQuizController
-                                    .onUpdateQuiz(context, widget.id!);
+                                Injection.quiz2Controller
+                                    .onUpdateQuiz(context, '2502QZ-0000046');
                               }
                             }
                           },
@@ -302,8 +295,7 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
               ],
             ),
           ),
-          if (Injection.newQuizController.isLoadingCreate.value ||
-              Injection.newQuizController.isLoadingCreate.value)
+          if (Injection.quiz2Controller.isLoadingCreate.value)
             const CustomLoading(),
         ],
       ),

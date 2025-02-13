@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lomhat/module/quiz_2/screen/create_new_quiz.dart';
+import 'package:lomhat/utils/widget/custom_loading.dart';
 
 import '../../../constrants/app_logo.dart';
 import '../../../constrants/injection.dart';
@@ -7,6 +9,7 @@ import '../../../utils/widget/custom_empty_state.dart';
 import '../model/filter_quiz_model/filter_quiz_model.dart';
 import '../widget/custom_quiz_card.dart';
 import 'filter_quiz_screen.dart';
+import 'quiz_detail_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   final Widget? drawer;
@@ -24,6 +27,7 @@ class _QuizScreenState extends State<QuizScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Injection.quiz2Controller.filterQuizModel.value = FilterQuizModel();
+      Injection.questionController.onGetQuestion(context);
       Injection.quiz2Controller.quizLength.value = 0;
       Injection.quiz2Controller.onGetQuiz(context);
     });
@@ -79,13 +83,12 @@ class _QuizScreenState extends State<QuizScreen> {
                       return CustomQuizCard(
                         quizModel: e.value,
                         ontap: () {
-                          // context
-                          //     .push('/question/${e.value.name}')
-                          //     .then((value) {
-                          //   Injection.quiz2Controller.questionList[e.key] =
-                          //       Injection.quiz2Controller.questionModel.value
-                          //           .copyWith();
-                          // });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => QuizDetailScreen(
+                                        id: e.value.name,
+                                      )));
                         },
                       );
                     }),
@@ -100,11 +103,10 @@ class _QuizScreenState extends State<QuizScreen> {
                 elevation: 0.0,
                 backgroundColor: Theme.of(context).primaryColor,
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const CreateQuestionScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CreateNewQuizScreen()));
                 },
                 child: const Icon(
                   Icons.add,
@@ -112,6 +114,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   size: 30,
                 )),
           ),
+          if (Injection.homeController.isLoading.value) const CustomLoading()
         ],
       ),
     );

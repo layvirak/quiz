@@ -43,8 +43,7 @@ mixin _$QuizDetailsModel {
   @JsonKey(name: 'doctype')
   String? get doctype => throw _privateConstructorUsedError;
   @JsonKey(name: 'questions')
-  List<CreateQuestionModel>? get questions =>
-      throw _privateConstructorUsedError;
+  List<QuizQuestionModel>? get questions => throw _privateConstructorUsedError;
   bool? get isQuizDuration => throw _privateConstructorUsedError;
   bool? get isQuizTitle => throw _privateConstructorUsedError;
   bool? get isQuestion => throw _privateConstructorUsedError;
@@ -77,7 +76,7 @@ abstract class $QuizDetailsModelCopyWith<$Res> {
       @JsonKey(name: 'quiz_duration') int? quizDuration,
       @JsonKey(name: 'is_random') int? isRandom,
       @JsonKey(name: 'doctype') String? doctype,
-      @JsonKey(name: 'questions') List<CreateQuestionModel>? questions,
+      @JsonKey(name: 'questions') List<QuizQuestionModel>? questions,
       bool? isQuizDuration,
       bool? isQuizTitle,
       bool? isQuestion});
@@ -162,7 +161,7 @@ class _$QuizDetailsModelCopyWithImpl<$Res, $Val extends QuizDetailsModel>
       questions: freezed == questions
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
-              as List<CreateQuestionModel>?,
+              as List<QuizQuestionModel>?,
       isQuizDuration: freezed == isQuizDuration
           ? _value.isQuizDuration
           : isQuizDuration // ignore: cast_nullable_to_non_nullable
@@ -199,7 +198,7 @@ abstract class _$$QuizDetailsModelImplCopyWith<$Res>
       @JsonKey(name: 'quiz_duration') int? quizDuration,
       @JsonKey(name: 'is_random') int? isRandom,
       @JsonKey(name: 'doctype') String? doctype,
-      @JsonKey(name: 'questions') List<CreateQuestionModel>? questions,
+      @JsonKey(name: 'questions') List<QuizQuestionModel>? questions,
       bool? isQuizDuration,
       bool? isQuizTitle,
       bool? isQuestion});
@@ -282,7 +281,7 @@ class __$$QuizDetailsModelImplCopyWithImpl<$Res>
       questions: freezed == questions
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
-              as List<CreateQuestionModel>?,
+              as List<QuizQuestionModel>?,
       isQuizDuration: freezed == isQuizDuration
           ? _value.isQuizDuration
           : isQuizDuration // ignore: cast_nullable_to_non_nullable
@@ -315,7 +314,7 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
       @JsonKey(name: 'is_random') this.isRandom,
       @JsonKey(name: 'doctype') this.doctype,
       @JsonKey(name: 'questions')
-      final List<CreateQuestionModel>? questions = const [],
+      final List<QuizQuestionModel>? questions = const [],
       this.isQuizDuration = false,
       this.isQuizTitle = false,
       this.isQuestion = false})
@@ -357,10 +356,10 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
   @override
   @JsonKey(name: 'doctype')
   final String? doctype;
-  final List<CreateQuestionModel>? _questions;
+  final List<QuizQuestionModel>? _questions;
   @override
   @JsonKey(name: 'questions')
-  List<CreateQuestionModel>? get questions {
+  List<QuizQuestionModel>? get questions {
     final value = _questions;
     if (value == null) return null;
     if (_questions is EqualUnmodifiableListView) return _questions;
@@ -466,7 +465,7 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
       @JsonKey(name: 'quiz_duration') final int? quizDuration,
       @JsonKey(name: 'is_random') final int? isRandom,
       @JsonKey(name: 'doctype') final String? doctype,
-      @JsonKey(name: 'questions') final List<CreateQuestionModel>? questions,
+      @JsonKey(name: 'questions') final List<QuizQuestionModel>? questions,
       final bool? isQuizDuration,
       final bool? isQuizTitle,
       final bool? isQuestion}) = _$QuizDetailsModelImpl;
@@ -509,7 +508,7 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
   String? get doctype;
   @override
   @JsonKey(name: 'questions')
-  List<CreateQuestionModel>? get questions;
+  List<QuizQuestionModel>? get questions;
   @override
   bool? get isQuizDuration;
   @override

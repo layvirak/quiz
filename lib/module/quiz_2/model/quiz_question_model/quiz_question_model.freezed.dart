@@ -20,20 +20,32 @@ QuizQuestionModel _$QuizQuestionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$QuizQuestionModel {
-  String get creation => throw _privateConstructorUsedError;
-  int get docstatus => throw _privateConstructorUsedError;
-  String get doctype => throw _privateConstructorUsedError;
-  int get duration => throw _privateConstructorUsedError;
-  int get idx => throw _privateConstructorUsedError;
-  String get modified => throw _privateConstructorUsedError;
-  @JsonKey(name: "modified_by")
-  String get modifiedBy => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get owner => throw _privateConstructorUsedError;
-  String get parent => throw _privateConstructorUsedError;
-  String get parentfield => throw _privateConstructorUsedError;
-  String get parenttype => throw _privateConstructorUsedError;
-  String get question => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'owner')
+  String? get owner => throw _privateConstructorUsedError;
+  @JsonKey(name: 'creation')
+  String? get creation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'modified')
+  String? get modified => throw _privateConstructorUsedError;
+  @JsonKey(name: 'modified_by')
+  String? get modifiedBy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'docstatus')
+  int? get docstatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'idx')
+  int? get idx => throw _privateConstructorUsedError;
+  @JsonKey(name: 'question')
+  String? get question => throw _privateConstructorUsedError;
+  @JsonKey(name: 'duration')
+  int? get duration => throw _privateConstructorUsedError;
+  @JsonKey(name: 'parent')
+  String? get parent => throw _privateConstructorUsedError;
+  @JsonKey(name: 'parentfield')
+  String? get parentfield => throw _privateConstructorUsedError;
+  @JsonKey(name: 'parenttype')
+  String? get parenttype => throw _privateConstructorUsedError;
+  @JsonKey(name: 'doctype')
+  String? get doctype => throw _privateConstructorUsedError;
 
   /// Serializes this QuizQuestionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,19 +64,19 @@ abstract class $QuizQuestionModelCopyWith<$Res> {
       _$QuizQuestionModelCopyWithImpl<$Res, QuizQuestionModel>;
   @useResult
   $Res call(
-      {String creation,
-      int docstatus,
-      String doctype,
-      int duration,
-      int idx,
-      String modified,
-      @JsonKey(name: "modified_by") String modifiedBy,
-      String name,
-      String owner,
-      String parent,
-      String parentfield,
-      String parenttype,
-      String question});
+      {@JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'owner') String? owner,
+      @JsonKey(name: 'creation') String? creation,
+      @JsonKey(name: 'modified') String? modified,
+      @JsonKey(name: 'modified_by') String? modifiedBy,
+      @JsonKey(name: 'docstatus') int? docstatus,
+      @JsonKey(name: 'idx') int? idx,
+      @JsonKey(name: 'question') String? question,
+      @JsonKey(name: 'duration') int? duration,
+      @JsonKey(name: 'parent') String? parent,
+      @JsonKey(name: 'parentfield') String? parentfield,
+      @JsonKey(name: 'parenttype') String? parenttype,
+      @JsonKey(name: 'doctype') String? doctype});
 }
 
 /// @nodoc
@@ -82,73 +94,73 @@ class _$QuizQuestionModelCopyWithImpl<$Res, $Val extends QuizQuestionModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? creation = null,
-    Object? docstatus = null,
-    Object? doctype = null,
-    Object? duration = null,
-    Object? idx = null,
-    Object? modified = null,
-    Object? modifiedBy = null,
-    Object? name = null,
-    Object? owner = null,
-    Object? parent = null,
-    Object? parentfield = null,
-    Object? parenttype = null,
-    Object? question = null,
+    Object? name = freezed,
+    Object? owner = freezed,
+    Object? creation = freezed,
+    Object? modified = freezed,
+    Object? modifiedBy = freezed,
+    Object? docstatus = freezed,
+    Object? idx = freezed,
+    Object? question = freezed,
+    Object? duration = freezed,
+    Object? parent = freezed,
+    Object? parentfield = freezed,
+    Object? parenttype = freezed,
+    Object? doctype = freezed,
   }) {
     return _then(_value.copyWith(
-      creation: null == creation
-          ? _value.creation
-          : creation // ignore: cast_nullable_to_non_nullable
-              as String,
-      docstatus: null == docstatus
-          ? _value.docstatus
-          : docstatus // ignore: cast_nullable_to_non_nullable
-              as int,
-      doctype: null == doctype
-          ? _value.doctype
-          : doctype // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-      idx: null == idx
-          ? _value.idx
-          : idx // ignore: cast_nullable_to_non_nullable
-              as int,
-      modified: null == modified
-          ? _value.modified
-          : modified // ignore: cast_nullable_to_non_nullable
-              as String,
-      modifiedBy: null == modifiedBy
-          ? _value.modifiedBy
-          : modifiedBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      owner: null == owner
+              as String?,
+      owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as String,
-      parent: null == parent
-          ? _value.parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentfield: null == parentfield
-          ? _value.parentfield
-          : parentfield // ignore: cast_nullable_to_non_nullable
-              as String,
-      parenttype: null == parenttype
-          ? _value.parenttype
-          : parenttype // ignore: cast_nullable_to_non_nullable
-              as String,
-      question: null == question
+              as String?,
+      creation: freezed == creation
+          ? _value.creation
+          : creation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modified: freezed == modified
+          ? _value.modified
+          : modified // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      docstatus: freezed == docstatus
+          ? _value.docstatus
+          : docstatus // ignore: cast_nullable_to_non_nullable
+              as int?,
+      idx: freezed == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as int?,
+      question: freezed == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      duration: freezed == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      parent: freezed == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as String?,
+      parentfield: freezed == parentfield
+          ? _value.parentfield
+          : parentfield // ignore: cast_nullable_to_non_nullable
+              as String?,
+      parenttype: freezed == parenttype
+          ? _value.parenttype
+          : parenttype // ignore: cast_nullable_to_non_nullable
+              as String?,
+      doctype: freezed == doctype
+          ? _value.doctype
+          : doctype // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -162,19 +174,19 @@ abstract class _$$QuizQuestionModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String creation,
-      int docstatus,
-      String doctype,
-      int duration,
-      int idx,
-      String modified,
-      @JsonKey(name: "modified_by") String modifiedBy,
-      String name,
-      String owner,
-      String parent,
-      String parentfield,
-      String parenttype,
-      String question});
+      {@JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'owner') String? owner,
+      @JsonKey(name: 'creation') String? creation,
+      @JsonKey(name: 'modified') String? modified,
+      @JsonKey(name: 'modified_by') String? modifiedBy,
+      @JsonKey(name: 'docstatus') int? docstatus,
+      @JsonKey(name: 'idx') int? idx,
+      @JsonKey(name: 'question') String? question,
+      @JsonKey(name: 'duration') int? duration,
+      @JsonKey(name: 'parent') String? parent,
+      @JsonKey(name: 'parentfield') String? parentfield,
+      @JsonKey(name: 'parenttype') String? parenttype,
+      @JsonKey(name: 'doctype') String? doctype});
 }
 
 /// @nodoc
@@ -190,73 +202,73 @@ class __$$QuizQuestionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? creation = null,
-    Object? docstatus = null,
-    Object? doctype = null,
-    Object? duration = null,
-    Object? idx = null,
-    Object? modified = null,
-    Object? modifiedBy = null,
-    Object? name = null,
-    Object? owner = null,
-    Object? parent = null,
-    Object? parentfield = null,
-    Object? parenttype = null,
-    Object? question = null,
+    Object? name = freezed,
+    Object? owner = freezed,
+    Object? creation = freezed,
+    Object? modified = freezed,
+    Object? modifiedBy = freezed,
+    Object? docstatus = freezed,
+    Object? idx = freezed,
+    Object? question = freezed,
+    Object? duration = freezed,
+    Object? parent = freezed,
+    Object? parentfield = freezed,
+    Object? parenttype = freezed,
+    Object? doctype = freezed,
   }) {
     return _then(_$QuizQuestionModelImpl(
-      creation: null == creation
-          ? _value.creation
-          : creation // ignore: cast_nullable_to_non_nullable
-              as String,
-      docstatus: null == docstatus
-          ? _value.docstatus
-          : docstatus // ignore: cast_nullable_to_non_nullable
-              as int,
-      doctype: null == doctype
-          ? _value.doctype
-          : doctype // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-      idx: null == idx
-          ? _value.idx
-          : idx // ignore: cast_nullable_to_non_nullable
-              as int,
-      modified: null == modified
-          ? _value.modified
-          : modified // ignore: cast_nullable_to_non_nullable
-              as String,
-      modifiedBy: null == modifiedBy
-          ? _value.modifiedBy
-          : modifiedBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      owner: null == owner
+              as String?,
+      owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as String,
-      parent: null == parent
-          ? _value.parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentfield: null == parentfield
-          ? _value.parentfield
-          : parentfield // ignore: cast_nullable_to_non_nullable
-              as String,
-      parenttype: null == parenttype
-          ? _value.parenttype
-          : parenttype // ignore: cast_nullable_to_non_nullable
-              as String,
-      question: null == question
+              as String?,
+      creation: freezed == creation
+          ? _value.creation
+          : creation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modified: freezed == modified
+          ? _value.modified
+          : modified // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      docstatus: freezed == docstatus
+          ? _value.docstatus
+          : docstatus // ignore: cast_nullable_to_non_nullable
+              as int?,
+      idx: freezed == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as int?,
+      question: freezed == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      duration: freezed == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      parent: freezed == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as String?,
+      parentfield: freezed == parentfield
+          ? _value.parentfield
+          : parentfield // ignore: cast_nullable_to_non_nullable
+              as String?,
+      parenttype: freezed == parenttype
+          ? _value.parenttype
+          : parenttype // ignore: cast_nullable_to_non_nullable
+              as String?,
+      doctype: freezed == doctype
+          ? _value.doctype
+          : doctype // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -265,66 +277,66 @@ class __$$QuizQuestionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuizQuestionModelImpl implements _QuizQuestionModel {
   _$QuizQuestionModelImpl(
-      {this.creation = '',
-      this.docstatus = 0,
-      this.doctype = '',
-      this.duration = 0,
-      this.idx = 0,
-      this.modified = '',
-      @JsonKey(name: "modified_by") this.modifiedBy = '',
-      this.name = '',
-      this.owner = '',
-      this.parent = '',
-      this.parentfield = '',
-      this.parenttype = '',
-      this.question = ''});
+      {@JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'owner') this.owner,
+      @JsonKey(name: 'creation') this.creation,
+      @JsonKey(name: 'modified') this.modified,
+      @JsonKey(name: 'modified_by') this.modifiedBy,
+      @JsonKey(name: 'docstatus') this.docstatus,
+      @JsonKey(name: 'idx') this.idx,
+      @JsonKey(name: 'question') this.question,
+      @JsonKey(name: 'duration') this.duration = 0,
+      @JsonKey(name: 'parent') this.parent,
+      @JsonKey(name: 'parentfield') this.parentfield,
+      @JsonKey(name: 'parenttype') this.parenttype,
+      @JsonKey(name: 'doctype') this.doctype});
 
   factory _$QuizQuestionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizQuestionModelImplFromJson(json);
 
   @override
-  @JsonKey()
-  final String creation;
+  @JsonKey(name: 'name')
+  final String? name;
   @override
-  @JsonKey()
-  final int docstatus;
+  @JsonKey(name: 'owner')
+  final String? owner;
   @override
-  @JsonKey()
-  final String doctype;
+  @JsonKey(name: 'creation')
+  final String? creation;
   @override
-  @JsonKey()
-  final int duration;
+  @JsonKey(name: 'modified')
+  final String? modified;
   @override
-  @JsonKey()
-  final int idx;
+  @JsonKey(name: 'modified_by')
+  final String? modifiedBy;
   @override
-  @JsonKey()
-  final String modified;
+  @JsonKey(name: 'docstatus')
+  final int? docstatus;
   @override
-  @JsonKey(name: "modified_by")
-  final String modifiedBy;
+  @JsonKey(name: 'idx')
+  final int? idx;
   @override
-  @JsonKey()
-  final String name;
+  @JsonKey(name: 'question')
+  final String? question;
   @override
-  @JsonKey()
-  final String owner;
+  @JsonKey(name: 'duration')
+  final int? duration;
   @override
-  @JsonKey()
-  final String parent;
+  @JsonKey(name: 'parent')
+  final String? parent;
   @override
-  @JsonKey()
-  final String parentfield;
+  @JsonKey(name: 'parentfield')
+  final String? parentfield;
   @override
-  @JsonKey()
-  final String parenttype;
+  @JsonKey(name: 'parenttype')
+  final String? parenttype;
   @override
-  @JsonKey()
-  final String question;
+  @JsonKey(name: 'doctype')
+  final String? doctype;
 
   @override
   String toString() {
-    return 'QuizQuestionModel(creation: $creation, docstatus: $docstatus, doctype: $doctype, duration: $duration, idx: $idx, modified: $modified, modifiedBy: $modifiedBy, name: $name, owner: $owner, parent: $parent, parentfield: $parentfield, parenttype: $parenttype, question: $question)';
+    return 'QuizQuestionModel(name: $name, owner: $owner, creation: $creation, modified: $modified, modifiedBy: $modifiedBy, docstatus: $docstatus, idx: $idx, question: $question, duration: $duration, parent: $parent, parentfield: $parentfield, parenttype: $parenttype, doctype: $doctype)';
   }
 
   @override
@@ -332,46 +344,46 @@ class _$QuizQuestionModelImpl implements _QuizQuestionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuizQuestionModelImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
             (identical(other.creation, creation) ||
                 other.creation == creation) &&
-            (identical(other.docstatus, docstatus) ||
-                other.docstatus == docstatus) &&
-            (identical(other.doctype, doctype) || other.doctype == doctype) &&
-            (identical(other.duration, duration) ||
-                other.duration == duration) &&
-            (identical(other.idx, idx) || other.idx == idx) &&
             (identical(other.modified, modified) ||
                 other.modified == modified) &&
             (identical(other.modifiedBy, modifiedBy) ||
                 other.modifiedBy == modifiedBy) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.docstatus, docstatus) ||
+                other.docstatus == docstatus) &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.question, question) ||
+                other.question == question) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
             (identical(other.parent, parent) || other.parent == parent) &&
             (identical(other.parentfield, parentfield) ||
                 other.parentfield == parentfield) &&
             (identical(other.parenttype, parenttype) ||
                 other.parenttype == parenttype) &&
-            (identical(other.question, question) ||
-                other.question == question));
+            (identical(other.doctype, doctype) || other.doctype == doctype));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      creation,
-      docstatus,
-      doctype,
-      duration,
-      idx,
-      modified,
-      modifiedBy,
       name,
       owner,
+      creation,
+      modified,
+      modifiedBy,
+      docstatus,
+      idx,
+      question,
+      duration,
       parent,
       parentfield,
       parenttype,
-      question);
+      doctype);
 
   /// Create a copy of QuizQuestionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -392,50 +404,63 @@ class _$QuizQuestionModelImpl implements _QuizQuestionModel {
 
 abstract class _QuizQuestionModel implements QuizQuestionModel {
   factory _QuizQuestionModel(
-      {final String creation,
-      final int docstatus,
-      final String doctype,
-      final int duration,
-      final int idx,
-      final String modified,
-      @JsonKey(name: "modified_by") final String modifiedBy,
-      final String name,
-      final String owner,
-      final String parent,
-      final String parentfield,
-      final String parenttype,
-      final String question}) = _$QuizQuestionModelImpl;
+          {@JsonKey(name: 'name') final String? name,
+          @JsonKey(name: 'owner') final String? owner,
+          @JsonKey(name: 'creation') final String? creation,
+          @JsonKey(name: 'modified') final String? modified,
+          @JsonKey(name: 'modified_by') final String? modifiedBy,
+          @JsonKey(name: 'docstatus') final int? docstatus,
+          @JsonKey(name: 'idx') final int? idx,
+          @JsonKey(name: 'question') final String? question,
+          @JsonKey(name: 'duration') final int? duration,
+          @JsonKey(name: 'parent') final String? parent,
+          @JsonKey(name: 'parentfield') final String? parentfield,
+          @JsonKey(name: 'parenttype') final String? parenttype,
+          @JsonKey(name: 'doctype') final String? doctype}) =
+      _$QuizQuestionModelImpl;
 
   factory _QuizQuestionModel.fromJson(Map<String, dynamic> json) =
       _$QuizQuestionModelImpl.fromJson;
 
   @override
-  String get creation;
+  @JsonKey(name: 'name')
+  String? get name;
   @override
-  int get docstatus;
+  @JsonKey(name: 'owner')
+  String? get owner;
   @override
-  String get doctype;
+  @JsonKey(name: 'creation')
+  String? get creation;
   @override
-  int get duration;
+  @JsonKey(name: 'modified')
+  String? get modified;
   @override
-  int get idx;
+  @JsonKey(name: 'modified_by')
+  String? get modifiedBy;
   @override
-  String get modified;
+  @JsonKey(name: 'docstatus')
+  int? get docstatus;
   @override
-  @JsonKey(name: "modified_by")
-  String get modifiedBy;
+  @JsonKey(name: 'idx')
+  int? get idx;
   @override
-  String get name;
+  @JsonKey(name: 'question')
+  String? get question;
   @override
-  String get owner;
+  @JsonKey(name: 'duration')
+  int? get duration;
   @override
-  String get parent;
+  @JsonKey(name: 'parent')
+  String? get parent;
   @override
-  String get parentfield;
+  @JsonKey(name: 'parentfield')
+  String? get parentfield;
   @override
-  String get parenttype;
+  @JsonKey(name: 'parenttype')
+  String? get parenttype;
   @override
-  String get question;
+  @JsonKey(name: 'doctype')
+  String? get doctype;
 
   /// Create a copy of QuizQuestionModel
   /// with the given fields replaced by the non-null parameter values.

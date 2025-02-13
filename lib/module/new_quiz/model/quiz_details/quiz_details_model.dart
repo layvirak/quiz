@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../create_question/create_question.dart';
+import '../../../quiz_2/model/quiz_question_model/quiz_question_model.dart';
 
 part 'quiz_details_model.freezed.dart';
 part 'quiz_details_model.g.dart';
@@ -21,7 +21,7 @@ class QuizDetailsModel with _$QuizDetailsModel {
     @JsonKey(name: 'doctype') final String? doctype,
     @JsonKey(name: 'questions')
     @Default([])
-    final List<CreateQuestionModel>? questions,
+    final List<QuizQuestionModel>? questions,
     @Default(false) final bool? isQuizDuration,
     @Default(false) final bool? isQuizTitle,
     @Default(false) final bool? isQuestion,
