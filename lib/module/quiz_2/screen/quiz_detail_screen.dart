@@ -3,10 +3,11 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:lomhat/constrants/injection.dart';
 import 'package:lomhat/constrants/set_widget.dart';
+import 'package:lomhat/utils/widget/custom_icon_back.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 
 import '../../../utils/widget/custom_title.dart';
-import '../../new_quiz/widget/new_quiz/custom_quiz_detail.dart';
+import '../widget/custom_quiz_detail.dart';
 import 'create_new_quiz.dart';
 
 class QuizDetailScreen extends StatefulWidget {
@@ -31,7 +32,15 @@ class _QuizDetailScreenState extends State<QuizDetailScreen> {
         children: [
           Scaffold(
             appBar: AppBar(
-              title: Text(widget.id),
+              title: Text(
+                widget.id,
+              ),
+              leading: CustomIconBack(
+                onTap: () {
+                  Navigator.pop(context,
+                      Injection.quiz2Controller.quizDetatilModel.value);
+                },
+              ),
             ),
             body: Column(
               children: [

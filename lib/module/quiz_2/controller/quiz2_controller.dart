@@ -6,7 +6,7 @@ import '../../../constrants/api_service.dart';
 import '../../../constrants/injection.dart';
 import '../../../utils/helper/api_base_helper.dart';
 import '../../../utils/widget/custom_alert_repoonse.dart';
-import '../../new_quiz/model/quiz_details/quiz_details_model.dart';
+import '../model/quiz_details/quiz_details_model.dart';
 import '../model/filter_quiz_model/filter_quiz_model.dart';
 import '../model/quiz_question_model/quiz_question_model.dart';
 
@@ -14,7 +14,7 @@ class Quiz2Controller extends GetxController {
   var apiBaseHelper = ApiBaseHelper();
 
   var filterQuizModel = FilterQuizModel().obs;
-  var quizList = <QuizModel>[].obs;
+  var quizList = <QuizDetailsModel>[].obs;
   var quizLength = 0.obs;
   Future<void> onGetQuiz(BuildContext context) async {
     Injection.homeController.isLoading(true);
@@ -30,7 +30,7 @@ class Quiz2Controller extends GetxController {
           .then((res) {
         if (quizLength.value == 0) quizList.value = [];
         res['data'].map((e) {
-          quizList.add(QuizModel.fromJson(e));
+          quizList.add(QuizDetailsModel.fromJson(e));
         }).toList();
         quizLength.value = quizList.length;
         if (ApiService.target != 'Release') {

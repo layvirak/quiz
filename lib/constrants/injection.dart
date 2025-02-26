@@ -6,7 +6,6 @@ import 'package:lomhat/cores/walk_through/controller/walk_through_controller.dar
 import 'package:lomhat/module/question/controller/question_controller.dart';
 import 'package:lomhat/module/quiz_2/controller/quiz2_controller.dart';
 import '../module/home/controller/home_controller.dart';
-import '../module/new_quiz/controller/new_quiz_controller.dart';
 import '../module/quiz/controller/quiz_controller.dart';
 import '../utils/controller/option_controller.dart';
 
@@ -20,6 +19,5 @@ class Injection {
   static final quizController = Get.put(QuizController());
   static final optionController = Get.put(OptionController());
   static final questionController = Get.put(QuestionController());
-  static final newQuizController = Get.put(NewQuizController());
   static final quiz2Controller = Get.put(Quiz2Controller());
 }

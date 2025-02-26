@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lomhat/module/quiz_2/model/quiz_details/quiz_details_model.dart';
 import 'package:lomhat/module/quiz_2/screen/create_new_quiz.dart';
 import 'package:lomhat/utils/widget/custom_loading.dart';
 
@@ -84,11 +85,16 @@ class _QuizScreenState extends State<QuizScreen> {
                         quizModel: e.value,
                         ontap: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => QuizDetailScreen(
-                                        id: e.value.name,
-                                      )));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuizDetailScreen(
+                                id: e.value.name!,
+                              ),
+                            ),
+                          ).then((value) {
+                            Injection.quiz2Controller.quizList[e.key] =
+                                value as QuizDetailsModel;
+                          });
                         },
                       );
                     }),

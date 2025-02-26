@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../quiz_2/model/quiz_question_model/quiz_question_model.dart';
+import '../quiz_question_model/quiz_question_model.dart';
 
 part 'quiz_details_model.freezed.dart';
 part 'quiz_details_model.g.dart';
