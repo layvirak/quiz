@@ -5,7 +5,6 @@ import '../../../../constrants/api_service.dart';
 import '../../../../constrants/app_color.dart';
 import '../../../../constrants/app_logo.dart';
 import '../../../../constrants/injection.dart';
-import '../../../quiz_2/screen/quiz_screen.dart';
 import '../custom_item_drawer_bar.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -48,11 +47,6 @@ class CustomDrawer extends StatelessWidget {
             onTap: () {
               Injection.homeController.selectIndex.value = 3;
               Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const QuizScreen(),
-                  ));
             },
           ),
           CustomItemDrawerBar(
@@ -62,11 +56,6 @@ class CustomDrawer extends StatelessWidget {
             onTap: () {
               Injection.homeController.selectIndex.value = 4;
               Navigator.pop(context);
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => const CreateQuizScreen(),
-              //     ));
             },
           ),
           CustomItemDrawerBar(
@@ -76,12 +65,6 @@ class CustomDrawer extends StatelessWidget {
             onTap: () {
               Injection.homeController.selectIndex.value = 5;
               Navigator.pop(context);
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => const QuestionScreen(),
-              //     ));
-              // Injection.homeController.selectIndex.value = 3;
             },
           ),
           CustomItemDrawerBar(
@@ -91,12 +74,6 @@ class CustomDrawer extends StatelessWidget {
             onTap: () {
               Injection.homeController.selectIndex.value = 6;
               Navigator.pop(context);
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => const QuestionScreen(),
-              //     ));
-              // Injection.homeController.selectIndex.value = 3;
             },
           ),
           //***************************************************************
