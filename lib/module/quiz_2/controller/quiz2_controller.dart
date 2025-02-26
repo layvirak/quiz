@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lomhat/module/quiz_2/model/quiz_model/quiz_model.dart';
 
 import '../../../constrants/api_service.dart';
 import '../../../constrants/injection.dart';
@@ -50,7 +49,7 @@ class Quiz2Controller extends GetxController {
     Injection.homeController.isLoading(false);
   }
 
-  var filterQuizList = <QuizModel>[].obs;
+  var filterQuizList = <QuizDetailsModel>[].obs;
   Future<void> onGetFilterQuiz(BuildContext context) async {
     Injection.homeController.isLoading(true);
 
@@ -65,7 +64,7 @@ class Quiz2Controller extends GetxController {
           .then((res) {
         filterQuizList.value = [];
         res['data'].map((e) {
-          filterQuizList.add(QuizModel.fromJson(e));
+          filterQuizList.add(QuizDetailsModel.fromJson(e));
         }).toList();
 
         if (ApiService.target != 'Release') {
